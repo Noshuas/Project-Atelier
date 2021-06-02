@@ -1,0 +1,24 @@
+{
+  "name": "project-catwalk",
+  "version": "1.0.0",
+  "description": "# Some Dependencies # Webpack # Webpack CLI # @Bable/core",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/will-weindel/project-catwalk.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/will-weindel/project-catwalk/issues"
+  },
+  "homepage": "https://github.com/will-weindel/project-catwalk#readme",
+  "devDependencies": {
+    "eslint": "^7.27.0",
+    "eslint-config-hackreactor": "github:hackreactor-labs/eslint-config-hackreactor"
+  }
+}
