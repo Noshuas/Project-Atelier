@@ -1,3 +1,4 @@
 node_modules
 /client/src/configAPI.js
 /client/dist/bundle.js
+.
