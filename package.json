@@ -4,7 +4,7 @@
   "description": "# Some Dependencies # Webpack # Webpack CLI # @Bable/core",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "start-dev": "webpack -w"
   },
   "repository": {
@@ -22,9 +22,12 @@
     "@babel/core": "^7.14.3",
     "@babel/preset-env": "^7.14.4",
     "@babel/preset-react": "^7.13.13",
+    "babel-jest": "^27.0.2",
     "babel-loader": "^8.2.2",
     "eslint": "^7.27.0",
     "eslint-config-hackreactor": "github:hackreactor-labs/eslint-config-hackreactor",
+    "jest": "^27.0.4",
+    "react-test-renderer": "^17.0.2",
     "webpack": "^5.38.1",
     "webpack-cli": "^4.7.0"
   },
