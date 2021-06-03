@@ -2,9 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import API from './configAPI.js';
 import axios from 'axios';
-// import APIrequest from './APIrequests.js';
-
-//multiple seperation-of-concern files
+// import overviewControl from './components/overviewControl.js';
+// etc. (do we add configAPI.js to controllers or to app.jsx?)
 
 class App extends React.Component {
   constructor(props) {
@@ -27,7 +26,7 @@ class App extends React.Component {
   // Luka's Methods
   // method1 () {}
 
-  //Derek' Methods
+  //Derek's Methods
   // method2 () {}
 
   //Will's Methods
@@ -50,5 +49,7 @@ class App extends React.Component {
 //     console.log(resVal);
 //   });
 
-
 ReactDOM.render(<App />, document.getElementById('app'));
+
+// var test = 55;
+// export default test;
