@@ -37,9 +37,9 @@ class App extends React.Component {
   render () {
     return (
       <div id="main">
-        {/* <Overview /> // Will
+        <Overview /> // Will
         <Related /> // Team
-        <QandA /> // Derek */}
+        <QandA /> // Derek
         <Ratings />
       </div>
     );
