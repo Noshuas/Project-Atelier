@@ -37,10 +37,10 @@ class App extends React.Component {
   render () {
     return (
       <div id="main">
-        {/* <Overview /> // Will
-        <Related /> // Team */}
+        <Overview /> // Will
+        <Related /> // Team
         <QandA />
-        {/* <Ratings /> // Luka className="lk rating-overview" */}
+        <Ratings /> // Luka className="lk rating-overview"
       </div>
     );
   }
