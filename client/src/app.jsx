@@ -4,6 +4,8 @@ import API from './configAPI.js';
 import axios from 'axios';
 // import overviewControl from './components/overviewControl.js';
 // etc. (do we add configAPI.js to controllers or to app.jsx?)
+// Q+A import
+import QandA from './QandAComponents/QandA.jsx';
 
 class App extends React.Component {
   constructor(props) {
