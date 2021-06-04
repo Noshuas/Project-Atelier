@@ -3,11 +3,12 @@ import brain from './brain.js';
 import APIcalls from './APIcalls';
 
 
-let Ratings = function (props) {
+function Ratings (props) {
   return (
     <div className="luka ratings">
+      wqqq
     </div>
   );
-};
+}
 
 export default Ratings;
