@@ -2,28 +2,27 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import API from './configAPI.js';
 import axios from 'axios';
-import Ratings from './ReviewsComponents/Ratings.jsx';
+import RandR from './ReviewsComponents/Ratings.jsx';
 import APIcalls from './ReviewsComponents/APIcalls.js';
 import QandA from './QandAComponents/QandA.jsx';
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
+function App() {
 
+  // Dereks Hooks
 
-  render() {
-    return (
-      <div id="main">
-        <Overview /> // Will
-        <Related /> // Team
-        <QandA />
-        <Ratings />
+  // Lukas Hooks
 
-      </div>
-    );
-  }
+  // Wills Hooks
+
+  return (
+    <div id="main">
+      {/* <Overview /> // Will
+      <Related /> // Team */}
+      <QandA />
+      <RandR />
+
+    </div>
+  );
 }
 
 ReactDOM.render(<App />, document.getElementById('app'));

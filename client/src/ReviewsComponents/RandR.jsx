@@ -1,9 +1,11 @@
 import React from 'react';
 import brain from './brain.js';
 import APIcalls from './APIcalls';
+import ReviewMeta from './ReviewMeta';
 
 
-function Ratings (props) {
+
+function RandR (props) {
   //change to "props.RandR.reviews.results || []" when data comes.
   let reviews = [];
   //change to "props.RandR.ratings
@@ -13,13 +15,13 @@ function Ratings (props) {
 
 
   return (
-    <div className="ratings">
+    <div className="ratings-and-reviews">
       <h3>RATINGS AND REVIEWS</h3>
-      <div className="reviewMeta"></div>
-      <div></div>
+      <ReviewMeta />
+      <div className="review-sorting"></div>
       <div className="review-list">{reviews.map(review => <ReviewItem />)}</div>
     </div>
   );
 }
 
-export default Ratings;
+export default RandR;
