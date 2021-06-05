@@ -9,23 +9,14 @@ import APIcalls from './components/ratings/APIcalls.js';
 // Q+A import
 import QandA from './QandAComponents/QandA.jsx';
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      // Derek's State Props
-      // QandAData: [],
+function App() {
 
-      // Luka's State Props
-      // RatingData: [],
+  // Dereks Hooks
 
-      // Will's State Props
-      // ProductData: [],
-    };
-    // Derek's Binds
-    // Luka's Binds
-    // Will's Binds
-  }
+  // Lukas Hooks
+
+  // Wills Hooks
+
 
   // Luka's Methods
   // method1 () {}
@@ -36,17 +27,16 @@ class App extends React.Component {
   //Will's Methods
   // method3 () {}
 
-  render () {
-    return (
-      <div id="main">
-        {/* <Overview /> // Will */}
-        {/* <Related /> // Team */}
-        <QandA />
-        <Ratings />
 
-      </div>
-    );
-  }
+  return (
+    <div id="main">
+      <Overview /> // Will
+      <Related /> // Team
+      <QandA />
+      <Ratings />
+
+    </div>
+  );
 }
 
 // axios.get(API.url + '/cart', API.auth)
