@@ -1,0 +1,7 @@
+section.related {
+  background-color: #629ac1;
+  height: 100px;
+  display: grid;
+  grid-template-columns: 520px 380px;
+  grid-template-rows: 45px auto 100px;
+}

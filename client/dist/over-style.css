@@ -2,6 +2,43 @@
 /* UNIQUE CSS */
 /**************/
 
-.overview > .test {
-  font-size: 50px;
+section.overview {
+  background-color: #c16262;
+  height: 500px;
+  display: grid;
+  grid-template-columns: 520px 380px;
+  grid-template-rows: 45px auto 100px;
+}
+
+.overview > * {
+  background-color: #f9c4c4;
+  margin: 9px;
+}
+
+.overview .sale {
+  grid-column-start: 1;
+  grid-column-end: span 2;
+}
+
+.overview .picture {
+  display: grid;
+  grid-template-columns: 90px auto;
+}
+
+.overview .small-pic-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.overview .small-picture {
+  height: 60px;
+}
+
+.overview .details {
+  font-size: 17px;
+}
+
+.overview .description {
+  grid-column-start: 1;
+  grid-column-end: span 2;
 }
