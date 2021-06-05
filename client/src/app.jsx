@@ -37,19 +37,29 @@ class App extends React.Component {
   render () {
     return (
       <div id="main">
-        <Overview /> // Will
-        <Related /> // Team
+        {/* <Overview /> // Will */}
+        {/* <Related /> // Team */}
         <QandA />
-        <Ratings /> // Luka className="lk rating-overview"
+        {/* <Ratings /> // Luka className="lk rating-overview" */}
       </div>
     );
   }
 }
 
-// axios.get(API.url + '/products', API.auth)
-//   .then(resVal => {
-//     console.log(resVal);
-//   });
+axios.get(API.url + '/qa/questions?product_id=17067', API.auth)
+  .then(resVal => {
+    console.log(resVal);
+    //return resVal;
+  })
+  .catch(err => console.log(err));
+
+fetch(API.url + '/products', API.auth)
+  .then(response => response.json())
+  .then(data => console.log(data));
+
+fetch(API.url + '/qa/questions?product_id=17067', API.auth)
+  .then(response => response.json())
+  .then(data => console.log(data));
 
 ReactDOM.render(<App />, document.getElementById('app'));
 
