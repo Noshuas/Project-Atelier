@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import API from './configAPI.js';
 import axios from 'axios';
+import Overview from './components/overview/Model.jsx';
+
 // import overviewControl from './components/overviewControl.js';
 // etc. (do we add configAPI.js to controllers or to app.jsx?)
 
@@ -18,6 +20,7 @@ class App extends React.Component {
       // Will's State Props
       // ProductData: [],
     };
+
     // Derek's Binds
     // Luka's Binds
     // Will's Binds
@@ -35,21 +38,29 @@ class App extends React.Component {
   render () {
     return (
       <div id="main">
-        <Overview /> // Will
-        <Related /> // Team
-        <QandA /> // Derek
-        <Ratings /> // Luka className="lk rating-overview"
+        <Overview />
       </div>
     );
   }
 }
 
-// axios.get(API.url + '/products', API.auth)
-//   .then(resVal => {
-//     console.log(resVal);
-//   });
-
 ReactDOM.render(<App />, document.getElementById('app'));
 
 // var test = 55;
 // export default test;
+
+{ /* <div id="main">
+  <Overview /> // Will
+  <Related /> // Team
+  <QandA /> // Derek
+  <Ratings /> // Luka
+</div> */ }
+
+// axios.get(API.url + '/products', API.auth)
+//   .then(resVal => {
+//     console.log(resVal.data);
+//   });
+
+// fetch(API.url + '/products', API.auth)
+//   .then(response => response.json())
+//   .then(data => console.log(data));
