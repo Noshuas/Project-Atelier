@@ -9,8 +9,8 @@ class Overview extends React.Component {
   render() {
     return (
       <section className="overview">
-        <div className="sale"></div>
-        <div className="picture">
+        <div className="sale">Offer</div>
+        <div className="picture"> Picture
           <div className="small-pic-container">
             <div className="small-picture"></div>
             <div className="small-picture"></div>
@@ -19,10 +19,10 @@ class Overview extends React.Component {
             <div className="small-picture"></div>
           </div>
         </div>
-        <div className="details">
+        <div className="details">Details
           <div className="small-picture"></div>
         </div>
-        <div className="description"></div>
+        <div className="description">Description</div>
       </section>
     );
   }
