@@ -1,12 +1,13 @@
 import axios from 'axios';
-import API from '../../configAPI.js';
+import React from 'react';
+import API from '../configAPI.js';
 
 
 let APIcalls = {};
 
-APIcalls.get = axios.get(API.url + '/products', API.auth)
-  .then(resVal => {
-    console.log(resVal);
-  });
+
+fetch(API.url + '/products', API.auth)
+  .then(response => response.json())
+  .then(data => console.log(data));
 
 export default APIcalls;
