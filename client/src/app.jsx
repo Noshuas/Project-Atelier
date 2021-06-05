@@ -4,6 +4,8 @@ import API from './configAPI.js';
 import axios from 'axios';
 import Ratings from './components/ratings/Ratings.jsx';
 import APIcalls from './components/ratings/APIcalls.js';
+import Overview from './components/overview/Model.jsx';
+import Related from './components/related/Model.jsx';
 // import overviewControl from './components/overviewControl.js';
 // etc. (do we add configAPI.js to controllers or to app.jsx?)
 // Q+A import
@@ -30,11 +32,10 @@ function App() {
 
   return (
     <div id="main">
-      <Overview /> // Will
-      <Related /> // Team
+      <Overview />
+      <Related />
       <QandA />
       <Ratings />
-
     </div>
   );
 }
