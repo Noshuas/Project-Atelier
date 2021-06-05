@@ -3,9 +3,12 @@ import ReactDOM from 'react-dom';
 import API from './configAPI.js';
 import axios from 'axios';
 import Overview from './components/overview/Model.jsx';
-
+import Ratings from './components/ratings/Ratings.jsx';
+import APIcalls from './components/ratings/APIcalls.js';
 // import overviewControl from './components/overviewControl.js';
 // etc. (do we add configAPI.js to controllers or to app.jsx?)
+// Q+A import
+import QandA from './QandAComponents/QandA.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -38,7 +41,10 @@ class App extends React.Component {
   render () {
     return (
       <div id="main">
-        <Overview />
+        <Overview /> // Will
+        <Related /> // Team
+        <QandA />
+        <Ratings />
       </div>
     );
   }
@@ -57,6 +63,7 @@ ReactDOM.render(<App />, document.getElementById('app'));
 </div> */ }
 
 // axios.get(API.url + '/products', API.auth)
+// axios.get(API.url + '/cart', API.auth)
 //   .then(resVal => {
 //     console.log(resVal.data);
 //   });
