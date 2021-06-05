@@ -6,6 +6,8 @@ import Ratings from './components/ratings/Ratings.jsx';
 import APIcalls from './components/ratings/APIcalls.js';
 // import overviewControl from './components/overviewControl.js';
 // etc. (do we add configAPI.js to controllers or to app.jsx?)
+// Q+A import
+import QandA from './QandAComponents/QandA.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -39,8 +41,9 @@ class App extends React.Component {
       <div id="main">
         <Overview /> // Will
         <Related /> // Team
-        <QandA /> // Derek
+        <QandA />
         <Ratings />
+
       </div>
     );
   }
