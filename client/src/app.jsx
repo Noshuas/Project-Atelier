@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import API from './configAPI.js';
 import axios from 'axios';
+import Ratings from './components/ratings/Ratings.jsx';
+import APIcalls from './components/ratings/APIcalls.js';
 // import overviewControl from './components/overviewControl.js';
 // etc. (do we add configAPI.js to controllers or to app.jsx?)
 // Q+A import
@@ -40,13 +42,14 @@ class App extends React.Component {
         <Overview /> // Will
         <Related /> // Team
         <QandA />
-        <Ratings /> // Luka className="lk rating-overview"
+        <Ratings />
+
       </div>
     );
   }
 }
 
-// axios.get(API.url + '/products', API.auth)
+// axios.get(API.url + '/cart', API.auth)
 //   .then(resVal => {
 //     console.log(resVal);
 //   });
