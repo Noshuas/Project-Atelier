@@ -4,6 +4,7 @@ import API from './configAPI.js';
 import axios from 'axios';
 import Ratings from './ReviewsComponents/Ratings.jsx';
 import APIcalls from './ReviewsComponents/APIcalls.js';
+import QandA from './QandAComponents/QandA.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -15,7 +16,11 @@ class App extends React.Component {
   render() {
     return (
       <div id="main">
+        <Overview /> // Will
+        <Related /> // Team
+        <QandA />
         <Ratings />
+
       </div>
     );
   }
