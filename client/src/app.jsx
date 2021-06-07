@@ -1,17 +1,21 @@
-import React, { useState, useEffect } from 'react';
+// Dependency imports
+import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
-import API from './configAPI.js';
-import axios from 'axios';
+// Component Imports
+import { Overview } from './components/overview/View.jsx';
+import { Related } from './components/related/View.jsx';
+import QandA from './QandAComponents/QandA.jsx';
 import RandR from './ReviewsComponents/RandR.jsx';
 import RandRAPIcalls from './ReviewsComponents/RandRAPIcalls.js';
-import Overview from './components/overview/Model.jsx';
-import Related from './components/related/Model.jsx';
-// import overviewControl from './components/overviewControl.js';
-// etc. (do we add configAPI.js to controllers or to app.jsx?)
-// Q+A import
-import QandA from './QandAComponents/QandA.jsx';
+// Context and Custom Hook Imports
+import { AppContext, useApp } from './components/app/index.js';
+import { OverviewContext, useOverview } from './components/overview/index.js';
+import { RelatedContext, useRelated } from './components/related/index.js';
 
 function App() {
+
+  // Parent Hooks
+  const appState = useApp();
 
   // Dereks Hooks
 
@@ -19,19 +23,36 @@ function App() {
   const [productId, setProduct] = useState(0);
   useEffect(() => {
     RandRAPIcalls.getProducts()
-      .then(response => setProduct(response.data[1].id));
+      .then(response => setProduct(response.data[3].id));
   }, []);
 
-
   // Wills Hooks
+  const overviewState = useOverview();
+
+  // Related Hooks
+  const relatedState = useRelated();
+
+
+  // Luka's Methods
+  // method1 () {}
+
+  //Derek's Methods
+  // method2 () {}
+
+  //Will's Methods
+  // method3 () {}
 
   return (
-    <div id="main">
-      <Overview />
-      <Related />
-      <QandA productId={productId}/>
+    <AppContext.Provider value={appState}>
+      <OverviewContext.Provider value={overviewState}>
+        <Overview />
+      </OverviewContext.Provider>
+      <RelatedContext.Provider value={relatedState}>
+        <Related />
+      </RelatedContext.Provider>
+      <QandA productId={productId} />
       <RandR productId={productId} />
-    </div>
+    </AppContext.Provider>
   );
 }
 
