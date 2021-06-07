@@ -29,7 +29,7 @@ function App() {
     <div id="main">
       <Overview />
       <Related />
-      <QandA />
+      <QandA productId={productId}/>
       <RandR productId={productId} />
     </div>
   );
