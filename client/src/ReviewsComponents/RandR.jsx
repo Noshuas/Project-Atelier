@@ -10,7 +10,7 @@ function RandR (props) {
   //Get reviews every time productId changes
   const [reviews, setReviews] = useState([]);
   useEffect(() => {
-    APIcalls.getReviews(props.productId)
+    RandRAPIcalls.getReviews(props.productId)
       .then(response => setReviews(response.data.results));
   }, [props.productId]);
   //change to "props.RandR.ratings
