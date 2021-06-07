@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import API from './configAPI.js';
 import axios from 'axios';
-import Ratings from './components/ratings/Ratings.jsx';
-import APIcalls from './components/ratings/APIcalls.js';
+import RandR from './ReviewsComponents/RandR.jsx';
+import RandRAPIcalls from './ReviewsComponents/RandRAPIcalls.js';
 import Overview from './components/overview/Model.jsx';
 import Related from './components/related/Model.jsx';
 // import overviewControl from './components/overviewControl.js';
@@ -16,36 +16,23 @@ function App() {
   // Dereks Hooks
 
   // Lukas Hooks
+  const [productId, setProduct] = useState(0);
+  useEffect(() => {
+    RandRAPIcalls.getProducts()
+      .then(response => setProduct(response.data[1].id));
+  }, []);
+
 
   // Wills Hooks
-
-
-  // Luka's Methods
-  // method1 () {}
-
-  //Derek's Methods
-  // method2 () {}
-
-  //Will's Methods
-  // method3 () {}
-
 
   return (
     <div id="main">
       <Overview />
       <Related />
       <QandA />
-      <Ratings />
+      <RandR productId={productId} />
     </div>
   );
 }
 
-// axios.get(API.url + '/cart', API.auth)
-//   .then(resVal => {
-//     console.log(resVal);
-//   });
-
 ReactDOM.render(<App />, document.getElementById('app'));
-
-// var test = 55;
-// export default test;
