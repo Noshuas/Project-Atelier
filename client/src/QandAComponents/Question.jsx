@@ -1,9 +1,15 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import QAapiCalls from './QandAAPIcalls.js'
 
 const Question = (props) => {
-  QAapiCalls.getAnswers(props.info.question_id);
+  let [answers, setAnswer] = useState([]);
 
+  useEffect( () => {
+    QAapiCalls.getAnswers(props.info.question_id)
+      .then(results => {
+        setAnswer(results);
+      });
+  }, [props.info]);
   return (
     <div>
       <h3>Q:{props.info.question_body} </h3>
