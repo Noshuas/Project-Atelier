@@ -4,9 +4,9 @@
 
 section.overview {
   background-color: #c16262;
-  height: 500px;
+  height: 625px;
   display: grid;
-  grid-template-columns: 520px 380px;
+  grid-template-columns: 60% auto;
   grid-template-rows: 45px auto 100px;
 }
 
@@ -20,24 +20,35 @@ section.overview {
   grid-column-end: span 2;
 }
 
-.overview .picture {
-  display: flex;
-  grid-template-columns: 90px auto;
-  height: 337px;
+.overview .hero-picture {
+  max-height: 462px;
 }
 
-.overview .picture .primary-img {
-  max-height: 100%;
+.overview .hero-picture .small-pic-container {
+  display: flex;
+  flex-direction: column;
+  max-height: inherit;
+  position: absolute;
+  width: 90px;
+}
+
+.overview .hero-picture .small-pic-container .small-pic-wrapper {
+  height: 90px;
   margin: auto;
 }
 
-.overview .small-pic-container {
-  display: flex;
-  flex-direction: column;
+.overview .hero-picture .small-pic-container .small-img {
+  max-height: 70px;
 }
 
-.overview .small-picture {
-  height: 60px;
+.overview .hero-picture .primary-img-container {
+  display: flex;
+  max-height: inherit;
+  justify-content: center;
+}
+
+.overview .hero-picture .primary-img-container .primary-img {
+  max-height: inherit;
 }
 
 .overview .details {

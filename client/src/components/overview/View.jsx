@@ -16,16 +16,27 @@ export function Overview() {
   return (
     <section className="overview">
       <div className="sale">Site-Wide Annoucement Message - Sale/Discount Offer</div>
-      <div className="picture">
+
+      <div className="hero-picture">
         <div className="small-pic-container">
-          <div className="small-picture"></div>
-          <div className="small-picture"></div>
-          <div className="small-picture"></div>
-          <div className="small-picture"></div>
-          <div className="small-picture"></div>
+          <div className="small-pic-wrapper">
+            <img className="small-img" src={primaryImgURL}/>
+          </div>
+          <div className="small-pic-wrapper">
+            <img className="small-img" src={primaryImgURL}/>
+          </div>
+          <div className="small-pic-wrapper">
+            <img className="small-img" src={primaryImgURL}/>
+          </div>
+          <div className="small-pic-wrapper">
+            <img className="small-img" src={primaryImgURL}/>
+          </div>
         </div>
-        <img className="primary-img" src={primaryImgURL}/>
+        <div className="primary-img-container">
+          <img className="primary-img" src={primaryImgURL}/>
+        </div>
       </div>
+
       <div className="details">
         <div>Star Rating</div>
         <div>{currentProduct.category || 'Loading'}</div>
@@ -61,6 +72,7 @@ export function Overview() {
           </select>
         </div>
       </div>
+
       <div className="description">
         <div>{currentProduct.slogan || 'Loading'}</div>
         <div>{currentProduct.description || 'Loading'}</div>
