@@ -9,7 +9,6 @@ const QandA = (props) => {
   useEffect (() => {
     QAapiCalls.getQuestions(props.productId)
       .then(results => {
-        console.log('resu;ts' , results);
         return setQuestions(results);
       }
       );

@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import QAapiCalls from './QandAAPIcalls.js'
+import QAapiCalls from './QandAAPIcalls.js';
 
 const Question = (props) => {
   let [answers, setAnswer] = useState([]);
