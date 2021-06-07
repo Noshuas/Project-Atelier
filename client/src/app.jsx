@@ -1,8 +1,6 @@
 // Dependency Imports
 import React from 'react';
 import ReactDOM from 'react-dom';
-import API from './configAPI.js';
-import axios from 'axios';
 
 // Component Imports
 import { Overview } from './components/overview/View.jsx';
@@ -57,11 +55,6 @@ function App() {
     </AppContext.Provider>
   );
 }
-
-// axios.get(API.url + '/cart', API.auth)
-//   .then(resVal => {
-//     console.log(resVal);
-//   });
 
 ReactDOM.render(<App />, document.getElementById('app'));
 
