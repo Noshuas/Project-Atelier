@@ -24,7 +24,7 @@ function RandR (props) {
       <h3>RATINGS AND REVIEWS</h3>
       <ReviewMeta />
       <div className="review-sorting"></div>
-      <div className="review-list">{reviews.map(review => <ReviewItem key={review.review_id} />)}</div>
+      <div className="review-list">{reviews.map(review => <ReviewItem key={review.review_id} review={review}/>)}</div>
     </div>
   );
 }
