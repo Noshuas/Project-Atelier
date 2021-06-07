@@ -6,11 +6,11 @@ import API from '../configAPI.js';
 let APIcalls = {};
 
 
-APIcalls.getProducts = function () {
+RandRAPIcalls.getProducts = function () {
   return axios.get(API.url + '/products', API.auth);
 };
 
-APIcalls.getReviews = function (productId, sort = 'relevance', page = 1, count = 2) {
+RandRAPIcalls.getReviews = function (productId, sort = 'relevance', page = 1, count = 2) {
   let newParams = {
     page: page,
     count: count,
@@ -21,4 +21,4 @@ APIcalls.getReviews = function (productId, sort = 'relevance', page = 1, count =
   return axios.get(API.url + '/reviews', {params: newParams, headers: API.auth.headers});
 };
 
-export default APIcalls;
+export default RandRAPIcalls;
