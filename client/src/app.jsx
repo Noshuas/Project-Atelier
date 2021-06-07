@@ -30,8 +30,8 @@ function App() {
 
   return (
     <div id="main">
-      {/* <Overview /> // Will */}
-      {/* <Related /> // Team */}
+      <Overview /> // Will
+      <Related /> // Team
       <QandA />
       <Ratings />
 
