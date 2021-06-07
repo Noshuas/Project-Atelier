@@ -1,8 +1,8 @@
 import React, { createContext, useState } from 'react';
 
-export const RelatedContext = createContext();
+export const AppContext = createContext();
 
-export function useRelated() {
+export function useApp() {
   const [example, setExample] = useState('');
   return {example, setExample};
 }
