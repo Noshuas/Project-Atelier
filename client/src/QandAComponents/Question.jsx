@@ -14,7 +14,7 @@ const Question = (props) => {
     <div>
       <h3>Q:{props.info.question_body} </h3>
       <p>Helpful? </p><p>Yes ({props.info.question_helpfulness})</p>
-      {answers.map( (answer, index) => {
+      <h3>A:</h3>{answers.map( (answer, index) => {
         return <Answer info={answer} key={index}/>;
       })}
 

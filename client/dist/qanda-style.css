@@ -1,0 +1,8 @@
+.answersToolbar {
+  display: flex;
+  flex-direction: row;
+  font-size: 12px;
+}
+p {
+  margin: 5px;
+}
