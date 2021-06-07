@@ -19,7 +19,7 @@ function App() {
   const [productId, setProduct] = useState(0);
   useEffect(() => {
     APIcalls.getProducts()
-      .then(response => setProduct(response.data[1].id));
+      .then(response => setProduct(response.data[3].id));
   }, []);
 
 

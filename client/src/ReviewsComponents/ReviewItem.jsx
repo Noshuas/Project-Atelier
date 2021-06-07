@@ -5,7 +5,6 @@ import APIcalls from './APIcalls';
 function ReviewItem(props) {
   let review = props.review;
   if (review.response) { console.log('Found response!!!!!'); }
-  console.log(review);
   return (
     <div className="review-item">
       <div>{review.rating} stars ★★★★★</div>
