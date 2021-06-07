@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import brain from './brain.js';
-import APIcalls from './APIcalls';
+import RandRAPIcalls from './RandRAPIcalls';
 import ReviewMeta from './ReviewMeta.jsx';
 import ReviewItem from './ReviewItem.jsx';
 import ReviewSorting from './ReviewSorting.jsx';
@@ -12,7 +12,7 @@ function RandR(props) {
   const [reviews, setReviews] = useState([]);
   const [sortBy, setSortBy] = useState('relevant');
   useEffect(() => {
-    APIcalls.getReviews(props.productId, sortBy)
+    RandRAPIcalls.getReviews(props.productId, sortBy)
       .then(response => setReviews(response.data.results));
   }, [props.productId, sortBy]);
 
@@ -23,7 +23,7 @@ function RandR(props) {
   const [reviewsMeta, setReviewsMeta] = useState({});
   const [reviewCount, setReviewCount] = useState(0);
   useEffect(() => {
-    APIcalls.getReviewsMeta(props.productId)
+    RandRAPIcalls.getReviewsMeta(props.productId)
       .then(response => {
         setReviewsMeta(response);
         setReviewCount(brain.getReviewCount(response.data.ratings));
