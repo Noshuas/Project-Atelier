@@ -5,14 +5,14 @@ import API from './configAPI.js';
 import axios from 'axios';
 
 // Component Imports
-import { Overview } from './components/overview/index.js';
+import { Overview } from './components/overview/View.jsx';
 import { Related } from './components/related/View.jsx';
 import QandA from './QandAComponents/QandA.jsx';
 import Ratings from './components/ratings/Ratings.jsx';
 import APIcalls from './components/ratings/APIcalls.js';
 
 // Context and Custom Hook Imports
-import { AppContext, useApp } from './appModel.jsx';
+import { AppContext, useApp } from './components/app/index.js';
 import { OverviewContext, useOverview } from './components/overview/index.js';
 import { RelatedContext, useRelated } from './components/related/index.js';
 
@@ -28,6 +28,10 @@ function App() {
   // Lukas Hooks
 
   // Wills Hooks
+  const overviewState = useOverview();
+
+  // Related Hooks
+  const relatedState = useRelated();
 
 
   // Luka's Methods
@@ -42,8 +46,12 @@ function App() {
 
   return (
     <AppContext.Provider value={appState}>
-      <Overview />
-      <Related />
+      <OverviewContext.Provider value={overviewState}>
+        <Overview />
+      </OverviewContext.Provider>
+      <RelatedContext.Provider value={relatedState}>
+        <Related />
+      </RelatedContext.Provider>
       <QandA />
       <Ratings />
     </AppContext.Provider>
