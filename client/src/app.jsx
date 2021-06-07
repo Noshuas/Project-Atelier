@@ -4,6 +4,11 @@ import API from './configAPI.js';
 import axios from 'axios';
 import RandR from './ReviewsComponents/RandR.jsx';
 import APIcalls from './ReviewsComponents/APIcalls.js';
+import Overview from './components/overview/Model.jsx';
+import Related from './components/related/Model.jsx';
+// import overviewControl from './components/overviewControl.js';
+// etc. (do we add configAPI.js to controllers or to app.jsx?)
+// Q+A import
 import QandA from './QandAComponents/QandA.jsx';
 
 function App() {
@@ -22,11 +27,10 @@ function App() {
 
   return (
     <div id="main">
-      {/* <Overview /> // Will
-      <Related /> // Team */}
+      <Overview />
+      <Related />
       <QandA />
-      <RandR productId={productId}/>
-
+      <RandR productId={productId} />
     </div>
   );
 }
