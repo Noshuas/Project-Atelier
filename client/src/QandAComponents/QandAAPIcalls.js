@@ -13,7 +13,7 @@ QAapiCalls.getQuestions = (productID) => {
   let headers = API.auth.headers;
   return axios.get(API.url + '/qa/questions', { params, headers})
     .then(results => {
-      console.log(results.data.results);
+      //console.log(results.data.results);
       return results.data.results;
     })
     .catch(err => { return console.log(err); });
