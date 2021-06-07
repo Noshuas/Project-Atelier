@@ -1,17 +1,27 @@
+// Dependency Imports
 import React from 'react';
 import ReactDOM from 'react-dom';
 import API from './configAPI.js';
 import axios from 'axios';
+
+// Component Imports
+import { Overview } from './components/overview/index.js';
+import { Related } from './components/related/View.jsx';
+import QandA from './QandAComponents/QandA.jsx';
 import Ratings from './components/ratings/Ratings.jsx';
 import APIcalls from './components/ratings/APIcalls.js';
-import Overview from './components/overview/Model.jsx';
-import Related from './components/related/Model.jsx';
-// import overviewControl from './components/overviewControl.js';
-// etc. (do we add configAPI.js to controllers or to app.jsx?)
-// Q+A import
-import QandA from './QandAComponents/QandA.jsx';
+
+// Context and Custom Hook Imports
+import { AppContext, useApp } from './appModel.jsx';
+import { OverviewContext, useOverview } from './components/overview/index.js';
+import { RelatedContext, useRelated } from './components/related/index.js';
+
+
 
 function App() {
+
+  // Parent Hooks
+  const appState = useApp();
 
   // Dereks Hooks
 
@@ -31,12 +41,12 @@ function App() {
 
 
   return (
-    <div id="main">
+    <AppContext.Provider value={appState}>
       <Overview />
       <Related />
       <QandA />
       <Ratings />
-    </div>
+    </AppContext.Provider>
   );
 }
 
