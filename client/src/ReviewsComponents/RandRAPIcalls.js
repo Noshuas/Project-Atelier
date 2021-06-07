@@ -3,7 +3,7 @@ import React from 'react';
 import API from '../configAPI.js';
 
 
-let APIcalls = {};
+let RandRAPIcalls = {};
 
 
 RandRAPIcalls.getProducts = function () {
