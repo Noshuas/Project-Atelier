@@ -1,6 +1,6 @@
 import React from 'react';
 import brain from './brain.js';
-import APIcalls from './APIcalls';
+import RandRAPIcalls from './RandRAPIcalls';
 
 function ReviewMeta (props) {
 
