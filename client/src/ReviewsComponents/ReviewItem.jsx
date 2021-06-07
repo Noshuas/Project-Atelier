@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import brain from './brain.js';
-import APIcalls from './APIcalls';
+import RandRAPIcalls from './RandRAPIcalls';
 
 function ReviewItem(props) {
   let review = props.review;
