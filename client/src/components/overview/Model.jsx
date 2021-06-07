@@ -11,8 +11,6 @@ export function useOverview() {
   useEffect(() => {
     Promise.all([getProducts(), getProductStyles()])
       .then(([product, styles]) => {
-        console.log(product.data);
-        console.log(styles.data);
         setCurrentProduct(product.data);
         setProductStyles(styles.data);
       });
