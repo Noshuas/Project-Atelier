@@ -1,31 +1,23 @@
-import React from 'react';
+import React, { createContext, useState, useEffect } from 'react';
+import { getProducts, getProductStyles } from './Controllers.js';
 
-class Overview extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
+export const OverviewContext = createContext();
 
-  render() {
-    return (
-      <section className="overview">
-        <div className="sale">Offer</div>
-        <div className="picture"> Picture
-          <div className="small-pic-container">
-            <div className="small-picture"></div>
-            <div className="small-picture"></div>
-            <div className="small-picture"></div>
-            <div className="small-picture"></div>
-            <div className="small-picture"></div>
-          </div>
-        </div>
-        <div className="details">Details
-          <div className="small-picture"></div>
-        </div>
-        <div className="description">Description</div>
-      </section>
-    );
-  }
+export function useOverview() {
+  // set initial state values (static)
+  const [currentProduct, setCurrentProduct] = useState({});
+  const [productStyles, setProductStyles] = useState({});
+
+  useEffect(() => {
+    Promise.all([getProducts(), getProductStyles()])
+      .then(([product, styles]) => {
+        setCurrentProduct(product.data);
+        setProductStyles(styles.data);
+      });
+  }, []);
+
+  return {
+    currentProduct, setCurrentProduct,
+    productStyles, setProductStyles
+  };
 }
-
-export default Overview;
