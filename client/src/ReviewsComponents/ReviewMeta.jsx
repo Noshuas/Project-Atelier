@@ -5,7 +5,7 @@ import APIcalls from './APIcalls';
 function ReviewMeta (props) {
 
   return (
-    <div className="review-item">
+    <div className="review-meta">
     </div>
   );
 }
