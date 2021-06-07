@@ -6,15 +6,13 @@ import ReactDOM from 'react-dom';
 import { Overview } from './components/overview/View.jsx';
 import { Related } from './components/related/View.jsx';
 import QandA from './QandAComponents/QandA.jsx';
-import Ratings from './components/ratings/Ratings.jsx';
-import APIcalls from './components/ratings/APIcalls.js';
+import RandR from './ReviewsComponents/RandR.jsx';
+import RandRAPIcalls from './ReviewsComponents/RandRAPIcalls.js';
 
 // Context and Custom Hook Imports
 import { AppContext, useApp } from './components/app/index.js';
 import { OverviewContext, useOverview } from './components/overview/index.js';
 import { RelatedContext, useRelated } from './components/related/index.js';
-
-
 
 function App() {
 
@@ -24,6 +22,11 @@ function App() {
   // Dereks Hooks
 
   // Lukas Hooks
+  const [productId, setProduct] = useState(0);
+  useEffect(() => {
+    RandRAPIcalls.getProducts()
+      .then(response => setProduct(response.data[3].id));
+  }, []);
 
   // Wills Hooks
   const overviewState = useOverview();
@@ -41,7 +44,6 @@ function App() {
   //Will's Methods
   // method3 () {}
 
-
   return (
     <AppContext.Provider value={appState}>
       <OverviewContext.Provider value={overviewState}>
@@ -51,12 +53,9 @@ function App() {
         <Related />
       </RelatedContext.Provider>
       <QandA />
-      <Ratings />
+      <RandR productId={productId} />
     </AppContext.Provider>
   );
 }
 
 ReactDOM.render(<App />, document.getElementById('app'));
-
-// var test = 55;
-// export default test;
