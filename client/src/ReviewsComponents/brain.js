@@ -11,4 +11,22 @@ brain.getFormatedTimestamp = function (string) {
   return result;
 };
 
+brain.getReviewCount = function (ratings) {
+  let total = 0;
+  for (let rating in ratings) {
+    total += Number(ratings[rating]);
+  }
+  return total;
+};
+
+brain.getFormatedSortBy = function (string) {
+  if (string === 'relevance') {
+    return 'relevant';
+  } else if (string === 'helpfulness') {
+    return 'helpful';
+  } else {
+    return 'newest';
+  }
+};
+
 export default brain;

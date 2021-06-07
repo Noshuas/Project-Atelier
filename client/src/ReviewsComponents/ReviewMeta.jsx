@@ -5,7 +5,7 @@ import RandRAPIcalls from './RandRAPIcalls';
 function ReviewMeta (props) {
 
   return (
-    <div className="review-item">
+    <div className="review-meta">
     </div>
   );
 }

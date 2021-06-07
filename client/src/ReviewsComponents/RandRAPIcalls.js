@@ -21,4 +21,12 @@ RandRAPIcalls.getReviews = function (productId, sort = 'relevance', page = 1, co
   return axios.get(API.url + '/reviews', {params: newParams, headers: API.auth.headers});
 };
 
+RandRAPIcalls.getReviewsMeta = function (productId) {
+  let newParams = {
+    product_id: productId
+  };
+
+  return axios.get(API.url + '/reviews/meta', {params: newParams, headers: API.auth.headers});
+};
+
 export default RandRAPIcalls;

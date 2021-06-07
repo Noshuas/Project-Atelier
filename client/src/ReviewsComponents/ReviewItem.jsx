@@ -6,8 +6,10 @@ function ReviewItem(props) {
   let review = props.review;
   return (
     <div className="review-item">
-      <div>{review.rating} stars ★★★★★</div>
-      <div>{review.reviewer_name}, {brain.getFormatedTimestamp(review.date)}</div>
+      <div className="top-row">
+        <span className="stars">{review.rating} stars ★★★★★</span>
+        <span>{review.reviewer_name}, {brain.getFormatedTimestamp(review.date)}</span>
+      </div>
       <h3>{review.summary}</h3>
       <p>{review.body}</p>
       <IRecommmendThisProduct recommend={review.recommend} />
@@ -33,7 +35,7 @@ function IRecommmendThisProduct(props) {
   if (props.recommend) {
     return (
       <div>
-        <span>I recommend this product</span>
+        <span>✓ I recommend this product</span>
       </div>
     );
   }
@@ -45,7 +47,7 @@ function WasHelpful(props) {
   return (
     <div className="was-helpful">
       <span>Was this review helpful?</span>
-      <a href="#">Yes</a><span>({props.helpfulness})</span>
+      <span><a href="#">Yes</a> ({props.helpfulness})</span>
       <span>|</span>
       <a href="#">No</a>
     </div>
