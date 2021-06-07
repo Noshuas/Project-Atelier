@@ -14,7 +14,7 @@ function ReviewItem(props) {
       <p>{review.body}</p>
       <IRecommmendThisProduct recommend={review.recommend} />
       <ReviewResponse response={review.response} />
-      <WasHelpful helpfulness={review.helpfulness} />
+      <WasHelpful helpfulness={review.helpfulness} reviewId={review.review_id} />
     </div>
   );
 }
@@ -43,15 +43,26 @@ function IRecommmendThisProduct(props) {
 }
 
 function WasHelpful(props) {
+  const [feedbackGiven, setFeedback] = useState(false);
+  function handleFeedback(e) {
+    e.preventDefault();
+    setFeedback(true);
+  }
 
-  return (
-    <div className="was-helpful">
-      <span>Was this review helpful?</span>
-      <span><a href="#">Yes</a> ({props.helpfulness})</span>
-      <span>|</span>
-      <a href="#">No</a>
-    </div>
-  );
+  if (!feedbackGiven) {
+    return (
+      <div className="was-helpful">
+        <span>Was this review helpful?</span>
+        <span><a href="#" onClick={handleFeedback}>Yes</a> ({props.helpfulness})</span>
+        <span>|</span>
+        <a href="#" onClick={handleFeedback}>No</a>
+      </div>
+    );
+  } else {
+    return (
+      <div>Thank you for your feedback!</div>
+    );
+  }
 
 }
 
