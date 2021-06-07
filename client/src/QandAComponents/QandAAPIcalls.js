@@ -20,4 +20,18 @@ QAapiCalls.getQuestions = (productID) => {
 
 };
 
+QAapiCalls.getAnswers = (questionID) => {
+  let params = {
+    question_id: questionID,
+    page: 1,
+    count: 25
+  };
+  let headers = API.auth.headers;
+  return axios.get(API.url + `/qa/questions/${questionID}/answers`, { params, headers})
+    .then(results => {
+      //console.log(results.data.results);
+      return results.data.results;
+    })
+    .catch(err => { return console.log(err); });
+};
 export default QAapiCalls;

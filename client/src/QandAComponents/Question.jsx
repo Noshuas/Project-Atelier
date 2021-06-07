@@ -1,6 +1,9 @@
 import React from 'react';
+import QAapiCalls from './QandAAPIcalls.js'
 
 const Question = (props) => {
+  QAapiCalls.getAnswers(props.info.question_id);
+
   return (
     <div>
       <h3>Q:{props.info.question_body} </h3>
@@ -9,5 +12,4 @@ const Question = (props) => {
     </div>
   );
 };
-
 export default Question;

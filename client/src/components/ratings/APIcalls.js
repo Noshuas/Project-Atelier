@@ -4,9 +4,8 @@ import API from '../../configAPI.js';
 
 let APIcalls = {};
 
-// APIcalls.get = axios.get(API.url + '/cart', API.auth)
-// .then(resVal => {
-//   console.log(resVal);
-// });
+APIcalls.getProducts = function () {
+  return axios.get(API.url + '/products', API.auth);
+};
 
 export default APIcalls;
