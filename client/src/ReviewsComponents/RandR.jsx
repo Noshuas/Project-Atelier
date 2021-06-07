@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import brain from './brain.js';
-import APIcalls from './APIcalls';
+import RandRAPIcalls from './RandRAPIcalls';
 import ReviewMeta from './ReviewMeta.jsx';
 import ReviewItem from './ReviewItem.jsx';
 
