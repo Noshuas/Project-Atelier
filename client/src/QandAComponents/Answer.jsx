@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import brain from '../ReviewsComponents/brain.js';
 
 function Answer(props) {
+  console.log(props.info.photos);
   return (
     <div>
       <p>{props.info.body}</p>
@@ -17,13 +18,23 @@ function Answer(props) {
   );
 }
 
-function Photo(props) {
+function Photos(props) {
   if (props.photos.length === 0) {
     return null;
   }
   return (
-    <div className="answer-photos">A photo
+    <div className="answer-photos">
+      {props.photos.map( (photo, index) => {
+        return <Photo info={photo} key={index}/>;
+      })}
+    </div>
+  );
+}
 
+function Photo(props) {
+  return (
+    <div>
+      <img className="photo-image" src={props.info.url}/>
     </div>
   )
 }
