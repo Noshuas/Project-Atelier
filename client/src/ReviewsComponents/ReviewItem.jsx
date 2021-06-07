@@ -4,7 +4,6 @@ import RandRAPIcalls from './RandRAPIcalls';
 
 function ReviewItem(props) {
   let review = props.review;
-  if (review.response) { console.log('Found response!!!!!'); }
   return (
     <div className="review-item">
       <div className="top-row">
