@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import QAapiCalls from './QandAAPIcalls.js';
-
+import Answer from './Answer.jsx';
 const Question = (props) => {
   let [answers, setAnswer] = useState([]);
 
@@ -14,7 +14,10 @@ const Question = (props) => {
     <div>
       <h3>Q:{props.info.question_body} </h3>
       <p>Helpful? </p><p>Yes ({props.info.question_helpfulness})</p>
-      <div>Answer Component here</div>
+      {answers.map( (answer, index) => {
+        return <Answer info={answer} key={index}/>;
+      })}
+
     </div>
   );
 };

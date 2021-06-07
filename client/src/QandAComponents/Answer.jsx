@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 function Answer(props) {
   return (
     <div>
-      Test Answers
+      <p>A: {props.info.body}</p>
     </div>
   );
 }
