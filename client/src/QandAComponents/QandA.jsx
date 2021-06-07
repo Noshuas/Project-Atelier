@@ -15,6 +15,4 @@ const QandA = (props) => {
 };
 
 
-QAapiCalls.getQuestions(17068);
-
 export default QandA;
