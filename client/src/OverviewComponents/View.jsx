@@ -1,19 +1,13 @@
 import React, { useContext } from 'react';
-import { AppContext } from '../app/index.js';
+import { AppContext } from '../AppComponents/index.js';
 import { OverviewContext } from './index.js';
+import { iconURLs } from './iconURLs.js';
 
 export function Overview() {
   const {currentProduct, setCurrentProduct} = useContext(OverviewContext);
   const {productStyles, setProductStyles} = useContext(OverviewContext);
   const {productImages, setProductImages} = useContext(OverviewContext);
-
-  let primaryImgURL;
-
-  if (productStyles.results) {
-    primaryImgURL = productStyles.results[0].photos[0].url;
-  } else {
-    primaryImgURL = '';
-  }
+  const {heroImage, setHeroImage} = useContext(OverviewContext);
 
   return (
     <section className="overview">
@@ -22,24 +16,36 @@ export function Overview() {
       <div className="hero-picture">
         <div className="small-pic-container">
           <div className="small-icon-wrapper">
-            <img className="small-icon-top" src="https://cdn3.iconfinder.com/data/icons/faticons/32/arrow-up-01-512.png"/>
+            <img className="small-icon-top" src={iconURLs.arrowUp}/>
           </div>
-          {productImages.map((url, index) => {
+          {productImages.map((photoSet, index) => {
             return (
               <div className="small-pic-wrapper" onClick={() => {
                 primaryImgURL = url;
               }}>
-                <img className="small-img" src={url}/>
+                <img className="small-img" src={photoSet.thumbnail_url}/>
               </div>);
           }).slice(0, 4)}
           <div className="small-icon-wrapper">
-            <img className="small-icon-bottom" src="https://cdn3.iconfinder.com/data/icons/faticons/32/arrow-down-01-512.png"/>
+            <img className="small-icon-bottom" src={iconURLs.arrowDown}/>
           </div>
         </div>
         <div className="primary-img-container">
-          <img className="small-icon-left" src="https://cdn3.iconfinder.com/data/icons/faticons/32/arrow-left-01-512.png"/>
-          <img className="primary-img" src={primaryImgURL}/>
-          <img className="small-icon-right" src="https://cdn3.iconfinder.com/data/icons/faticons/32/arrow-right-01-512.png"/>
+          <img className="small-icon-left" src={iconURLs.arrowLeft}/>
+          <img className="primary-img" src={heroImage.url}/>
+          <img className="small-icon-right" src={iconURLs.arrowRight} onClick={() => {
+            setHeroImage(cur => {
+              let nextIndex = cur.index + 1;
+              console.log(nextIndex, productImages.length);
+              if (nextIndex === productImages.length) {
+                nextIndex = 0;
+              }
+              return {
+                url: productImages[nextIndex].url,
+                index: nextIndex
+              };
+            });
+          }}/>
         </div>
       </div>
 

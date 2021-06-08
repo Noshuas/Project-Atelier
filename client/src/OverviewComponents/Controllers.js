@@ -1,4 +1,4 @@
-import API from '../../configAPI.js';
+import API from '../configAPI.js';
 import axios from 'axios';
 
 export function getProducts() {
