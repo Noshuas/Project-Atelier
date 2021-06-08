@@ -35,9 +35,12 @@ QAapiCalls.getAnswers = (questionID) => {
     .catch(err => { return console.log(err); });
 };
 
-QAapiCalls.postQuestion = (data) => {
+QAapiCalls.postQuestion = (data, productID) => {
   let params = {
-    //product_id: productID,
+    product_id: data.productID,
+    body: data.question,
+    name: data.nickname,
+    email: data.email
   };
   let headers = API.auth.headers;
   return axios.post(API.url + '/qa/questions', { params, headers})
