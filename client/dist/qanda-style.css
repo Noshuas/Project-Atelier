@@ -1,0 +1,12 @@
+.answersToolbar {
+  display: flex;
+  flex-direction: row;
+  font-size: 12px;
+}
+p {
+  margin: 5px;
+}
+.photo-image {
+  width: 100px;
+  height: 75px;
+}
