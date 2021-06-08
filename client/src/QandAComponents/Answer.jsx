@@ -8,10 +8,12 @@ function Answer(props) {
       <p>{props.info.body}</p>
       <div className="answersToolbar">
         <p>by {props.info.answerer_name} {brain.getFormatedTimestamp(props.info.date)} </p>
+        <p>|</p>
         <p> Helpful? </p>
         <p>Yes </p>
         <p> ({props.info.helpfulness})  </p>
-        <button> Report </button>
+        <p>|</p>
+        <p>Report</p>
       </div>
       <Photos photos={props.info.photos}/>
     </div>
@@ -36,7 +38,7 @@ function Photo(props) {
     <div>
       <img className="photo-image" src={props.info.url}/>
     </div>
-  )
+  );
 }
 
 export default Answer;
