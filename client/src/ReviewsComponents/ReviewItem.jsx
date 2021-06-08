@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import brain from './brain.js';
+import brain from './brain.jsx';
 import RandRAPIcalls from './RandRAPIcalls';
 import RatingStars from './RatingStars.jsx';
+import WasHelpful from './WasHelpful.jsx';
 
 function ReviewItem(props) {
   let review = props.review;
@@ -35,38 +36,13 @@ function ReviewResponse(props) {
 function IRecommmendThisProduct(props) {
   if (props.recommend) {
     return (
-      <div>
-        <span>✓ I recommend this product</span>
+      <div className="recommend-container">
+        <i className="fas fa-check"></i>
+        <span> I recommend this product</span>
       </div>
     );
   }
   return null;
 }
-
-function WasHelpful(props) {
-  const [feedbackGiven, setFeedback] = useState(false);
-  function handleFeedback(e) {
-    e.preventDefault();
-    setFeedback(true);
-  }
-
-  if (!feedbackGiven) {
-    return (
-      <div className="was-helpful">
-        <span>Was this review helpful?</span>
-        <span><a href="#" onClick={handleFeedback}>Yes</a> ({props.helpfulness})</span>
-        <span>|</span>
-        <a href="#" onClick={handleFeedback}>No</a>
-      </div>
-    );
-  } else {
-    return (
-      <div>Thank you for your feedback!</div>
-    );
-  }
-
-}
-
-
 
 export default ReviewItem;
