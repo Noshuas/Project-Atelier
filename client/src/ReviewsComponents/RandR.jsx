@@ -30,6 +30,7 @@ function RandR(props) {
 
   function handleShowMore() {
     setExpandedView(!expandedView);
+    setTimeout(() => window.scrollTo(0, document.body.scrollHeight), 100);
   }
 
   //change to "props.RandR.characteristics
@@ -41,8 +42,8 @@ function RandR(props) {
       <h3>RATINGS AND REVIEWS</h3>
       <ReviewMeta />
       <ReviewSorting reviewCount={reviewCount} setSortBy={setSortBy} />
-      <div className="review-list">
-        {brain.renderTwoOrAll(reviews, ReviewItem, expandedView)}
+      <div className="right-side">
+        <div className="review-list">{brain.renderTwoOrAll(reviews, ReviewItem, expandedView)}</div>
         <div>
           <button onClick={handleShowMore}>{expandedView ? 'LESS REVIEWS' : 'MORE REVIEWS'}</button>
           <button>ADD A REVIEW  +</button>

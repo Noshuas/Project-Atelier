@@ -37,7 +37,9 @@ brain.formatStarRating = function (rating) {
   let partial = rating - wholes;
   partial = (Math.round(partial * 4) / 4).toFixed(2);
   let cssReady = Array(wholes).fill(15);
-  cssReady.push([0, 6, 8, 10, 15][partial * 4]);
+  if (cssReady.length < 5) {
+    cssReady.push([0, 6, 8, 10, 15][partial * 4]);
+  }
   while (cssReady.length < 5) {
     cssReady.push(0);
   }
@@ -48,7 +50,7 @@ brain.renderTwoOrAll = function (list, Component, expanded) {
   if (!expanded) {
     let result = [];
     for (var i = 0; i < 2 && i < list.length; i++) {
-      result.push(<Component review={list[0]} key={i}/>);
+      result.push(<Component review={list[0]} key={i} />);
     }
     return result;
   }

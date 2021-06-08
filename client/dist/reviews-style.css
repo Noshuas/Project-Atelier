@@ -9,7 +9,17 @@
   --main-background-color: white;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 /********** REVIEW ITEMS ***********/
+.review-list {
+  max-height: calc(100vh - 200px);
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
 .review-item {
   border-bottom: 1px solid black;
   margin-top: 35px;
