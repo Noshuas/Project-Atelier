@@ -1,3 +1,5 @@
+import React, { useState, useEffect } from 'react';
+
 let brain = {};
 
 brain.getFormatedTimestamp = function (string) {
@@ -40,6 +42,20 @@ brain.formatStarRating = function (rating) {
     cssReady.push(0);
   }
   return cssReady;
+};
+
+brain.renderTwoOrAll = function (list, Component, expanded) {
+  if (!expanded) {
+    let result = [];
+    for (var i = 0; i < 2 && i < list.length; i++) {
+      result.push(<Component review={list[0]} key={i}/>);
+    }
+    return result;
+  }
+
+  return (
+    list.map((review, index) => <Component key={index} review={review} />)
+  );
 };
 
 export default brain;

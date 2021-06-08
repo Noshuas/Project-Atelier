@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import brain from '../ReviewsComponents/brain.js';
+import brain from '../ReviewsComponents/brain.jsx';
 
 function Answer(props) {
   return (
