@@ -12,13 +12,12 @@ export function useOverview() {
   const [currentProduct, setCurrentProduct] = useState({});
   const [productStyles, setProductStyles] = useState({});
   const [productImages, setProductImages] = useState([]);
+  const [carourselSmallImages, setCarourselSmallImages] = useState({images: [], initialIndex: 0});
   const [heroImage, setHeroImage] = useState({url: '', index: 0});
 
   useEffect(() => {
     Promise.all([getProducts(), getProductStyles()])
       .then(([product, styles]) => {
-        console.log(product.data);
-        console.log(styles.data);
         setCurrentProduct(product.data);
         setProductStyles(styles.data);
         for (var style of styles.data.results) {
@@ -31,6 +30,10 @@ export function useOverview() {
           }
         }
         setProductImages(photoStorage);
+        setCarourselSmallImages({
+          images: photoStorage.slice(0, 4),
+          initialIndex: 0
+        });
       });
   }, []);
 
@@ -38,6 +41,7 @@ export function useOverview() {
     currentProduct, setCurrentProduct,
     productStyles, setProductStyles,
     productImages, setProductImages,
+    carourselSmallImages, setCarourselSmallImages,
     heroImage, setHeroImage
   };
 }
