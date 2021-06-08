@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import brain from '../ReviewsComponents/brain.js';
 
 function Answer(props) {
-  console.log(props.info.photos);
   return (
     <div>
       <p>{props.info.body}</p>
