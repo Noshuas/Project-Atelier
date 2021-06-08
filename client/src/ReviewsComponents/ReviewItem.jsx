@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import brain from './brain.js';
 import RandRAPIcalls from './RandRAPIcalls';
+import RatingStars from './RatingStars.jsx';
 
 function ReviewItem(props) {
   let review = props.review;
   return (
     <div className="review-item">
       <div className="top-row">
-        <span className="stars">{review.rating} stars ★★★★★</span>
+        <span><RatingStars rating={review.rating}/></span>
         <span>{review.reviewer_name}, {brain.getFormatedTimestamp(review.date)}</span>
       </div>
       <h3>{review.summary}</h3>
