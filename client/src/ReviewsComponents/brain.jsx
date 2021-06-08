@@ -50,13 +50,13 @@ brain.renderTwoOrAll = function (list, Component, expanded) {
   if (!expanded) {
     let result = [];
     for (var i = 0; i < 2 && i < list.length; i++) {
-      result.push(<Component review={list[0]} key={i} />);
+      result.push(<Component review={list[i]} key={list[i].review_id} />);
     }
     return result;
   }
 
   return (
-    list.map((review, index) => <Component key={index} review={review} />)
+    list.map((review, index) => <Component key={review.review_id} review={review} />)
   );
 };
 

@@ -13,6 +13,10 @@ html {
   scroll-behavior: smooth;
 }
 
+.ratings-and-reviews {
+  margin-top: 50px;
+}
+
 /********** REVIEW ITEMS ***********/
 .review-list {
   max-height: calc(100vh - 200px);
@@ -32,6 +36,14 @@ html {
 .review-item > .top-row {
   display: flex;
   justify-content: space-between;
+}
+
+.recommend-container {
+  display: flex;
+}
+
+.recommend-container > * {
+  margin-right: 8px;
 }
 
 .was-helpful > * {

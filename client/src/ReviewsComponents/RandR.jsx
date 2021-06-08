@@ -29,8 +29,13 @@ function RandR(props) {
   }, [props.productId, sortBy, reviewCount]);
 
   function handleShowMore() {
-    setExpandedView(!expandedView);
-    setTimeout(() => window.scrollTo(0, document.body.scrollHeight), 100);
+    if (expandedView) {
+      window.scrollTo(0, 600);
+      setTimeout(() => setExpandedView(!expandedView), 400);
+    } else {
+      setExpandedView(!expandedView);
+      setTimeout(() => window.scrollTo(0, document.body.scrollHeight), 100);
+    }
   }
 
   //change to "props.RandR.characteristics

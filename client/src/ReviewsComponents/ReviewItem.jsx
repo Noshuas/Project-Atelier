@@ -36,8 +36,9 @@ function ReviewResponse(props) {
 function IRecommmendThisProduct(props) {
   if (props.recommend) {
     return (
-      <div>
-        <span>✓ I recommend this product</span>
+      <div className="recommend-container">
+        <i className="fas fa-check"></i>
+        <span> I recommend this product</span>
       </div>
     );
   }
