@@ -5,6 +5,8 @@ import { OverviewContext } from './index.js';
 export function Overview() {
   const {currentProduct, setCurrentProduct} = useContext(OverviewContext);
   const {productStyles, setProductStyles} = useContext(OverviewContext);
+  const {productImages, setProductImages} = useContext(OverviewContext);
+
   let primaryImgURL;
 
   if (productStyles.results) {
@@ -19,21 +21,25 @@ export function Overview() {
 
       <div className="hero-picture">
         <div className="small-pic-container">
-          <div className="small-pic-wrapper">
-            <img className="small-img" src={primaryImgURL}/>
+          <div className="small-icon-wrapper">
+            <img className="small-icon-top" src="https://cdn3.iconfinder.com/data/icons/faticons/32/arrow-up-01-512.png"/>
           </div>
-          <div className="small-pic-wrapper">
-            <img className="small-img" src={primaryImgURL}/>
-          </div>
-          <div className="small-pic-wrapper">
-            <img className="small-img" src={primaryImgURL}/>
-          </div>
-          <div className="small-pic-wrapper">
-            <img className="small-img" src={primaryImgURL}/>
+          {productImages.map((url, index) => {
+            return (
+              <div className="small-pic-wrapper" onClick={() => {
+                primaryImgURL = url;
+              }}>
+                <img className="small-img" src={url}/>
+              </div>);
+          }).slice(0, 4)}
+          <div className="small-icon-wrapper">
+            <img className="small-icon-bottom" src="https://cdn3.iconfinder.com/data/icons/faticons/32/arrow-down-01-512.png"/>
           </div>
         </div>
         <div className="primary-img-container">
+          <img className="small-icon-left" src="https://cdn3.iconfinder.com/data/icons/faticons/32/arrow-left-01-512.png"/>
           <img className="primary-img" src={primaryImgURL}/>
+          <img className="small-icon-right" src="https://cdn3.iconfinder.com/data/icons/faticons/32/arrow-right-01-512.png"/>
         </div>
       </div>
 
