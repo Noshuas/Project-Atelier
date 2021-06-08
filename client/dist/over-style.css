@@ -4,9 +4,9 @@
 
 section.overview {
   background-color: #c16262;
-  height: 500px;
+  height: 625px;
   display: grid;
-  grid-template-columns: 520px 380px;
+  grid-template-columns: 60% auto;
   grid-template-rows: 45px auto 100px;
 }
 
@@ -20,18 +20,70 @@ section.overview {
   grid-column-end: span 2;
 }
 
-.overview .picture {
-  display: grid;
-  grid-template-columns: 90px auto;
+.overview .hero-picture {
+  max-height: 462px;
 }
 
-.overview .small-pic-container {
+.overview .hero-picture .small-pic-container {
   display: flex;
   flex-direction: column;
+  max-height: inherit;
+  height: 100%;
+  position: absolute;
+  width: 90px;
 }
 
-.overview .small-picture {
-  height: 60px;
+.overview .hero-picture .small-pic-container .small-pic-wrapper {
+  height: 70px;
+  margin: auto;
+}
+
+.overview .hero-picture .small-pic-container .small-img {
+  max-height: 70px;
+  border: 2px solid white;
+}
+
+.overview .hero-picture .small-pic-container .small-icon-wrapper {
+  height: 32px;
+  margin: auto;
+}
+
+.overview .hero-picture .small-pic-container .small-icon-top {
+  max-height: 32px;
+  position: relative;
+  top: 8px;
+}
+
+.overview .hero-picture .small-pic-container .small-icon-bottom {
+  max-height: 32px;
+  position: relative;
+  top: -8px;
+}
+
+.overview .hero-picture .primary-img-container {
+  display: flex;
+  max-height: inherit;
+  justify-content: center;
+}
+
+.overview .hero-picture .primary-img-container .small-icon-left {
+  max-height: 32px;
+  position: relative;
+  top: 213px;
+  left: -9px;
+}
+
+.overview .hero-picture .primary-img-container .small-icon-right {
+  max-height: 32px;
+  position: relative;
+  top: 213px;
+  left: 9px;
+}
+
+.overview .hero-picture .primary-img-container .primary-img {
+  max-height: inherit;
+  border: 2px solid white;
+  margin: 10px 0;
 }
 
 .overview .details {
