@@ -34,4 +34,17 @@ QAapiCalls.getAnswers = (questionID) => {
     })
     .catch(err => { return console.log(err); });
 };
+
+QAapiCalls.postQuestion = (data) => {
+  let params = {
+    //product_id: productID,
+  };
+  let headers = API.auth.headers;
+  return axios.post(API.url + '/qa/questions', { params, headers})
+    .then(results => {
+      //console.log(results.data.results);
+      return results.data.results;
+    })
+    .catch(err => { return console.log(err); });
+};
 export default QAapiCalls;
