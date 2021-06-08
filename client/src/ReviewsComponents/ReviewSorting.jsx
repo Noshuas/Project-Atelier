@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import brain from './brain.js';
+import brain from './brain.jsx';
 import RandRAPIcalls from './RandRAPIcalls';
 
 function ReviewSorting(props) {

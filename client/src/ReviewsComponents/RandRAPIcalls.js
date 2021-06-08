@@ -10,7 +10,7 @@ RandRAPIcalls.getProducts = function () {
   return axios.get(API.url + '/products', API.auth);
 };
 
-RandRAPIcalls.getReviews = function (productId, sort = 'relevant', page = 1, count = 2) {
+RandRAPIcalls.getReviews = function (productId, sort = 'relevant', count = 2, page = 1) {
   let newParams = {
     page: page,
     count: count,
