@@ -1,20 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import brain from './brain.js';
 import RandRAPIcalls from './RandRAPIcalls';
+import RatingStars from './RatingStars.jsx';
 
 function ReviewItem(props) {
   let review = props.review;
   return (
     <div className="review-item">
       <div className="top-row">
-        <span className="stars">{review.rating} stars ★★★★★</span>
+        <span><RatingStars rating={review.rating}/></span>
         <span>{review.reviewer_name}, {brain.getFormatedTimestamp(review.date)}</span>
       </div>
       <h3>{review.summary}</h3>
       <p>{review.body}</p>
       <IRecommmendThisProduct recommend={review.recommend} />
       <ReviewResponse response={review.response} />
-      <WasHelpful helpfulness={review.helpfulness} />
+      <WasHelpful helpfulness={review.helpfulness} reviewId={review.review_id} />
     </div>
   );
 }
@@ -43,15 +44,26 @@ function IRecommmendThisProduct(props) {
 }
 
 function WasHelpful(props) {
+  const [feedbackGiven, setFeedback] = useState(false);
+  function handleFeedback(e) {
+    e.preventDefault();
+    setFeedback(true);
+  }
 
-  return (
-    <div className="was-helpful">
-      <span>Was this review helpful?</span>
-      <span><a href="#">Yes</a> ({props.helpfulness})</span>
-      <span>|</span>
-      <a href="#">No</a>
-    </div>
-  );
+  if (!feedbackGiven) {
+    return (
+      <div className="was-helpful">
+        <span>Was this review helpful?</span>
+        <span><a href="#" onClick={handleFeedback}>Yes</a> ({props.helpfulness})</span>
+        <span>|</span>
+        <a href="#" onClick={handleFeedback}>No</a>
+      </div>
+    );
+  } else {
+    return (
+      <div>Thank you for your feedback!</div>
+    );
+  }
 
 }
 
