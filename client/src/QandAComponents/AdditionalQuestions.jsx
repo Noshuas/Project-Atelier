@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import QuestionsModal from './AddQuestionsModal.jsx';
+import GenericModal from './GenericModal.jsx';
 
 const AdditionalQuestions = (props) => {
 
@@ -9,8 +9,7 @@ const AdditionalQuestions = (props) => {
     <div>
       <button>More Answered Questions</button>
       <button onClick={() => setOpen(true)}>Add A Question</button>
-      <QuestionsModal open={open} onClose={() => setOpen(false)}>
-      sf
+      <GenericModal open={open} onClose={() => setOpen(false)}>
         <form>
           <div>
             <label htmlFor='question'>Your Question</label>
@@ -22,7 +21,7 @@ const AdditionalQuestions = (props) => {
           </div>
           <button onClick={() => setOpen(false)}>Submit Question</button>
         </form>
-      </QuestionsModal>
+      </GenericModal>
     </div>
   );
 };
