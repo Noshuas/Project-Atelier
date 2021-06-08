@@ -29,4 +29,15 @@ RandRAPIcalls.getReviewsMeta = function (productId) {
   return axios.get(API.url + '/reviews/meta', {params: newParams, headers: API.auth.headers});
 };
 
+RandRAPIcalls.postHelpfullnessFeedback = function (reviewId, helpful) {
+  let newParams = {
+    review_id: reviewId
+  };
+
+  let url = '/reviews/' + reviewId + '/';
+  url += helpful ? 'helpful' : 'report';
+
+  return axios.put(API.url + url, {params: newParams, headers: API.auth.headers});
+};
+
 export default RandRAPIcalls;

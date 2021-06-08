@@ -1,3 +1,8 @@
+@charset "UTF-8";
+:root {
+  --star-color: rgb(82,82,82)
+}
+
 :local {
   --main-family: 'Times New Roman', Times, serif;
   --main-h3-font-size: 18px;
@@ -19,7 +24,7 @@
 }
 
 .was-helpful > * {
-  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .ratings-and-reviews h3 {
@@ -34,4 +39,24 @@
   font-weight: bold;
   font-size: var(--main-h3-font-size);
   border-bottom: 2px solid black;
+}
+
+.rating-stars {
+  display: flex;
+}
+
+.fa-star {
+  font-size: 15px;
+  position: absolute;
+  color: var(--star-color);
+}
+
+.fas {
+  overflow: hidden;
+  color: var(--star-color);
+}
+
+.star-container {
+  position: relative;
+  padding-right: 20px;
 }
