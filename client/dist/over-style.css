@@ -45,19 +45,20 @@ section.overview {
 
 .overview .hero-picture .small-pic-container .small-icon-wrapper {
   height: 32px;
-  margin: auto;
 }
 
 .overview .hero-picture .small-pic-container .small-icon-top {
   max-height: 32px;
   position: relative;
   top: 8px;
+  left: 28px;
 }
 
 .overview .hero-picture .small-pic-container .small-icon-bottom {
   max-height: 32px;
   position: relative;
   top: -8px;
+  left: 28px;
 }
 
 .overview .hero-picture .primary-img-container {
@@ -66,18 +67,25 @@ section.overview {
   justify-content: center;
 }
 
-.overview .hero-picture .primary-img-container .small-icon-left {
-  max-height: 32px;
+.overview .hero-picture .small-icon-wrapper-horizontal {
   position: relative;
-  top: 213px;
-  left: -9px;
+  top: 212px;
+  height: 40px;
+  width: 70px;
+}
+
+.overview .hero-picture .primary-img-container .small-icon-left {
+  position: relative;
+  max-height: 32px;
+  top: 5px;
+  left: 32px;
 }
 
 .overview .hero-picture .primary-img-container .small-icon-right {
-  max-height: 32px;
   position: relative;
-  top: 213px;
-  left: 9px;
+  max-height: 32px;
+  top: 4px;
+  left: 6px;
 }
 
 .overview .hero-picture .primary-img-container .primary-img {
