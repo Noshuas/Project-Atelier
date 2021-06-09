@@ -10,6 +10,7 @@ function AddReview(props) {
 
   const [charValues, setCharValues] = useState({});
   const [body, setBody] = useState('');
+  const [rating, setRating] = useState(0);
 
   function trackBodyChars(e) {
     setBody(e.target.value);
@@ -25,7 +26,12 @@ function AddReview(props) {
           <h4>About the {props.productName}</h4>
           <form>
             <div>
-              <InteractiveStars />
+              {/* Accessiblity input for rating */}
+              <label htmlFor='rating' className="sr-only">Rating</label>
+              <input type='number' name='rating' min="1" max="5" className="sr-only" value={rating} required onChange={(e) => setRating(e.target.value)}></input>
+              <InteractiveStars setRating={setRating} />
+            </div>
+            <div>
               <div>Do you recommend this product?* </div>
               <label htmlFor='recommend'>Yes</label>
               <input type='radio' name='recommend' required></input>

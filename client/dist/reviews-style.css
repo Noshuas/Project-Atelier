@@ -76,6 +76,7 @@ html {
 /********** STARS ***********/
 .rating-stars {
   display: flex;
+  height: auto;
 }
 
 .fa-star {
