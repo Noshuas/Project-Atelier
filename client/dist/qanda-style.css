@@ -22,3 +22,11 @@ p {
   width: 75px;
   height: 30px;
 }
+.QnA-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.QnA-form > input {
+  width: 90%
+}

@@ -19,7 +19,7 @@ const QandA = (props) => {
       <h2>QUESTIONS &amp; ANSWERS</h2>
       < QuestionSearchBar />
       < QuestionList questions={questions}/>
-      < AdditionalQuestions />
+      < AdditionalQuestions productId={props.productId}/>
     </div>
   );
 };
