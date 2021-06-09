@@ -21,9 +21,13 @@ function App() {
 
   // Lukas Hooks
   const [productId, setProduct] = useState(0);
+  const [productName, setProductName] = useState('');
   useEffect(() => {
     RandRAPIcalls.getProducts()
-      .then(response => setProduct(response.data[3].id));
+      .then(response => {
+        setProduct(response.data[3].id);
+        setProductName(response.data[3].name);
+      });
   }, []);
 
   // Wills Hooks
@@ -51,7 +55,7 @@ function App() {
         <Related />
       </RelatedContext.Provider>
       <QandA productId={productId} />
-      <RandR productId={productId} />
+      <RandR productId={productId} productName={productName} />
     </AppContext.Provider>
   );
 }

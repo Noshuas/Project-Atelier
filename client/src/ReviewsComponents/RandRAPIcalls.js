@@ -35,9 +35,12 @@ RandRAPIcalls.postHelpfullnessFeedback = function (reviewId, helpful) {
   };
 
   let url = '/reviews/' + reviewId + '/';
+  // let url = '/reviews/:review_id/';
+
   url += helpful ? 'helpful' : 'report';
 
-  return axios.put(API.url + url, {params: newParams, headers: API.auth.headers});
+  return axios.put(API.url + url, {}, API.auth);
+  // return axios.put(API.url + url, API.auth);
 };
 
 export default RandRAPIcalls;
