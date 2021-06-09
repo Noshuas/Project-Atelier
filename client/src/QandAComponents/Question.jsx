@@ -3,6 +3,7 @@ import QAapiCalls from './QandAAPIcalls.js';
 import Answer from './Answer.jsx';
 import GenericModal from './GenericModal.jsx';
 import QandAAPIcalls from './QandAAPIcalls.js';
+import Helpfulness from './Helpfulness.jsx';
 
 const Question = (props) => {
   let [answers, setAnswer] = useState([]);
@@ -44,8 +45,7 @@ const Question = (props) => {
     <div>
       <h3>Q:{props.info.question_body} </h3>
       <div className="question-toolbar">
-        <p>Helpful? </p>
-        <p>Yes ({props.info.question_helpfulness})</p>
+        <Helpfulness helpfulness={props.info.question_helpfulness} QorA='questions' id={props.info.question_id}/>
         <button onClick={() => setOpen(true)}>Add Answer</button>
       </div>
       <h3>A:</h3>{answers.map( (answer, index) => {
