@@ -6,18 +6,18 @@ import { incrementCarouselRange, decrementCarouselRange } from '../index.js';
 
 export function SmallCarousel() {
   const {productImages, setProductImages} = useContext(OverviewContext);
-  const {carourselSmallImages, setCarourselSmallImages} = useContext(OverviewContext);
+  const {carouselSmallImages, setCarouselSmallImages} = useContext(OverviewContext);
   const {heroImage, setHeroImage} = useContext(OverviewContext);
 
   return (
     <div className="small-pic-container">
       <div className="small-icon-wrapper" onClick={() => {
-        setCarourselSmallImages(cur => incrementCarouselRange(cur, productImages));
+        setCarouselSmallImages(cur => incrementCarouselRange(cur, productImages));
       }}>
         <img className="small-icon-top" src={iconURLs.arrowUp}/>
       </div>
 
-      {carourselSmallImages.images.map((thumbAndPrimaryPhotoLinks, index) => {
+      {carouselSmallImages.images.map((thumbAndPrimaryPhotoLinks, index) => {
         return (
           <div key={index} className="small-pic-wrapper" onClick={() => {
             setHeroImage({url: thumbAndPrimaryPhotoLinks.url, index: index});
@@ -27,7 +27,7 @@ export function SmallCarousel() {
       })}
 
       <div className="small-icon-wrapper" onClick={() => {
-        setCarourselSmallImages(cur => decrementCarouselRange(cur, productImages));
+        setCarouselSmallImages(cur => decrementCarouselRange(cur, productImages));
       }}>
         <img className="small-icon-bottom" src={iconURLs.arrowDown}/>
       </div>
