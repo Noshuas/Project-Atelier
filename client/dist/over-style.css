@@ -25,6 +25,7 @@ section.overview {
 
 .overview .hero-picture {
   height: 470px;
+  width: 605px;
 }
 
 .overview .hero-picture .carousel-container{
@@ -64,7 +65,7 @@ section.overview {
   position: absolute;
   display: grid;
   height: inherit;
-  width: 600px;
+  width: inherit;
   margin: auto;
 }
 
@@ -84,14 +85,25 @@ section.overview {
   position: absolute;
   display: grid;
   grid-template-columns: 50% 50%;
+  width: inherit;
+  height: inherit;
+  z-index: 50;
 }
 
 .overview .hero-picture .small-icon-left{
-  width: 50px
+  position: relative;
+  width: 38px;
+  float: right;
+  top: 212px;
+  right: 157px;
 }
 
 .overview .hero-picture .small-icon-right{
-  width: 50px
+  position: relative;
+  width: 38px;
+  float: left;
+  top: 212px;
+  left: 157px;
 }
 
 .overview .details {
