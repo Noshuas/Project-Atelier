@@ -71,7 +71,6 @@ QAapiCalls.postAnswer = (info, questionId) => {
 QAapiCalls.postHelpfullnessFeedback = function (QorA, ID, feeback) {
 
   let url = `/qa/${QorA}/${ID}/${feeback}`;
-  console.log(url);
   let headers = API.auth.headers;
   if (QorA === 'question') {
     return axios.put(API.url + url, {question_id: ID}, {headers});

@@ -3,14 +3,12 @@ import QAapiCalls from './QandAAPIcalls.js';
 
 function Helpfulness (props) {
 
-  let [feedback, setFeedback] =useState(false);
+  let [feedback, setFeedback] = useState(false);
 
   let handleClick = (event) => {
-    console.log('test');
     event.preventDefault();
     QAapiCalls.postHelpfullnessFeedback(props.QorA, props.id, 'helpful')
       .then( (res) => {
-        console.log('success');
         setFeedback(true);
       })
       .catch( (err) => { console.log('err:', err); });

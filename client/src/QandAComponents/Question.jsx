@@ -33,7 +33,7 @@ const Question = (props) => {
         console.log('successs', response);
         setOpen(false);
       })
-      .catch(err => {console.log('err', err); });
+      .catch(err => { console.log('err', err); });
   };
   useEffect( () => {
     QAapiCalls.getAnswers(props.info.question_id)
