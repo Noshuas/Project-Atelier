@@ -1,5 +1,7 @@
 import React from 'react';
-import { HeroImage, SmallCarousel, ImageControls, ProductDetails, ProductDescription } from './index.js';
+import { HeroImage, SmallCarousel, ImageControls } from './index.js';
+import { ProductDetails, StyleSelector } from './index.js';
+import { ProductDescription } from './index.js';
 
 export function Overview() {
 
@@ -15,6 +17,7 @@ export function Overview() {
       </div>
       <div className="details">
         <ProductDetails />
+        <StyleSelector />
       </div>
       <div className="description">
         <ProductDescription />

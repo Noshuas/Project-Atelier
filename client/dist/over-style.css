@@ -112,6 +112,31 @@ section.overview {
   padding: 10px;
 }
 
+.overview .details .style-container {
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+  max-width: 280px;
+}
+
+.overview .details .style-selected {
+  grid-column-start: 1;
+  grid-column-end: span 4;
+  height: 33px;
+  padding-left: 9px;
+}
+
+.overview .details .style-img-wrapper {
+  margin: auto;
+  height: 94px;
+}
+
+.overview .details .style-img {
+  height: 80px;
+  width: 55px;
+  border-radius: 50px;
+  border: 2px solid white;
+}
+
 .overview .description {
   grid-column-start: 1;
   grid-column-end: span 2;

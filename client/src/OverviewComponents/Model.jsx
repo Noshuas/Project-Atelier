@@ -1,17 +1,18 @@
 import React, { createContext, useState, useEffect } from 'react';
-import { getProducts, getProductStyles } from './Controllers.js';
+import { getProducts, getProductStyles } from './index.js';
+import { createDefaultStyle } from './index.js';
 
 export const OverviewContext = createContext();
 
 export function useOverview() {
   // set helper/storage variables
-  let photoStorage = [];
-  let defaultProduct = {};
+  let defaultStyle = [];
 
   // set initial state values (static)
   const [currentProduct, setCurrentProduct] = useState({});
   const [productStyles, setProductStyles] = useState({});
-  const [productImages, setProductImages] = useState([]);
+  const [currentStyle, setCurrentStyle] = useState({name: '', originalPrice: ''});
+  const [carouselLargeImages, setCarouselLargeImages] = useState([]);
   const [carouselSmallImages, setCarouselSmallImages] = useState({images: [], initialIndex: 0});
   const [heroImage, setHeroImage] = useState({url: '', index: 0});
 
@@ -20,18 +21,12 @@ export function useOverview() {
       .then(([product, styles]) => {
         setCurrentProduct(product.data);
         setProductStyles(styles.data);
-        for (var style of styles.data.results) {
-          if (style['default?']) {
-            setHeroImage({url: style.photos[0].url, index: 0});
-            for (var photo of style.photos) {
-              photoStorage.push(photo);
-            }
-            break;
-          }
-        }
-        setProductImages(photoStorage);
+        defaultStyle = createDefaultStyle(styles.data);
+        setCurrentStyle({name: defaultStyle.name, originalPrice: defaultStyle.originalPrice});
+        setHeroImage(defaultStyle.primaryImage);
+        setCarouselLargeImages(defaultStyle.photoInfo);
         setCarouselSmallImages({
-          images: photoStorage.slice(0, 4),
+          images: defaultStyle.photoInfo.slice(0, 4),
           initialIndex: 0
         });
       });
@@ -40,7 +35,8 @@ export function useOverview() {
   return {
     currentProduct, setCurrentProduct,
     productStyles, setProductStyles,
-    productImages, setProductImages,
+    currentStyle, setCurrentStyle,
+    carouselLargeImages, setCarouselLargeImages,
     carouselSmallImages, setCarouselSmallImages,
     heroImage, setHeroImage
   };
