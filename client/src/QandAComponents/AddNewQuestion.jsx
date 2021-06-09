@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import GenericModal from './GenericModal.jsx';
 import QandAAPIcalls from './QandAAPIcalls.js';
 
-const AdditionalQuestions = (props) => {
+const AddNewQuestion = (props) => {
 
   let [open, setOpen] = useState(false);
   let [values, setValues] = useState({
@@ -30,11 +30,10 @@ const AdditionalQuestions = (props) => {
         console.log('successs', response);
         setOpen(false);
       })
-      .catch(err => {console.log('err', err); });
+      .catch(err => { console.log('err', err); });
   };
   return (
     <div>
-      <button>More Answered Questions</button>
       <button onClick={() => resetForm(true)}>Add A Question</button>
       <GenericModal open={open} onClose={() => resetForm(false)}>
         <form onSubmit={handleFormSubmit} className="QnA-form">
@@ -77,4 +76,4 @@ const AdditionalQuestions = (props) => {
   );
 };
 
-export default AdditionalQuestions;
+export default AddNewQuestion;
