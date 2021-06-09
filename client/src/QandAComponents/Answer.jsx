@@ -1,18 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import brain from '../ReviewsComponents/brain.jsx';
+import Helpfulness from './Helpfulness.jsx';
 
 function Answer(props) {
   return (
     <div>
-      <p>{props.info.body}</p>
+      <span>{props.info.body}</span>
       <div className="answersToolbar">
-        <p>by {props.info.answerer_name} {brain.getFormatedTimestamp(props.info.date)} </p>
-        <p>|</p>
-        <p> Helpful? </p>
-        <p>Yes </p>
-        <p> ({props.info.helpfulness})  </p>
-        <p>|</p>
-        <p>Report</p>
+        <span>by {props.info.answerer_name} {brain.getFormatedTimestamp(props.info.date)} </span>
+        <span>|</span>
+        <Helpfulness helpfulness={props.info.helpfulness} QorA='answers' id={props.info.answer_id}/>
+        <span>|</span>
+        <span>Report</span>
       </div>
       <Photos photos={props.info.photos}/>
     </div>
