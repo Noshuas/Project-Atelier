@@ -3,12 +3,13 @@ import ReactDOM from 'react-dom';
 // could make more generic
 
 const modal_styles = {
-  position: 'fixed',
+  position: 'absolute',
   top: '50%',
   left: '50%',
   padding: '50px',
   backgroundColor: 'white',
-  zIndex: 1000
+  zIndex: 1000,
+  transform: 'translate(-50%, -50%)'
 };
 
 const overlay_styles = {
