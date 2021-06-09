@@ -76,6 +76,7 @@ html {
 /********** STARS ***********/
 .rating-stars {
   display: flex;
+  height: auto;
 }
 
 .fa-star {
@@ -92,4 +93,63 @@ html {
 .star-container {
   position: relative;
   padding-right: 20px;
+}
+
+/********** FORM ***********/
+.add-review {
+  padding: 70px;
+  width: 600px
+}
+
+.add-review form > div {
+  margin: 20px 0 20px 0;
+}
+
+.char-select-container {
+  width: 60%;
+  display: inline-flex;
+  justify-content: space-around;
+}
+
+.char-uni-selector {
+  width: 100px;
+  text-align: center;
+  font-size: 15px;
+}
+
+.single-char-input > label {
+  display: inline-block;
+  width: 100px;
+}
+
+/********** FADE IN ***********/
+.fadeIn {
+  -webkit-animation: fadein 1s; /* Safari, Chrome and Opera > 12.1 */
+     -moz-animation: fadein 1s; /* Firefox < 16 */
+      -ms-animation: fadein 1s; /* Internet Explorer */
+       -o-animation: fadein 1s; /* Opera < 12.1 */
+          animation: fadein 1s;
+}
+
+@keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Firefox < 16 */
+@-moz-keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Internet Explorer */
+@-ms-keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
