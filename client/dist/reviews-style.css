@@ -97,10 +97,28 @@ html {
 /********** FORM ***********/
 .add-review {
   padding: 70px;
+  width: 900px
 }
 
 .add-review form > div {
   margin: 20px 0 20px 0;
+}
+
+.char-select-container {
+  width: 60%;
+  display: inline-flex;
+  justify-content: space-around;
+}
+
+.char-uni-selector {
+  width: 100px;
+  text-align: center;
+  font-size: 15px;
+}
+
+.single-char-input > label {
+  display: inline-block;
+  width: 100px;
 }
 
 /********** FADE IN ***********/
