@@ -4,6 +4,7 @@ import RandRAPIcalls from './RandRAPIcalls';
 import ReviewMeta from './ReviewMeta.jsx';
 import ReviewItem from './ReviewItem.jsx';
 import ReviewSorting from './ReviewSorting.jsx';
+import AddReview from './AddReview.jsx';
 
 
 
@@ -51,7 +52,7 @@ function RandR(props) {
         <div className="review-list">{brain.renderTwoOrAll(reviews, ReviewItem, expandedView)}</div>
         <div>
           <button onClick={handleShowMore}>{expandedView ? 'LESS REVIEWS' : 'MORE REVIEWS'}</button>
-          <button>ADD A REVIEW  +</button>
+          <AddReview productName={props.productName} />
         </div>
       </div>
     </div>
