@@ -43,15 +43,10 @@ QAapiCalls.postQuestion = (info, productID) => {
     email: info.email
   };
   let headers = API.auth.headers;
-  console.log(data);
-  //console.log({data, headers});
-  // return axios({
-  //   method: 'POST',
-  // })
+
   return axios.post(API.url + '/qa/questions', data, { headers })
     .then(results => {
       console.log('Success', results);
-      //return results.data.results;
     })
     .catch(err => { return console.log(err); });
 };

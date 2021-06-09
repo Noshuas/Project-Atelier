@@ -23,7 +23,7 @@ function App() {
   const [productId, setProduct] = useState(0);
   useEffect(() => {
     RandRAPIcalls.getProducts()
-      .then(response => setProduct(response.data[2].id));
+      .then(response => setProduct(response.data[3].id));
   }, []);
 
   // Wills Hooks
