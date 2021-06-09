@@ -13,7 +13,7 @@ const modal_styles = {
 };
 
 const overlay_styles = {
-  position: 'fixed',
+  //position: 'fixed',
   top: 0,
   left: 0,
   right: 0,
