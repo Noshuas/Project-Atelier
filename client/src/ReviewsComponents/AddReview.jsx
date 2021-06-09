@@ -6,9 +6,10 @@ import RandRAPIcalls from './RandRAPIcalls';
 function AddReview(props) {
   let [open, setOpen] = useState(false);
 
+  const [charValues, setCharValues] = useState({});
   const [body, setBody] = useState('');
 
-  function trackBodyChars (e) {
+  function trackBodyChars(e) {
     setBody(e.target.value);
 
   }
@@ -28,7 +29,7 @@ function AddReview(props) {
               <label htmlFor='recommend'>No</label>
               <input type='radio' name='recommend'></input>
             </div>
-            <Characteristics />
+            <Characteristics characteristics={props.characteristics} />
             <div>
               <label htmlFor='summary'>Review summary</label><br></br>
               <input type='text' name='summary' placeholder="Example: Best purchase ever!" maxLength="60"></input>
@@ -58,9 +59,39 @@ function AddReview(props) {
   );
 }
 
-function Characteristics () {
-  return null;
+export default AddReview;
+
+//-------------------------------------------------
+
+let charsTable = {
+  Size: ['A size too small', '½ a size too small', 'Perfect', '½ a size too big', 'A size too wide'],
+  Width: ['Too narrow', 'Slightly narrow', 'Perfect', 'Slightly wide', 'Too wide'],
+  Comfort: ['Uncomfortable', 'Slightly uncomfortable', 'Ok', 'Comfortable', 'Perfect'],
+  Quality: ['Poor', 'Below average', 'What I expected', 'Pretty great', 'Perfect'],
+  Length: ['Runs Short', 'Runs slightly short', 'Perfect', 'Runs slightly long', 'Runs long'],
+  Fit: ['Runs tight', 'Runs slightly tight', 'Perfect', 'Runs slightly long', 'Runs long']
+};
+
+
+
+function Characteristics(props) {
+  let currentChars = Object.keys(props.characteristics);
+
+  return currentChars.map((char, index) => <OneChar char={char} key={index}/>);
 }
 
-export default AddReview;
+function OneChar(props) {
+  let char = props.char;
+  return (
+    <div>
+      <label htmlFor={char}>{char}:* </label><br></br>
+      <input type='radio' name={char} value="1" required></input>
+      <input type='radio' name={char} value="2"></input>
+      <input type='radio' name={char} value="3"></input>
+      <input type='radio' name={char} value="4"></input>
+      <input type='radio' name={char} value="5"></input>
+    </div>
+  );
+}
+
 
