@@ -5,6 +5,8 @@ import { incrementCarouselRange, decrementCarouselRange } from './Controllers.js
 import { iconURLs } from './iconURLs.js';
 import { HeroImage } from './subComponents/heroImageView.jsx';
 import { SmallCarousel } from './subComponents/smallCarouselView.jsx';
+import { ProductDescription } from './subComponents/descriptionView.jsx';
+import { ProductDetails } from './subComponents/detailsView.jsx';
 
 export {
   Overview,
@@ -16,5 +18,7 @@ export {
   decrementCarouselRange,
   iconURLs,
   HeroImage,
-  SmallCarousel
+  SmallCarousel,
+  ProductDescription,
+  ProductDetails
 };

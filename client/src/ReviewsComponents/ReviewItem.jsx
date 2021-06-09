@@ -7,7 +7,7 @@ import WasHelpful from './WasHelpful.jsx';
 function ReviewItem(props) {
   let review = props.review;
   return (
-    <div className="review-item">
+    <div className="review-item fadeIn">
       <div className="top-row">
         <span><RatingStars rating={review.rating}/></span>
         <span>{review.reviewer_name}, {brain.getFormatedTimestamp(review.date)}</span>
