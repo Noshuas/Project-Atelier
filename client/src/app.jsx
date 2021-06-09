@@ -32,16 +32,6 @@ function App() {
   // Related Hooks
   const relatedState = useRelated();
 
-
-  // Luka's Methods
-  // method1 () {}
-
-  //Derek's Methods
-  // method2 () {}
-
-  //Will's Methods
-  // method3 () {}
-
   return (
     <AppContext.Provider value={appState}>
       <OverviewContext.Provider value={overviewState}>

@@ -108,7 +108,7 @@ section.overview {
 
 .overview .details {
   display: grid;
-  grid-template-rows: 25px 25px 50px 35px 215px 50px 50px;
+  grid-template-rows: 25px 25px 42px 35px 220px 50px 50px;
   padding: 10px;
 }
 

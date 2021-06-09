@@ -6,7 +6,7 @@ import axios from 'axios';
 export const AppContext = createContext();
 
 export function useApp() {
-  // There are just example state variables, they are not returned.
+  // These are just example state variables, they are not returned
   const [example, setExample] = useState('');
 
   return {clickListener};
