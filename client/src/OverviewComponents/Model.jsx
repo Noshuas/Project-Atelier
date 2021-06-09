@@ -12,7 +12,7 @@ export function useOverview() {
   const [currentProduct, setCurrentProduct] = useState({});
   const [productStyles, setProductStyles] = useState({});
   const [productImages, setProductImages] = useState([]);
-  const [carourselSmallImages, setCarourselSmallImages] = useState({images: [], initialIndex: 0});
+  const [carouselSmallImages, setCarouselSmallImages] = useState({images: [], initialIndex: 0});
   const [heroImage, setHeroImage] = useState({url: '', index: 0});
 
   useEffect(() => {
@@ -30,7 +30,7 @@ export function useOverview() {
           }
         }
         setProductImages(photoStorage);
-        setCarourselSmallImages({
+        setCarouselSmallImages({
           images: photoStorage.slice(0, 4),
           initialIndex: 0
         });
@@ -41,7 +41,7 @@ export function useOverview() {
     currentProduct, setCurrentProduct,
     productStyles, setProductStyles,
     productImages, setProductImages,
-    carourselSmallImages, setCarourselSmallImages,
+    carouselSmallImages, setCarouselSmallImages,
     heroImage, setHeroImage
   };
 }
