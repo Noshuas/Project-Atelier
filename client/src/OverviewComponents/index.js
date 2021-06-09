@@ -9,6 +9,7 @@ import { HeroImage } from './subComponents/heroImageView.jsx';
 import { ImageControls } from './subComponents/primaryIconView.jsx';
 import { SmallCarousel } from './subComponents/smallCarouselView.jsx';
 import { StyleSelector } from './subComponents/styleView.jsx';
+import { AddProduct } from './subComponents/addProductView.jsx';
 
 import { ProductDescription } from './subComponents/descriptionView.jsx';
 import { ProductDetails } from './subComponents/detailsView.jsx';
@@ -30,6 +31,7 @@ export {
   ImageControls,
   SmallCarousel,
   StyleSelector,
+  AddProduct,
   ProductDescription,
   ProductDetails
 };

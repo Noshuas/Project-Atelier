@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import { AppContext } from '../../AppComponents/index.js';
 import { OverviewContext } from '../index.js';
-import { iconURLs } from '../index.js';
 import { getNewProductDetails } from '../index.js';
 
 export function StyleSelector() {

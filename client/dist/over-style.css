@@ -108,8 +108,21 @@ section.overview {
 
 .overview .details {
   display: grid;
-  grid-template-rows: 25px 25px 100px 25px 50px 50px 50px;
+  grid-template-rows: 25px 25px 50px 35px 215px 50px 50px;
   padding: 10px;
+}
+
+.overview .details .product-category {
+  font-size: 15px
+}
+
+.overview .details .product-title {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.overview .details .product-price {
+  font-size: 15px
 }
 
 .overview .details .style-container {
