@@ -3,21 +3,24 @@
 /**************/
 
 section.overview {
-  background-color: #c16262;
-  height: 625px;
+  height: 650px;
   display: grid;
   grid-template-columns: 60% auto;
-  grid-template-rows: 45px auto 100px;
+  grid-template-rows: 45px auto 125px;
 }
 
 .overview > * {
-  background-color: #f9c4c4;
+  background-color: #a2a2a2;
   margin: 9px;
 }
 
 .overview .sale {
   grid-column-start: 1;
   grid-column-end: span 2;
+  color: white;
+  background-color: #d23e53;
+  text-align: center;
+  padding-top: 4px;
 }
 
 .overview .hero-picture {
@@ -31,15 +34,16 @@ section.overview {
   height: 100%;
   position: absolute;
   width: 90px;
+  padding-left: 25px;
 }
 
 .overview .hero-picture .small-pic-container .small-pic-wrapper {
-  height: 70px;
+  height: 77px;
   margin: auto;
 }
 
 .overview .hero-picture .small-pic-container .small-img {
-  max-height: 70px;
+  max-height: 77px;
   border: 2px solid white;
 }
 
@@ -50,21 +54,22 @@ section.overview {
 .overview .hero-picture .small-pic-container .small-icon-top {
   max-height: 32px;
   position: relative;
-  top: 8px;
-  left: 28px;
+  top: 7px;
+  left: 16px;
 }
 
 .overview .hero-picture .small-pic-container .small-icon-bottom {
   max-height: 32px;
   position: relative;
-  top: -8px;
-  left: 28px;
+  top: -7px;
+  left: 16px;
 }
 
 .overview .hero-picture .primary-img-container {
   display: flex;
   max-height: inherit;
   justify-content: center;
+  padding-left: 25px;
 }
 
 .overview .hero-picture .small-icon-wrapper-horizontal {
@@ -95,10 +100,39 @@ section.overview {
 }
 
 .overview .details {
-  font-size: 17px;
+  display: grid;
+  grid-template-rows: 25px 25px 100px 25px 50px 50px 50px;
+  padding: 10px;
 }
 
 .overview .description {
   grid-column-start: 1;
   grid-column-end: span 2;
+  display: grid;
+  grid-template-columns: 61% auto;
+}
+
+.overview .description .full-description-wrapper {
+  padding: 10px 35px;
+  line-height: 21px;
+}
+
+.overview .description .product-extras-wrapper {
+  padding: 10px 10px 10px 15px;
+  border-left: 2px solid #8c8c8c;
+  line-height: 21px;
+}
+
+.overview .description .title {
+  font-size: 20px;
+  font-weight: bold;
+  padding-bottom: 6px;
+}
+
+.overview .description .product-description {
+  font-size: 16px;
+}
+
+.overview .description .product-extra {
+  font-size: 16px;
 }
