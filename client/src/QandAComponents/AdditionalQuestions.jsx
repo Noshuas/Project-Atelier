@@ -24,28 +24,32 @@ const AdditionalQuestions = (props) => {
   };
   const handleFormSubmit = (event) => {
     event.preventDefault();
-    console.log(values);
     // call API
-
+    QandAAPIcalls.postQuestion(values, props.productId)
+    .then(response => {
+      console.log('successs', response);
+      setOpen(false)
+    })
+    .catch(err => {console.log('err', err)})
       // then close popup
-    setOpen(false)
+    //setOpen(false)
   };
   return (
     <div>
       <button>More Answered Questions</button>
       <button onClick={() => resetForm(true)}>Add A Question</button>
       <GenericModal open={open} onClose={() => resetForm(false)}>
-        <form onSubmit={handleFormSubmit}>
-          <div>
+        <form onSubmit={handleFormSubmit} className="QnA-form">
             <label htmlFor='question'>Your Question</label>
             <input
               type='text'
               name='question'
               value={values.question}
               onChange={handleQuestionChange}
+              maxLength='1000'
+              size= '60'
+              required
             />
-          </div>
-          <div>
             <label htmlFor='nickname'>What is your nickname?</label>
             <input
               type='text'
@@ -53,18 +57,21 @@ const AdditionalQuestions = (props) => {
               value={values.nickname}
               onChange={handleNicknameChange}
               placeholder="Example: jackson11!"
+              maxLength='60'
+              required
             />
-          </div>
-          <div>
+            <span>For privacy reasons, do not use your full name or email address</span>
             <label htmlFor='email'>What is your email?</label>
             <input
-              type='text'
+              type='email'
               name='email'
               value={values.email}
               onChange={handleEmailChange}
               placeholder="Example: jack@email.com"
+              maxLength='60'
+              required
             />
-          </div>
+            <span>For authentication reasons, you will not be emailed</span>
           <input type="submit"/>
         </form>
       </GenericModal>

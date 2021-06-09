@@ -8,6 +8,7 @@ const modal_styles = {
   left: '50%',
   padding: '50px',
   backgroundColor: 'white',
+  transform: 'translate(-50%, -50%)',
   zIndex: 1000
 };
 

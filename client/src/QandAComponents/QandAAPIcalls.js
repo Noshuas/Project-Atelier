@@ -35,18 +35,23 @@ QAapiCalls.getAnswers = (questionID) => {
     .catch(err => { return console.log(err); });
 };
 
-QAapiCalls.postQuestion = (data, productID) => {
-  let params = {
-    product_id: data.productID,
-    body: data.question,
-    name: data.nickname,
-    email: data.email
+QAapiCalls.postQuestion = (info, productID) => {
+  let data = {
+    product_id: productID,
+    body: info.question,
+    name: info.nickname,
+    email: info.email
   };
   let headers = API.auth.headers;
-  return axios.post(API.url + '/qa/questions', { params, headers})
+  console.log(data);
+  //console.log({data, headers});
+  // return axios({
+  //   method: 'POST',
+  // })
+  return axios.post(API.url + '/qa/questions', data, { headers })
     .then(results => {
-      //console.log(results.data.results);
-      return results.data.results;
+      console.log('Success', results);
+      //return results.data.results;
     })
     .catch(err => { return console.log(err); });
 };
