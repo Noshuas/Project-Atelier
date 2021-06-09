@@ -4,6 +4,7 @@ import { displayNextImage, displayPreviousImage } from './Controllers.js';
 import { incrementCarouselRange, decrementCarouselRange } from './Controllers.js';
 import { iconURLs } from './iconURLs.js';
 import { HeroImage } from './subComponents/heroImageView.jsx';
+import { ImageControls } from './subComponents/primaryIconView.jsx';
 import { SmallCarousel } from './subComponents/smallCarouselView.jsx';
 import { ProductDescription } from './subComponents/descriptionView.jsx';
 import { ProductDetails } from './subComponents/detailsView.jsx';
@@ -18,6 +19,7 @@ export {
   decrementCarouselRange,
   iconURLs,
   HeroImage,
+  ImageControls,
   SmallCarousel,
   ProductDescription,
   ProductDetails
