@@ -51,7 +51,7 @@ function RandR(props) {
         <div className="review-list">{brain.renderTwoOrAll(reviews, ReviewItem, expandedView)}</div>
         <div>
           <button onClick={handleShowMore}>{expandedView ? 'LESS REVIEWS' : 'MORE REVIEWS'}</button>
-          <AddReview productName={props.productName} characteristics={characteristics}/>
+          <AddReview productName={props.productName} characteristics={characteristics} productId={props.productId}/>
         </div>
       </div>
     </div>

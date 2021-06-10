@@ -37,7 +37,7 @@ function IRecommmendThisProduct(props) {
   if (props.recommend) {
     return (
       <div className="recommend-container">
-        <i className="fas fa-check"></i>
+        <i className="fa fa-check"></i>
         <span> I recommend this product</span>
       </div>
     );
