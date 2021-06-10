@@ -2,13 +2,17 @@ import React, { useState, useEffect } from 'react';
 import GenericModal from '../QandAComponents/GenericModal.jsx';
 import brain from './brain.jsx';
 import RandRAPIcalls from './RandRAPIcalls';
+import InteractiveStars from './InteractiveStars.jsx';
+import Characteristics from './Characteristics.jsx';
 
 function AddReview(props) {
   let [open, setOpen] = useState(false);
 
+  const [charValues, setCharValues] = useState({});
   const [body, setBody] = useState('');
+  const [rating, setRating] = useState(0);
 
-  function trackBodyChars (e) {
+  function trackBodyChars(e) {
     setBody(e.target.value);
 
   }
@@ -22,13 +26,19 @@ function AddReview(props) {
           <h4>About the {props.productName}</h4>
           <form>
             <div>
+              {/* Accessiblity input for rating */}
+              <label htmlFor='rating' className="sr-only">Rating</label>
+              <input type='number' name='rating' min="1" max="5" className="sr-only" value={rating} required onChange={(e) => setRating(e.target.value)}></input>
+              <InteractiveStars setRating={setRating} />
+            </div>
+            <div>
               <div>Do you recommend this product?* </div>
               <label htmlFor='recommend'>Yes</label>
               <input type='radio' name='recommend' required></input>
               <label htmlFor='recommend'>No</label>
               <input type='radio' name='recommend'></input>
             </div>
-            <Characteristics />
+            <Characteristics characteristics={props.characteristics} setCharValues={setCharValues} charValues={charValues} />
             <div>
               <label htmlFor='summary'>Review summary</label><br></br>
               <input type='text' name='summary' placeholder="Example: Best purchase ever!" maxLength="60"></input>
@@ -58,9 +68,4 @@ function AddReview(props) {
   );
 }
 
-function Characteristics () {
-  return null;
-}
-
 export default AddReview;
-

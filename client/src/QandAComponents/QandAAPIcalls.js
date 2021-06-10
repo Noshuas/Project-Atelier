@@ -79,4 +79,5 @@ QAapiCalls.postHelpfullnessFeedback = function (QorA, ID, feeback) {
   }
 };
 
+
 export default QAapiCalls;

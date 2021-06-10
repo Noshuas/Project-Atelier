@@ -5,6 +5,7 @@ import GenericModal from './GenericModal.jsx';
 import QandAAPIcalls from './QandAAPIcalls.js';
 import Helpfulness from './Helpfulness.jsx';
 
+
 const Question = (props) => {
   let [answers, setAnswer] = useState([]);
   let [open, setOpen] = useState(false);
@@ -34,6 +35,7 @@ const Question = (props) => {
         setOpen(false);
       })
       .catch(err => { console.log('err', err); });
+
   };
   useEffect( () => {
     QAapiCalls.getAnswers(props.info.question_id)

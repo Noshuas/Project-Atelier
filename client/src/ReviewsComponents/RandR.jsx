@@ -10,13 +10,16 @@ import AddReview from './AddReview.jsx';
 
 function RandR(props) {
   //Get reviews every time productId changes
+  const [characteristics, setCharacteristics] = useState({});
   const [reviewsMeta, setReviewsMeta] = useState({});
   const [reviewCount, setReviewCount] = useState(2);
   useEffect(() => {
     RandRAPIcalls.getReviewsMeta(props.productId)
       .then(response => {
         setReviewsMeta(response);
-        setReviewCount(brain.getReviewCount(response.data.ratings));
+        setReviewCount(brain.getReviewCount(response.data.ratings) - Number(response.data.recommended.false));
+        setCharacteristics(response.data.characteristics);
+
       });
   }, [props.productId]);
 
@@ -39,10 +42,6 @@ function RandR(props) {
     }
   }
 
-  //change to "props.RandR.characteristics
-  let characteristics = {};
-
-
   return (
     <div className="ratings-and-reviews">
       <h3>RATINGS AND REVIEWS</h3>
@@ -52,7 +51,7 @@ function RandR(props) {
         <div className="review-list">{brain.renderTwoOrAll(reviews, ReviewItem, expandedView)}</div>
         <div>
           <button onClick={handleShowMore}>{expandedView ? 'LESS REVIEWS' : 'MORE REVIEWS'}</button>
-          <AddReview productName={props.productName} />
+          <AddReview productName={props.productName} characteristics={characteristics}/>
         </div>
       </div>
     </div>
