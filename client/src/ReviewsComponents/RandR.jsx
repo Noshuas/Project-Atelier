@@ -49,7 +49,7 @@ function RandR(props) {
 
   return (
     <div className="ratings-and-reviews">
-      <h3>RATINGS AND REVIEWS</h3>
+      <h3>RATINGS {'&'} REVIEWS</h3>
       <ReviewMeta meta={reviewsMeta} />
       <div className="reviews">
         <ReviewSorting reviewCount={reviewCount} setSortBy={setSortBy} />

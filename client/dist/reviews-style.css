@@ -50,6 +50,35 @@ html {
   margin-top: 5px;
 }
 
+.progress-containter {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.progress {
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+}
+
+progress {
+  margin-left: 10px;
+  width: 80%;
+  height: 8px;
+  border-radius: 9px;
+}
+
+progress::-webkit-progress-bar {
+  background-color: rgb(235,235,235);
+  border-radius: 0;
+  height: 8px;
+}
+
+progress::-webkit-progress-value {
+  background-color: rgb(82,82,82);
+  border-radius: 0;
+}
+
 /********** REVIEW ITEMS ***********/
 .review-list {
   max-height: calc(100vh - 200px);

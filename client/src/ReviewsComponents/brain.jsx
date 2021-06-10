@@ -68,6 +68,25 @@ brain.formatCharacteristics = function (charValues, charTemplate) {
   return formated;
 };
 
+brain.formatCharsForDisplay = function (data) {
+  if (!data) {
+    return [];
+  } else {
+    let chars = data.characteristics;
+    let formated = [];
+
+    for (let char in chars) {
+      let single = {};
+      single.char = char;
+      single.percent = Math.round(Number(chars[char].value) / 5 * 100);
+      formated.push(single);
+    }
+
+    console.log(formated);
+    return [];
+  }
+};
+
 brain.formatRatings = function (data) {
   if (!data) {
     return [];
@@ -77,7 +96,8 @@ brain.formatRatings = function (data) {
 
     for (let rating in data.ratings) {
       let ratio = {};
-      ratio[rating] = Math.round(Number(data.ratings[rating]) / totalReviews * 100);
+      ratio.star = rating;
+      ratio.percent = Math.round(Number(data.ratings[rating]) / totalReviews * 100);
       ratios.push(ratio);
     }
 
@@ -109,5 +129,7 @@ brain.getRecommanendationPercentage = function (data) {
     return percentage.toString();
   }
 };
+
+
 
 export default brain;
