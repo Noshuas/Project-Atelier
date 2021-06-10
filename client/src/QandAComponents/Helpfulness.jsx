@@ -17,9 +17,8 @@ function Helpfulness (props) {
 
     return (
       <>
-        <span> Helpful? </span>
-        <a href="#" onClick={handleClick}>Yes</a>
-        <span> ({props.helpfulness})  </span>
+        <span> Helpful? <a href="#" onClick={handleClick}>Yes</a> ({props.helpfulness})
+        </span>
       </>
     );
   }

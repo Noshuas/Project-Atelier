@@ -49,10 +49,12 @@ const Question = (props) => {
   }, [props.info]);
   return (
     <div>
-      <h3>Q:{props.info.question_body} </h3>
-      <div className="question-toolbar">
-        <Helpfulness helpfulness={props.info.question_helpfulness} QorA='questions' id={props.info.question_id}/>
-        <button onClick={() => setOpen(true)}>Add Answer</button>
+      <div className="question-main">
+        <h3>Q:{props.info.question_body} </h3>
+        <div className="question-toolbar">
+          <Helpfulness helpfulness={props.info.question_helpfulness} QorA='questions' id={props.info.question_id}/>
+          <button onClick={() => setOpen(true)}>Add Answer</button>
+        </div>
       </div>
       <h3>A:</h3>
       <AnswerList answers={answers} moreAnswers={moreAnswers} handleMoreAnswers={handleMoreAnswers}/>

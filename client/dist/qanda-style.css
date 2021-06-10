@@ -40,3 +40,8 @@ p {
 .QnA-form > input {
   width: 90%
 }
+.question-main {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
