@@ -65,7 +65,11 @@ const Question = (props) => {
       <AnswerList answers={answers} moreAnswers={moreAnswers} handleMoreAnswers={handleMoreAnswers}/>
       <GenericModal open={open} onClose={() => resetForm(false)}>
         <form onSubmit={handleFormSubmit} className="QnA-form">
-          <label htmlFor='answer'>Your Answer *</label>
+          <h1>Submit your Answer</h1>
+          <h2>{props.productName}: {props.info.question_body}</h2>
+          <label htmlFor='answer'>Your Answer
+            <span className='red-asterisk'>*</span>
+          </label>
           <textarea
             name='answer'
             value={values.answer}
@@ -75,10 +79,13 @@ const Question = (props) => {
             cols='40'
             required
           />
-          <label htmlFor='nickname'>What is your nickname? *</label>
+          <label htmlFor='nickname'>What is your nickname?
+            <span className='red-asterisk'>*</span>
+          </label>
           <input
             type='text'
             name='nickname'
+            className='form-input-txt'
             value={values.nickname}
             onChange={handleNicknameChange}
             placeholder="Example: jackson11!"
@@ -86,10 +93,13 @@ const Question = (props) => {
             required
           />
           <span>For privacy reasons, do not use your full name or email address</span>
-          <label htmlFor='email'>What is your email? *</label>
+          <label htmlFor='email'>What is your email?
+            <span className='red-asterisk'>*</span>
+          </label>
           <input
             type='email'
             name='email'
+            className='form-input-txt'
             value={values.email}
             onChange={handleEmailChange}
             placeholder="Example: jack@email.com"
@@ -97,7 +107,7 @@ const Question = (props) => {
             required
           />
           <span>For authentication reasons, you will not be emailed</span>
-          <input type="submit"/>
+          <input className="form-submit-btn" type="submit"/>
         </form>
       </GenericModal>
     </div>

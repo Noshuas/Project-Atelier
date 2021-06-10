@@ -38,12 +38,13 @@ p {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  align-items: center
+  align-items: center;
+  text-align: center;
 }
 .QnA-form > input {
-  width: 90%;
   margin: 3px;
   border-width: 1px;
+  max-width: 300px;
 }
 .QnA-form > textarea {
   margin: 10px;
@@ -55,7 +56,14 @@ p {
 .QnA-form > label {
   margin: 3px
 }
-
+.form-submit-btn {
+  width: 100px;
+  height: 35px;
+  font-size: 15px;
+}
+.form-input-txt {
+  width: 200px;
+}
 .question-main {
   display: flex;
   flex-direction: row;

@@ -57,6 +57,7 @@ const AddNewQuestion = (props) => {
           <input
             type='text'
             name='nickname'
+            className='form-input-txt'
             value={values.nickname}
             onChange={handleNicknameChange}
             placeholder="Example: jackson11!"
@@ -70,6 +71,7 @@ const AddNewQuestion = (props) => {
           <input
             type='email'
             name='email'
+            className='form-input-txt'
             value={values.email}
             onChange={handleEmailChange}
             placeholder="Example: jack@email.com"
@@ -77,7 +79,7 @@ const AddNewQuestion = (props) => {
             required
           />
           <span>For authentication reasons, you will not be emailed</span>
-          <input type="submit"/>
+          <input className='form-submit-btn' type="submit"/>
         </form>
       </GenericModal>
     </div>
