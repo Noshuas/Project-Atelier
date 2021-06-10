@@ -41,6 +41,10 @@ const Question = (props) => {
       .catch(err => { console.log('err', err); });
 
   };
+  const handleAddAnswer = (event) => {
+    event.preventDefault();
+    setOpen(true);
+  };
   useEffect( () => {
     QAapiCalls.getAnswers(props.info.question_id)
       .then(results => {
@@ -50,10 +54,11 @@ const Question = (props) => {
   return (
     <div>
       <div className="question-main">
-        <h3>Q:{props.info.question_body} </h3>
+        <h3>Q: {props.info.question_body} </h3>
         <div className="question-toolbar">
-          <Helpfulness helpfulness={props.info.question_helpfulness} QorA='questions' id={props.info.question_id}/>
-          <button onClick={() => setOpen(true)}>Add Answer</button>
+          <span>
+            <Helpfulness helpfulness={props.info.question_helpfulness} QorA='questions' id={props.info.question_id}/> <a href="#" onClick={handleAddAnswer}>Add Answer</a>
+          </span>
         </div>
       </div>
       <h3>A:</h3>
