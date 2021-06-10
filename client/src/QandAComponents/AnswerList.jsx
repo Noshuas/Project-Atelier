@@ -10,6 +10,7 @@ const AnswerList = (props) => {
             return <Answer info={answer} key={index}/>;
           }
         })}
+        <ExandAnswers handleMoreAnswers={props.handleMoreAnswers} numAnswers={props.answers.length}/>
       </div>
     );
   }
@@ -20,8 +21,19 @@ const AnswerList = (props) => {
           return <Answer info={answer} key={index}/>;
         }
       })}
+      <button onClick={props.handleMoreAnswers}>Collapse answers</button>
     </div>
   );
 };
+
+function ExandAnswers(props) {
+  if (props.numAnswers === 0) {
+    return <span>This question currently has no answers</span>;
+  }
+  if (props.numAnswers > 2) {
+    return <button onClick={props.handleMoreAnswers}> See more answers</button>;
+  }
+  return null;
+}
 
 export default AnswerList;

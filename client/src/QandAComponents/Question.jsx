@@ -55,8 +55,7 @@ const Question = (props) => {
         <button onClick={() => setOpen(true)}>Add Answer</button>
       </div>
       <h3>A:</h3>
-      <AnswerList answers={answers} moreAnswers={moreAnswers}/>
-      <button onClick={handleMoreAnswers}>{!moreAnswers ? 'See more answers' : 'Collapse answers'}</button>
+      <AnswerList answers={answers} moreAnswers={moreAnswers} handleMoreAnswers={handleMoreAnswers}/>
       <GenericModal open={open} onClose={() => resetForm(false)}>
         <form onSubmit={handleFormSubmit} className="QnA-form">
           <label htmlFor='answer'>Your Answer</label>
