@@ -65,17 +65,17 @@ const Question = (props) => {
       <AnswerList answers={answers} moreAnswers={moreAnswers} handleMoreAnswers={handleMoreAnswers}/>
       <GenericModal open={open} onClose={() => resetForm(false)}>
         <form onSubmit={handleFormSubmit} className="QnA-form">
-          <label htmlFor='answer'>Your Answer</label>
-          <input
-            type='text'
+          <label htmlFor='answer'>Your Answer *</label>
+          <textarea
             name='answer'
             value={values.answer}
             onChange={handleAnswerChange}
             maxLength='1000'
-            size= '60'
+            rows= '5'
+            cols='40'
             required
           />
-          <label htmlFor='nickname'>What is your nickname?</label>
+          <label htmlFor='nickname'>What is your nickname? *</label>
           <input
             type='text'
             name='nickname'
@@ -86,7 +86,7 @@ const Question = (props) => {
             required
           />
           <span>For privacy reasons, do not use your full name or email address</span>
-          <label htmlFor='email'>What is your email?</label>
+          <label htmlFor='email'>What is your email? *</label>
           <input
             type='email'
             name='email'

@@ -33,13 +33,29 @@ p {
   overflow-x: hidden;
 }
 .QnA-form {
+  margin: 5px;
+  padding: 5px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  justify-content: space-evenly;
+  align-items: center
 }
 .QnA-form > input {
-  width: 90%
+  width: 90%;
+  margin: 3px;
+  border-width: 1px;
 }
+.QnA-form > textarea {
+  margin: 10px;
+  border-width: 1px;
+}
+.QnA-form > span {
+  margin-bottom: 10px
+}
+.QnA-form > label {
+  margin: 3px
+}
+
 .question-main {
   display: flex;
   flex-direction: row;
@@ -48,4 +64,7 @@ p {
 #questionSearch {
   width: calc(75vh - 100px);
   height: 35px
+}
+.red-asterisk {
+  color: red
 }

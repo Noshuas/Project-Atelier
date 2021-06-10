@@ -44,8 +44,8 @@ function App() {
       <RelatedContext.Provider value={relatedState}>
         <Related />
       </RelatedContext.Provider>
-      <QandA productId={productId} />
-      <RandR productId={productId} productName={productName} />
+      <QandA productId={productId} productName={productName}/>
+      <RandR productId={productId} productName={productName}/>
     </AppContext.Provider>
   );
 }

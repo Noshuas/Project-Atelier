@@ -45,7 +45,7 @@ const QandA = (props) => {
     return (
       <div className="QandA">
         <h2>QUESTIONS &amp; ANSWERS</h2>
-        < AddNewQuestion productId={props.productId}/>
+        < AddNewQuestion productId={props.productId} productName={props.productName}/>
       </div>
     );
   }
@@ -55,7 +55,7 @@ const QandA = (props) => {
       < QuestionSearchBar handleChange={handleChange}/>
       < QuestionList questions={filteredQuestions} expanded={expanded}/>
       <div>
-        < AddNewQuestion productId={props.productId}/>
+        < AddNewQuestion productId={props.productId} productName={props.productName}/>
         <button onClick={handleMoreQuestions}>{!expanded ? 'More Answered Questions' : 'Show Less Answered Questions'}</button>
       </div>
     </div>

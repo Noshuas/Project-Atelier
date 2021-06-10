@@ -37,17 +37,23 @@ const AddNewQuestion = (props) => {
       <button onClick={() => resetForm(true)}>Add A Question</button>
       <GenericModal open={open} onClose={() => resetForm(false)}>
         <form onSubmit={handleFormSubmit} className="QnA-form">
-          <label htmlFor='question'>Your Question</label>
-          <input
-            type='text'
+          <h1>Ask Your Question</h1>
+          <h2>About the {props.productName}</h2>
+          <label htmlFor='question'>Your Question
+            <span className='red-asterisk'>*</span>
+          </label>
+          <textarea
             name='question'
             value={values.question}
             onChange={handleQuestionChange}
             maxLength='1000'
-            size= '60'
+            rows="5"
+            cols="40"
             required
           />
-          <label htmlFor='nickname'>What is your nickname?</label>
+          <label htmlFor='nickname'>What is your nickname?
+            <span className='red-asterisk'>*</span>
+          </label>
           <input
             type='text'
             name='nickname'
@@ -58,7 +64,9 @@ const AddNewQuestion = (props) => {
             required
           />
           <span>For privacy reasons, do not use your full name or email address</span>
-          <label htmlFor='email'>What is your email?</label>
+          <label htmlFor='email'>What is your email?
+            <span className='red-asterisk'>*</span>
+          </label>
           <input
             type='email'
             name='email'
