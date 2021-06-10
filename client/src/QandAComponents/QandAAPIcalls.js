@@ -67,4 +67,17 @@ QAapiCalls.postAnswer = (info, questionId) => {
     })
     .catch(err => { return console.log(err); });
 };
+
+QAapiCalls.postHelpfullnessFeedback = function (QorA, ID, feeback) {
+
+  let url = `/qa/${QorA}/${ID}/${feeback}`;
+  let headers = API.auth.headers;
+  if (QorA === 'question') {
+    return axios.put(API.url + url, {question_id: ID}, {headers});
+  } else {
+    return axios.put(API.url + url, {answer_id: ID}, {headers});
+  }
+};
+
+
 export default QAapiCalls;

@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 // could make more generic
 
 const modal_styles = {
-  position: 'absolute',
+  position: 'fixed',
   top: '50%',
   left: '50%',
   padding: '50px',
