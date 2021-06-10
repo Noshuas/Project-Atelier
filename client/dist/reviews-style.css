@@ -15,6 +15,39 @@ html {
 
 .ratings-and-reviews {
   margin-top: 50px;
+  display: grid;
+  grid-template-rows: 60px auto;
+  grid-template-columns: 27% 6% auto;
+}
+
+.ratings {
+  grid-row: 2 / span 1;
+  grid-column: 1 / span 1;
+}
+
+.reviews {
+  grid-row: 2 / span 1;
+  grid-column: 3 / span 1;
+}
+
+.ratings-and-reviews > h3 {
+  grid-row: 1 / span 1;
+  grid-column: 1 / span 3;
+}
+
+/********** RATING META ***********/
+.average-rating {
+  font-size: 80px;
+  font-weight: bold;
+  line-height: 60px;
+  margin-right: 20px;
+}
+
+.ratings .main {
+  display: inline-flex;
+  flex-direction: row;
+  margin-bottom: 40px;
+  margin-top: 5px;
 }
 
 /********** REVIEW ITEMS ***********/
@@ -31,6 +64,7 @@ html {
 
 .review-item > * {
   padding-bottom: 15px;
+  margin-left: 0;
 }
 
 .review-item > .top-row {

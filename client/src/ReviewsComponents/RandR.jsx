@@ -14,12 +14,14 @@ function RandR(props) {
   const [reviewsMeta, setReviewsMeta] = useState({});
   const [reviewCount, setReviewCount] = useState(2);
   useEffect(() => {
-    RandRAPIcalls.getReviewsMeta(props.productId)
-      .then(response => {
-        setReviewsMeta(response);
-        setReviewCount(brain.getReviewCount(response.data.ratings));
-        setCharacteristics(response.data.characteristics);
-      });
+    if (Number(props.productId) > 0) {
+      RandRAPIcalls.getReviewsMeta(props.productId)
+        .then(response => {
+          setReviewsMeta(response);
+          setReviewCount(brain.getReviewCount(response.data.ratings));
+          setCharacteristics(response.data.characteristics);
+        });
+    }
   }, [props.productId]);
 
   //Get reviews every time productId changes
@@ -27,8 +29,10 @@ function RandR(props) {
   const [sortBy, setSortBy] = useState('relevant');
   const [expandedView, setExpandedView] = useState(false);
   useEffect(() => {
-    RandRAPIcalls.getReviews(props.productId, sortBy, reviewCount)
-      .then(response => setReviews(response.data.results));
+    if (Number(props.productId) > 0) {
+      RandRAPIcalls.getReviews(props.productId, sortBy, reviewCount)
+        .then(response => setReviews(response.data.results));
+    }
   }, [props.productId, sortBy, reviewCount]);
 
   useEffect(() => setReviewCount(reviews.length), [reviews]);
@@ -46,14 +50,14 @@ function RandR(props) {
   return (
     <div className="ratings-and-reviews">
       <h3>RATINGS AND REVIEWS</h3>
-      <ReviewMeta />
-      <ReviewSorting reviewCount={reviewCount} setSortBy={setSortBy} />
-      <div className="right-side">
+      <ReviewMeta meta={reviewsMeta} />
+      <div className="reviews">
+        <ReviewSorting reviewCount={reviewCount} setSortBy={setSortBy} />
         <div className="review-list">{brain.renderTwoOrAll(reviews, ReviewItem, expandedView)}</div>
         <div>
           <button onClick={handleShowMore}>{expandedView ? 'LESS REVIEWS' : 'MORE REVIEWS'}</button>
           <AddReview productName={props.productName} characteristics={characteristics}
-            productId={props.productId} setReviewCount={setReviewCount} reviewCount={reviewCount}/>
+            productId={props.productId} setReviewCount={setReviewCount} reviewCount={reviewCount} />
         </div>
       </div>
     </div>

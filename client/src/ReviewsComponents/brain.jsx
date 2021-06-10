@@ -68,4 +68,46 @@ brain.formatCharacteristics = function (charValues, charTemplate) {
   return formated;
 };
 
+brain.formatRatings = function (data) {
+  if (!data) {
+    return [];
+  } else {
+    let totalReviews = Number(data.recommended.false) + Number(data.recommended.true);
+    let ratios = [];
+
+    for (let rating in data.ratings) {
+      let ratio = {};
+      ratio[rating] = Math.round(Number(data.ratings[rating]) / totalReviews * 100);
+      ratios.push(ratio);
+    }
+
+    return ratios;
+  }
+};
+
+brain.getAverageRating = function (data) {
+  if (!data) {
+    return '0.0';
+  } else {
+    let totalReviews = Number(data.recommended.false) + Number(data.recommended.true);
+    let ratingSum = 0;
+
+    for (let rating in data.ratings) {
+      ratingSum += Number(rating) * Number(data.ratings[rating]);
+    }
+
+    return (Math.round(ratingSum / totalReviews * 10) / 10).toString();
+  }
+};
+
+brain.getRecommanendationPercentage = function (data) {
+  if (!data) {
+    return '0';
+  } else {
+    let totalReviews = Number(data.recommended.false) + Number(data.recommended.true);
+    let percentage = Math.round(Number((data.recommended.true) / totalReviews) * 100);
+    return percentage.toString();
+  }
+};
+
 export default brain;

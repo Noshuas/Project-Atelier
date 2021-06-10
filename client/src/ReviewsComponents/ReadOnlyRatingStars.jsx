@@ -2,7 +2,7 @@ import React from 'react';
 import brain from './brain.jsx';
 import RandRAPIcalls from './RandRAPIcalls';
 
-function RatingStars(props) {
+function ReadOnlyRatingStars(props) {
   let formated = brain.formatStarRating(props.rating);
   return (
     <div className="rating-stars">
@@ -20,4 +20,4 @@ function Star(props) {
   );
 }
 
-export default RatingStars;
+export default ReadOnlyRatingStars;
