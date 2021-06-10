@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 
 const modal_styles = {
   position: 'absolute',
-  top: '50%',
+  top: '70%',
   left: '50%',
   padding: '50px',
   backgroundColor: 'white',
