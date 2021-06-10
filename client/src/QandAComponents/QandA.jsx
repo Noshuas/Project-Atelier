@@ -41,7 +41,14 @@ const QandA = (props) => {
   function handleMoreQuestions (event) {
     setExpanded(!expanded);
   }
-
+  if (questions.length === 0) {
+    return (
+      <div className="QandA">
+        <h2>QUESTIONS &amp; ANSWERS</h2>
+        < AddNewQuestion productId={props.productId}/>
+      </div>
+    );
+  }
   return (
     <div className="QandA">
       <h2>QUESTIONS &amp; ANSWERS</h2>

@@ -56,12 +56,12 @@ const Question = (props) => {
       </div>
       <h3>A:</h3>
       <AnswerList answers={answers} moreAnswers={moreAnswers}/>
-      <button onClick={handleMoreAnswers}>{!moreAnswers ? 'More Answers' : 'Show Less Answers'}</button>
+      <button onClick={handleMoreAnswers}>{!moreAnswers ? 'See more answers' : 'Collapse answers'}</button>
       <GenericModal open={open} onClose={() => resetForm(false)}>
         <form onSubmit={handleFormSubmit} className="QnA-form">
           <label htmlFor='answer'>Your Answer</label>
           <input
-            type='text'
+            type='textarea'
             name='answer'
             value={values.answer}
             onChange={handleAnswerChange}
