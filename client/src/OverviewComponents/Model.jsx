@@ -1,5 +1,6 @@
 import React, { createContext, useState, useEffect } from 'react';
 import { getProducts, getProductStyles } from './index.js';
+import { getProductReviewsMeta, getProductReviews } from './index.js';
 import { createDefaultStyle } from './index.js';
 
 export const OverviewContext = createContext();
@@ -7,11 +8,14 @@ export const OverviewContext = createContext();
 export function useOverview() {
   // set helper/storage variables
   let defaultStyle = [];
+  let productId = '17067';
 
   // set initial state values (static)
   const [currentProduct, setCurrentProduct] = useState({});
+  const [productStarRatings, setProductStarRatings] = useState(null);
+  const [reviewCount, setReviewCount] = useState(null);
   const [productStyles, setProductStyles] = useState({});
-  const [currentStyle, setCurrentStyle] = useState({name: '', originalPrice: ''});
+  const [currentStyle, setCurrentStyle] = useState({name: '', originalPrice: '', salePrice: ''});
   const [carouselLargeImages, setCarouselLargeImages] = useState([]);
   const [carouselSmallImages, setCarouselSmallImages] = useState({images: [], initialIndex: 0});
   const [heroImage, setHeroImage] = useState({url: '', index: 0});
@@ -24,12 +28,22 @@ export function useOverview() {
   const [detailsDisplayClass, setDetailsDisplayClass] = useState('details-display-default');
 
   useEffect(() => {
-    Promise.all([getProducts(), getProductStyles()])
-      .then(([product, styles]) => {
-        setCurrentProduct(product.data);
-        setProductStyles(styles.data);
+    Promise.all([
+      getProducts(productId),
+      getProductStyles(productId),
+      getProductReviewsMeta(productId),
+      getProductReviews(productId)])
+      .then(([product, styles, starRatings, totalReviews]) => {
         defaultStyle = createDefaultStyle(styles.data);
-        setCurrentStyle({name: defaultStyle.name, originalPrice: defaultStyle.originalPrice});
+        setCurrentProduct(product.data);
+        setProductStarRatings(starRatings);
+        setReviewCount(totalReviews);
+        setProductStyles(styles.data);
+        setCurrentStyle({
+          name: defaultStyle.name,
+          originalPrice: defaultStyle.originalPrice,
+          salePrice: defaultStyle.salePrice
+        });
         setHeroImage(defaultStyle.primaryImage);
         setCarouselLargeImages(defaultStyle.photoInfo);
         setCarouselSmallImages({
@@ -39,8 +53,36 @@ export function useOverview() {
       });
   }, []);
 
+  function getNewProduct(productId) {
+    Promise.all([
+      getProducts(productId),
+      getProductStyles(productId),
+      getProductReviewsMeta(productId),
+      getProductReviews(productId)])
+      .then(([product, styles, starRatings, totalReviews]) => {
+        defaultStyle = createDefaultStyle(styles.data);
+        setCurrentProduct(product.data);
+        setProductStarRatings(starRatings);
+        setReviewCount(totalReviews);
+        setProductStyles(styles.data);
+        setCurrentStyle({
+          name: defaultStyle.name,
+          originalPrice: defaultStyle.originalPrice,
+          salePrice: defaultStyle.salePrice
+        });
+        setHeroImage(defaultStyle.primaryImage);
+        setCarouselLargeImages(defaultStyle.photoInfo);
+        setCarouselSmallImages({
+          images: defaultStyle.photoInfo.slice(0, 4),
+          initialIndex: 0
+        });
+      });
+  }
+
   return {
     currentProduct, setCurrentProduct,
+    productStarRatings, setProductStarRatings,
+    reviewCount, setReviewCount,
     productStyles, setProductStyles,
     currentStyle, setCurrentStyle,
     carouselLargeImages, setCarouselLargeImages,
@@ -52,6 +94,7 @@ export function useOverview() {
     primaryImageWidthClass, setPrimaryImageWidthClass,
     primaryIconDisplayClass, setPrimaryIconDisplayClass,
     expandIconDisplayClass, setExpandIconDisplayClass,
-    detailsDisplayClass, setDetailsDisplayClass
+    detailsDisplayClass, setDetailsDisplayClass,
+    getNewProduct
   };
 }
