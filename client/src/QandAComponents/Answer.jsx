@@ -19,11 +19,10 @@ function Answer(props) {
     <div>
       <span>{props.info.body}</span>
       <div className="answersToolbar">
-        <span>by {props.info.answerer_name} {brain.getFormatedTimestamp(props.info.date)} </span>
-        <span>|</span>
-        <Helpfulness helpfulness={props.info.helpfulness} QorA='answers' id={props.info.answer_id}/>
-        <span>|</span>
-        <a href="#" onClick={handleClick}>{reported ? 'Reported' : 'Report'}</a>
+        <span >
+          by {props.info.answerer_name} {brain.getFormatedTimestamp(props.info.date)} |
+          <Helpfulness helpfulness={props.info.helpfulness} QorA='answers' id={props.info.answer_id}/> | <a href="#" onClick={handleClick}>{reported ? 'Reported' : 'Report'}</a>
+        </span>
       </div>
       <Photos photos={props.info.photos}/>
     </div>
