@@ -21,16 +21,15 @@ function AddReview(props) {
     setBody(e.target.value);
   }
 
-  function handleSumbit (e) {
+  function handleSubmit (e) {
     e.preventDefault();
     let characteristics = brain.formatCharacteristics(charValues, props.characteristics);
     let product_id = props.productId;
     RandRAPIcalls.postReview({
       product_id, rating, summary, body, recommend,
       name, email, photos, characteristics})
-      .then((res) => console.log(res))
-      .catch((res) => console.log(res));
-
+      .then(setOpen(false))
+      .then(() => props.setReviewCount(props.reviewCount + 1));
   }
 
   return (
@@ -40,7 +39,7 @@ function AddReview(props) {
         <div className="add-review">
           <h2>Write Your Review</h2>
           <h4>About the {props.productName}</h4>
-          <form onSubmit={handleSumbit}>
+          <form onSubmit={handleSubmit}>
             <div>
               {/* Accessiblity input for rating */}
               <label htmlFor='rating' className="sr-only">Rating</label>

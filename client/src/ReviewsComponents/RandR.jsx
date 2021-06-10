@@ -17,9 +17,8 @@ function RandR(props) {
     RandRAPIcalls.getReviewsMeta(props.productId)
       .then(response => {
         setReviewsMeta(response);
-        setReviewCount(brain.getReviewCount(response.data.ratings) - Number(response.data.recommended.false));
+        setReviewCount(brain.getReviewCount(response.data.ratings));
         setCharacteristics(response.data.characteristics);
-
       });
   }, [props.productId]);
 
@@ -31,6 +30,8 @@ function RandR(props) {
     RandRAPIcalls.getReviews(props.productId, sortBy, reviewCount)
       .then(response => setReviews(response.data.results));
   }, [props.productId, sortBy, reviewCount]);
+
+  useEffect(() => setReviewCount(reviews.length), [reviews]);
 
   function handleShowMore() {
     if (expandedView) {
@@ -51,7 +52,8 @@ function RandR(props) {
         <div className="review-list">{brain.renderTwoOrAll(reviews, ReviewItem, expandedView)}</div>
         <div>
           <button onClick={handleShowMore}>{expandedView ? 'LESS REVIEWS' : 'MORE REVIEWS'}</button>
-          <AddReview productName={props.productName} characteristics={characteristics} productId={props.productId}/>
+          <AddReview productName={props.productName} characteristics={characteristics}
+            productId={props.productId} setReviewCount={setReviewCount} reviewCount={reviewCount}/>
         </div>
       </div>
     </div>
