@@ -8,9 +8,10 @@ export function SmallCarousel() {
   const {carouselLargeImages, setCarouselLargeImages} = useContext(OverviewContext);
   const {carouselSmallImages, setCarouselSmallImages} = useContext(OverviewContext);
   const {heroImage, setHeroImage} = useContext(OverviewContext);
+  const {carouselDisplayClass, setCarouselDisplayClass} = useContext(OverviewContext);
 
   return (
-    <div className="carousel-container">
+    <div className={`carousel-container ${carouselDisplayClass}`}>
       <div className="small-icon-wrapper" onClick={() => {
         setCarouselSmallImages(cur => decrementCarouselRange(cur, carouselLargeImages));
       }}>
