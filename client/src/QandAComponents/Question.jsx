@@ -4,16 +4,20 @@ import Answer from './Answer.jsx';
 import GenericModal from './GenericModal.jsx';
 import QandAAPIcalls from './QandAAPIcalls.js';
 import Helpfulness from './Helpfulness.jsx';
-
+import AnswerList from './AnswerList.jsx';
 
 const Question = (props) => {
   let [answers, setAnswer] = useState([]);
   let [open, setOpen] = useState(false);
+  let [moreAnswers, setMoreAnswers] = useState(false);
   let [values, setValues] = useState({
     answer: '',
     nickname: '',
     email: ''
   });
+  const handleMoreAnswers = () => {
+    setMoreAnswers(!moreAnswers);
+  };
   const resetForm = (openValue) => {
     setOpen(openValue);
     setValues({answer: '', nickname: '', email: ''});
@@ -50,9 +54,9 @@ const Question = (props) => {
         <Helpfulness helpfulness={props.info.question_helpfulness} QorA='questions' id={props.info.question_id}/>
         <button onClick={() => setOpen(true)}>Add Answer</button>
       </div>
-      <h3>A:</h3>{answers.map( (answer, index) => {
-        return <Answer info={answer} key={index}/>;
-      })}
+      <h3>A:</h3>
+      <AnswerList answers={answers} moreAnswers={moreAnswers}/>
+      <button onClick={handleMoreAnswers}>{!moreAnswers ? 'More Answers' : 'Show Less Answers'}</button>
       <GenericModal open={open} onClose={() => resetForm(false)}>
         <form onSubmit={handleFormSubmit} className="QnA-form">
           <label htmlFor='answer'>Your Answer</label>

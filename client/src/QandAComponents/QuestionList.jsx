@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import Question from './Question.jsx';
 
 const QuestionList = (props) => {
-  const [displayedQs, setDisplayed] = useState(2);
   if (!props.expanded) {
     return (
       <div>
