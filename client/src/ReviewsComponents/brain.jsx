@@ -60,4 +60,12 @@ brain.renderTwoOrAll = function (list, Component, expanded) {
   );
 };
 
+brain.formatCharacteristics = function (charValues, charTemplate) {
+  let formated = {};
+  for (let char in charTemplate) {
+    formated[charTemplate[char].id] = Number(charValues[char]);
+  }
+  return formated;
+};
+
 export default brain;

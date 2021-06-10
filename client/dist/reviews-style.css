@@ -122,6 +122,13 @@ html {
   width: 100px;
 }
 
+/********** ADD PHOTOS ***********/
+.spinner > i {
+  font-size: 30px;
+  animation: rotation 2s infinite linear;
+  display: inline-block;
+}
+
 /********** FADE IN ***********/
 .fadeIn {
   -webkit-animation: fadein 1s; /* Safari, Chrome and Opera > 12.1 */
@@ -152,4 +159,13 @@ html {
 @-ms-keyframes fadein {
   from { opacity: 0; }
   to   { opacity: 1; }
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
 }
