@@ -45,3 +45,7 @@ p {
   flex-direction: row;
   justify-content: space-between;
 }
+#questionSearch {
+  width: calc(75vh - 100px);
+  height: 35px
+}
