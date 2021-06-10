@@ -1,37 +1,39 @@
 import React, { createContext, useState, useEffect } from 'react';
-import { getProducts, getProductStyles } from './Controllers.js';
+import { getProducts, getProductStyles } from './index.js';
+import { createDefaultStyle } from './index.js';
 
 export const OverviewContext = createContext();
 
 export function useOverview() {
   // set helper/storage variables
-  let photoStorage = [];
-  let defaultProduct = {};
+  let defaultStyle = [];
 
   // set initial state values (static)
   const [currentProduct, setCurrentProduct] = useState({});
   const [productStyles, setProductStyles] = useState({});
-  const [productImages, setProductImages] = useState([]);
+  const [currentStyle, setCurrentStyle] = useState({name: '', originalPrice: ''});
+  const [carouselLargeImages, setCarouselLargeImages] = useState([]);
   const [carouselSmallImages, setCarouselSmallImages] = useState({images: [], initialIndex: 0});
   const [heroImage, setHeroImage] = useState({url: '', index: 0});
+  const [heroPictureContainerClass, setHeroPictureContainerClass] = useState('hero-picture-container-default');
+  const [carouselDisplayClass, setCarouselDisplayClass] = useState('carousel-container-default');
+  const [primaryImageDisplayClass, setPrimaryImageDisplayClass] = useState('primary-img-default');
+  const [primaryImageWidthClass, setPrimaryImageWidthClass] = useState('primary-img-width-default');
+  const [primaryIconDisplayClass, setPrimaryIconDisplayClass] = useState('primary-icons-default');
+  const [expandIconDisplayClass, setExpandIconDisplayClass] = useState('expand-icon-default');
+  const [detailsDisplayClass, setDetailsDisplayClass] = useState('details-display-default');
 
   useEffect(() => {
     Promise.all([getProducts(), getProductStyles()])
       .then(([product, styles]) => {
         setCurrentProduct(product.data);
         setProductStyles(styles.data);
-        for (var style of styles.data.results) {
-          if (style['default?']) {
-            setHeroImage({url: style.photos[0].url, index: 0});
-            for (var photo of style.photos) {
-              photoStorage.push(photo);
-            }
-            break;
-          }
-        }
-        setProductImages(photoStorage);
+        defaultStyle = createDefaultStyle(styles.data);
+        setCurrentStyle({name: defaultStyle.name, originalPrice: defaultStyle.originalPrice});
+        setHeroImage(defaultStyle.primaryImage);
+        setCarouselLargeImages(defaultStyle.photoInfo);
         setCarouselSmallImages({
-          images: photoStorage.slice(0, 4),
+          images: defaultStyle.photoInfo.slice(0, 4),
           initialIndex: 0
         });
       });
@@ -40,8 +42,16 @@ export function useOverview() {
   return {
     currentProduct, setCurrentProduct,
     productStyles, setProductStyles,
-    productImages, setProductImages,
+    currentStyle, setCurrentStyle,
+    carouselLargeImages, setCarouselLargeImages,
     carouselSmallImages, setCarouselSmallImages,
-    heroImage, setHeroImage
+    heroImage, setHeroImage,
+    heroPictureContainerClass, setHeroPictureContainerClass,
+    carouselDisplayClass, setCarouselDisplayClass,
+    primaryImageDisplayClass, setPrimaryImageDisplayClass,
+    primaryImageWidthClass, setPrimaryImageWidthClass,
+    primaryIconDisplayClass, setPrimaryIconDisplayClass,
+    expandIconDisplayClass, setExpandIconDisplayClass,
+    detailsDisplayClass, setDetailsDisplayClass
   };
 }
