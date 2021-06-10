@@ -27,6 +27,11 @@ p {
   overflow-y: auto;
   overflow-x: hidden;
 }
+.answer-list {
+  max-height: calc(50vh);
+  overflow-y: auto;
+  overflow-x: hidden;
+}
 .QnA-form {
   display: flex;
   flex-direction: column;
