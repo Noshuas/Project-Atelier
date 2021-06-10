@@ -67,7 +67,7 @@ const Question = (props) => {
         <form onSubmit={handleFormSubmit} className="QnA-form">
           <label htmlFor='answer'>Your Answer</label>
           <input
-            type='textarea'
+            type='text'
             name='answer'
             value={values.answer}
             onChange={handleAnswerChange}
