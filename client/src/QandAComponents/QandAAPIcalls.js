@@ -50,4 +50,21 @@ QAapiCalls.postQuestion = (info, productID) => {
     })
     .catch(err => { return console.log(err); });
 };
+
+QAapiCalls.postAnswer = (info, questionId) => {
+  console.log(info, questionId);
+  let data = {
+    body: info.answer,
+    name: info.nickname,
+    email: info.email
+  };
+  console.log(data);
+  let headers = API.auth.headers;
+
+  return axios.post(API.url + `/qa/questions/${questionId}/answers`, data, { headers })
+    .then(results => {
+      console.log('Success', results);
+    })
+    .catch(err => { return console.log(err); });
+};
 export default QAapiCalls;
