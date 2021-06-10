@@ -57,7 +57,7 @@ const Question = (props) => {
         <h3>Q: {props.info.question_body} </h3>
         <div className="question-toolbar">
           <span>
-            <Helpfulness helpfulness={props.info.question_helpfulness} QorA='questions' id={props.info.question_id}/> <a href="#" onClick={handleAddAnswer}>Add Answer</a>
+            <Helpfulness helpfulness={props.info.question_helpfulness} QorA='questions' id={props.info.question_id}/> | <a href="#" onClick={handleAddAnswer}>Add Answer</a>
           </span>
         </div>
       </div>

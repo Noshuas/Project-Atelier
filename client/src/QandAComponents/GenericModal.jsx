@@ -9,7 +9,13 @@ const modal_styles = {
   padding: '50px',
   backgroundColor: 'white',
   zIndex: 1000,
-  transform: 'translate(-50%, -50%)'
+  transform: 'translate(-50%, -50%)',
+};
+
+const form_style = {
+  'max-height': 'calc(100vh - 300px)',
+  'overflow-y': 'auto',
+  'overflow-x': 'hidden'
 };
 
 const overlay_styles = {
@@ -31,7 +37,9 @@ function GenericModal ({open, children, onClose}) {
       <div style={overlay_styles}/>
       <div style={modal_styles}>
         <button className="exit-modal" onClick={onClose}>Exit</button>
-        {children}
+        <div style={form_style}>
+          {children}
+        </div>
       </div>
       {/* <button onClick={onClose}>Submit</button> */}
     </div>,
