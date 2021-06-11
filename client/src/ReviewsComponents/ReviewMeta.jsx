@@ -16,6 +16,7 @@ function ReviewMeta(props) {
       </div>
       <div>{recommendationPercentage}% of reviews recommend this product</div>
       <FactorBreakdown rating={formatedStars} />
+      <CharBreakdown chars={formatedChars} />
     </div>
   );
 }
@@ -30,6 +31,26 @@ function FactorBreakdown(props) {
           <div className="progress" key={rating.star}>
             <a href="#">{rating.star} stars</a>
             <progress max="100" value={rating.percent}></progress>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+function CharBreakdown(props) {
+  return (
+    <div className="char-containter">
+      {props.chars.map(char => {
+        return (
+          <div>
+            <div>{char.char}</div>
+            <div key={char.char} className="char-bar">
+              <div className="char-bar-value" style={{ width: char.percent + '%' }}>
+                <div className="arrow"></div>
+              </div>
+            </div>
+            <div className="char-endpoints"><span>{char.low}</span><span>{char.high}</span></div>
           </div>
         );
       })}

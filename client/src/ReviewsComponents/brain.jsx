@@ -72,6 +72,15 @@ brain.formatCharsForDisplay = function (data) {
   if (!data) {
     return [];
   } else {
+    let charsTable = {
+      Size: ['A size too small', 'A size too wide'],
+      Width: ['Too narrow', 'Too wide'],
+      Comfort: ['Uncomfortable', 'Perfect'],
+      Quality: ['Poor', 'Perfect'],
+      Length: ['Runs Short', 'Runs long'],
+      Fit: ['Runs tight', 'Runs long']
+    };
+
     let chars = data.characteristics;
     let formated = [];
 
@@ -79,11 +88,12 @@ brain.formatCharsForDisplay = function (data) {
       let single = {};
       single.char = char;
       single.percent = Math.round(Number(chars[char].value) / 5 * 100);
+      single.low = charsTable[char][0];
+      single.high = charsTable[char][1];
       formated.push(single);
     }
 
-    console.log(formated);
-    return [];
+    return formated;
   }
 };
 

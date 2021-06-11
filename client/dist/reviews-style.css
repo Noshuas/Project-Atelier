@@ -46,7 +46,7 @@ html {
 .ratings .main {
   display: inline-flex;
   flex-direction: row;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
   margin-top: 5px;
 }
 
@@ -79,6 +79,46 @@ progress::-webkit-progress-value {
   border-radius: 0;
 }
 
+.char-bar {
+  height: 8px;
+  width: 100%;
+  background-color: rgb(235,235,235);
+}
+
+.char-bar-value {
+  height: 8px;
+  background-color: rgb(235,235,235);
+  text-align: end;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.arrow {
+  width: 0;
+  height: 0;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-top: 14px solid rgb(82,82,82);
+}
+
+.char-endpoints {
+  font-size: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.char-containter {
+  margin-top: 45px;
+  margin-bottom: 200px;
+}
+
+.char-containter > div {
+  margin-bottom: 15px;
+}
+
+.char-containter > div > div {
+  margin-bottom: 5px;
+}
 /********** REVIEW ITEMS ***********/
 .review-list {
   max-height: calc(100vh - 200px);
