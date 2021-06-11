@@ -2,7 +2,6 @@ import API from '../configAPI.js';
 import axios from 'axios';
 import React from 'react';
 
-//console.log(axios.get(API.url + '/products/17069/styles', API.auth));
 
 export function getProducts(productId) {
   return axios.get(API.url + `/products/${productId}`, API.auth);
@@ -13,7 +12,7 @@ export function getProductStyles(productId) {
 }
 
 export function getProductReviewsMeta(productId) {
-  return axios.get(API.url + `/reviews/meta?product_id=${productId}`, API.auth)
+  return axios.get(API.url + `/reviews/meta?count=1000&product_id=${productId}`, API.auth)
     .then( resVal => calcStarRating(resVal.data.ratings));
 }
 
@@ -135,6 +134,7 @@ export function createDefaultStyle(data) {
     originalPrice: '',
     salePrice: '',
     primaryImage: {},
+    skus: {},
     photoInfo: []
   };
   for (var style of data.results) {
@@ -143,6 +143,7 @@ export function createDefaultStyle(data) {
       defaultStyle.originalPrice = style.original_price;
       defaultStyle.salePrice = style.sale_price;
       defaultStyle.primaryImage = {url: style.photos[0].url, index: 0};
+      defaultStyle.skus = style.skus;
       for (var photo of style.photos) {
         defaultStyle.photoInfo.push(photo);
       }
@@ -158,6 +159,7 @@ export function getNewProductDetails(index, styles) {
     originalPrice: styles.results[index].original_price,
     salePrice: styles.results[index].sale_price,
     primaryURL: '',
+    skus: styles.results[index].skus,
     largePhotoURLs: [],
     smallPhotoURLs: []
   };

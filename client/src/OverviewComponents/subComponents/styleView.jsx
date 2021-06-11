@@ -9,6 +9,7 @@ export function StyleSelector() {
   const {heroImage, setHeroImage} = useContext(OverviewContext);
   const {productStyles, setProductStyles} = useContext(OverviewContext);
   const {currentStyle, setCurrentStyle} = useContext(OverviewContext);
+  const {userSelections, setUserSelections} = useContext(OverviewContext);
 
   let styleStorage = [];
 
@@ -17,6 +18,7 @@ export function StyleSelector() {
       return (
         <div key={index} className="style-img-wrapper" onClick={() => {
           let newProductDetails = getNewProductDetails(index, productStyles);
+          setUserSelections({});
           setHeroImage({
             url: newProductDetails.primaryURL,
             index: 0
@@ -26,11 +28,7 @@ export function StyleSelector() {
             images: newProductDetails.smallPhotoURLs.slice(0, 4),
             initialIndex: 0
           });
-          setCurrentStyle({
-            name: newProductDetails.name,
-            originalPrice: newProductDetails.originalPrice,
-            salePrice: newProductDetails.salePrice
-          });
+          setCurrentStyle(newProductDetails);
         }}>
           <img className="style-img" src={style.photos[0].thumbnail_url} />
         </div>

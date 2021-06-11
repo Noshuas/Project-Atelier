@@ -15,7 +15,8 @@ export function useOverview() {
   const [productStarRatings, setProductStarRatings] = useState(null);
   const [reviewCount, setReviewCount] = useState(null);
   const [productStyles, setProductStyles] = useState({});
-  const [currentStyle, setCurrentStyle] = useState({name: '', originalPrice: '', salePrice: ''});
+  const [currentStyle, setCurrentStyle] = useState({});
+  const [userSelections, setUserSelections] = useState({});
   const [carouselLargeImages, setCarouselLargeImages] = useState([]);
   const [carouselSmallImages, setCarouselSmallImages] = useState({images: [], initialIndex: 0});
   const [heroImage, setHeroImage] = useState({url: '', index: 0});
@@ -39,11 +40,7 @@ export function useOverview() {
         setProductStarRatings(starRatings);
         setReviewCount(totalReviews);
         setProductStyles(styles.data);
-        setCurrentStyle({
-          name: defaultStyle.name,
-          originalPrice: defaultStyle.originalPrice,
-          salePrice: defaultStyle.salePrice
-        });
+        setCurrentStyle(defaultStyle);
         setHeroImage(defaultStyle.primaryImage);
         setCarouselLargeImages(defaultStyle.photoInfo);
         setCarouselSmallImages({
@@ -65,11 +62,7 @@ export function useOverview() {
         setProductStarRatings(starRatings);
         setReviewCount(totalReviews);
         setProductStyles(styles.data);
-        setCurrentStyle({
-          name: defaultStyle.name,
-          originalPrice: defaultStyle.originalPrice,
-          salePrice: defaultStyle.salePrice
-        });
+        setCurrentStyle(defaultStyle);
         setHeroImage(defaultStyle.primaryImage);
         setCarouselLargeImages(defaultStyle.photoInfo);
         setCarouselSmallImages({
@@ -85,6 +78,7 @@ export function useOverview() {
     reviewCount, setReviewCount,
     productStyles, setProductStyles,
     currentStyle, setCurrentStyle,
+    userSelections, setUserSelections,
     carouselLargeImages, setCarouselLargeImages,
     carouselSmallImages, setCarouselSmallImages,
     heroImage, setHeroImage,

@@ -235,6 +235,17 @@ section.overview {
   border: 2px solid white;
 }
 
+.overview .details .size-select {
+  width: 123px;
+  font-size: 15px;
+  margin-right: 14px;
+}
+
+.overview .details .quantity-select {
+  width: 80px;
+  font-size: 15px;
+}
+
 .overview .description {
   grid-column-start: 1;
   grid-column-end: span 2;
