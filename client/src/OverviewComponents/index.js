@@ -1,9 +1,10 @@
 import { Overview } from './View.jsx';
 import { OverviewContext, useOverview } from './Model.jsx';
-import { getProducts, getProductStyles } from './Controllers.js';
-import { displayNextImage, displayPreviousImage } from './Controllers.js';
-import { incrementCarouselRange, decrementCarouselRange } from './Controllers.js';
-import { createDefaultStyle, getNewProductDetails } from './Controllers.js';
+import { getProducts, getProductStyles } from './Controllers.jsx';
+import { getProductReviewsMeta, getProductReviews } from './Controllers.jsx';
+import { displayNextImage, displayPreviousImage, createStars } from './Controllers.jsx';
+import { incrementCarouselRange, decrementCarouselRange } from './Controllers.jsx';
+import { createDefaultStyle, getNewProductDetails } from './Controllers.jsx';
 import { iconURLs } from './iconURLs.js';
 import { HeroImage } from './subComponents/heroImageView.jsx';
 import { ImageControls } from './subComponents/primaryIconView.jsx';
@@ -20,8 +21,11 @@ export {
   useOverview,
   getProducts,
   getProductStyles,
+  getProductReviewsMeta,
+  getProductReviews,
   displayNextImage,
   displayPreviousImage,
+  createStars,
   incrementCarouselRange,
   decrementCarouselRange,
   createDefaultStyle,
