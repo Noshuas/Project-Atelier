@@ -16,17 +16,16 @@ function Helpfulness (props) {
   if (!feedback) {
 
     return (
-      <div>
-        <span> Helpful? </span>
-        <a href="#" onClick={handleClick}>Yes</a>
-        <span> ({props.helpfulness})  </span>
-      </div>
+      <>
+        <span> Helpful? <a href="#" onClick={handleClick}>Yes</a> ({props.helpfulness})
+        </span>
+      </>
     );
   }
   return (
-    <div>
+    <>
       <span> Helpful?  Yes ({props.helpfulness + 1})  </span>
-    </div>
+    </>
   );
 }
 

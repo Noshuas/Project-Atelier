@@ -14,26 +14,26 @@ function Answer(props) {
       })
       .catch( (err) => { console.log('err:', err); });
   };
-  if (!reported) {
-    return (
-      <div>
-        <span>{props.info.body}</span>
-        <div className="answersToolbar">
-          <span>by {props.info.answerer_name} {brain.getFormatedTimestamp(props.info.date)} </span>
-          <span>|</span>
-          <Helpfulness helpfulness={props.info.helpfulness} QorA='answers' id={props.info.answer_id}/>
-          <span>|</span>
-          <a href="#" onClick={handleClick}>Report</a>
-        </div>
-        <Photos photos={props.info.photos}/>
-      </div>
-    );
-  }
+
   return (
-    <div>
-      <span>Thank you for reporting this answer.</span>
+    <div className='answer-section'>
+      <span>{props.info.body}</span>
+      <div className="answersToolbar">
+        <span >
+          by {props.info.answerer_name} {brain.getFormatedTimestamp(props.info.date)} |
+          <Helpfulness helpfulness={props.info.helpfulness} QorA='answers' id={props.info.answer_id}/> | <a href="#" onClick={handleClick}>{reported ? 'Reported' : 'Report'}</a>
+        </span>
+      </div>
+      <Photos photos={props.info.photos}/>
     </div>
   );
+
+  // If reporting where to delete the answer right away use this :
+  // return (
+  //   <div>
+  //     <span>Thank you for reporting this answer.</span>
+  //   </div>
+  // );
 }
 
 function Photos(props) {

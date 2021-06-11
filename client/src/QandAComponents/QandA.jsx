@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import QuestionList from './QuestionList.jsx';
 import QuestionSearchBar from './QuestionSearchBar.jsx';
 import AddNewQuestion from './AddNewQuestion.jsx';
 import QAapiCalls from './QandAAPIcalls.js';
 import Helpers from './Helpers.js';
+import { AppContext } from '../AppComponents/index.js';
 
 const QandA = (props) => {
-
+  const { clickListener } = useContext(AppContext);
   const [questions, setQuestions] = useState([]);
   const [filteredQuestions, setFilteredQuestions] = useState([]);
   const [expanded, setExpanded] = useState(false);
@@ -41,14 +42,23 @@ const QandA = (props) => {
   function handleMoreQuestions (event) {
     setExpanded(!expanded);
   }
-
+  if (questions.length === 0) {
+    return (
+      <div className="QandA">
+        <h2>QUESTIONS &amp; ANSWERS</h2>
+        < AddNewQuestion productId={props.productId} productName={props.productName}/>
+      </div>
+    );
+  }
   return (
-    <div className="QandA">
+    <div className="QandA" onClick={(event) => {
+      clickListener(event, 'Questions and Answers');
+    }}>
       <h2>QUESTIONS &amp; ANSWERS</h2>
       < QuestionSearchBar handleChange={handleChange}/>
-      < QuestionList questions={filteredQuestions} expanded={expanded}/>
-      <div>
-        < AddNewQuestion productId={props.productId}/>
+      < QuestionList questions={filteredQuestions} expanded={expanded} productName={props.productName}/>
+      <div className='question-btns'>
+        < AddNewQuestion productId={props.productId} productName={props.productName}/>
         <button onClick={handleMoreQuestions}>{!expanded ? 'More Answered Questions' : 'Show Less Answered Questions'}</button>
       </div>
     </div>

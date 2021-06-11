@@ -25,8 +25,8 @@ function App() {
   useEffect(() => {
     RandRAPIcalls.getProducts()
       .then(response => {
-        setProduct(response.data[3].id);
-        setProductName(response.data[3].name);
+        setProduct(response.data[2].id);
+        setProductName(response.data[2].name);
       });
   }, []);
 
@@ -42,8 +42,8 @@ function App() {
         <Overview />
         <Related />
       </OverviewContext.Provider>
-      <QandA productId={productId} />
-      <RandR productId={productId} productName={productName} />
+      <QandA productId={productId} productName={productName}/>
+      <RandR productId={productId} productName={productName}/>
     </AppContext.Provider>
   );
 }
