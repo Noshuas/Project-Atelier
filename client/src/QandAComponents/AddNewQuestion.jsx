@@ -33,7 +33,7 @@ const AddNewQuestion = (props) => {
       .catch(err => { console.log('err', err); });
   };
   return (
-    <div>
+    <>
       <button onClick={() => resetForm(true)}>Add A Question</button>
       <GenericModal open={open} onClose={() => resetForm(false)}>
         <form onSubmit={handleFormSubmit} className="QnA-form">
@@ -82,7 +82,7 @@ const AddNewQuestion = (props) => {
           <input className='form-submit-btn' type="submit"/>
         </form>
       </GenericModal>
-    </div>
+    </>
   );
 };
 

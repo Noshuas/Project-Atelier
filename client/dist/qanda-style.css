@@ -1,19 +1,8 @@
-.answersToolbar {
-  display: flex;
-  flex-direction: row;
-  font-size: 12px;
-}
 p {
   margin: 5px;
 }
-.photo-image {
-  width: 100px;
-  height: 75px;
-}
-.question-toolbar {
-  display: flex;
-  flex-direction: row;
-  font-size: 22px;
+h3 {
+  font-weight: bold;
 }
 .exit-modal {
   position: absolute;
@@ -22,16 +11,67 @@ p {
   width: 75px;
   height: 30px;
 }
+/* Questions */
+.question-section {
+  border-bottom: solid black 1px;
+}
 .question-list {
   max-height: calc(100vh - 200px);
   overflow-y: auto;
   overflow-x: hidden;
 }
+
+.question-toolbar {
+  display: flex;
+  flex-direction: row;
+  font-size: 22px;
+}
+
+.question-main {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.question-toolbar > span {
+  font-size: 15px;
+}
+
+#questionSearch {
+  width: calc(75vh - 100px);
+  height: 35px
+}
+.question-btns {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+.question-btns > button {
+  height: 59px;
+  margin: 35px 35px 50px 0px;
+  padding: 20px;
+}
+/* Answers */
+.answersToolbar {
+  display: flex;
+  flex-direction: row;
+  font-size: 12px;
+}
+
 .answer-list {
   max-height: calc(50vh);
   overflow-y: auto;
   overflow-x: hidden;
 }
+
+.photo-image {
+  width: 100px;
+  height: 75px;
+}
+
+/*
+ Form Styling
+*/
 .QnA-form {
   margin: 5px;
   padding: 5px;
@@ -51,11 +91,13 @@ p {
   border-width: 1px;
 }
 .QnA-form > span {
-  margin-bottom: 10px
+  margin-bottom: 10px;
+  font-size: 12px;
 }
 .QnA-form > label {
   margin: 3px
 }
+
 .form-submit-btn {
   width: 100px;
   height: 35px;
@@ -63,15 +105,6 @@ p {
 }
 .form-input-txt {
   width: 200px;
-}
-.question-main {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-#questionSearch {
-  width: calc(75vh - 100px);
-  height: 35px
 }
 .red-asterisk {
   color: red

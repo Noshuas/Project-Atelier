@@ -52,7 +52,7 @@ const Question = (props) => {
       });
   }, [props.info]);
   return (
-    <div>
+    <div className='question-section'>
       <div className="question-main">
         <h3>Q: {props.info.question_body} </h3>
         <div className="question-toolbar">
