@@ -35,6 +35,10 @@ html {
   grid-column: 1 / span 3;
 }
 
+.ratings-and-reviews a {
+  color: rgb(82,82,82)
+}
+
 /********** RATING META ***********/
 .average-rating {
   font-size: 80px;

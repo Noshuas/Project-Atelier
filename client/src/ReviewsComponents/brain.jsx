@@ -140,6 +140,12 @@ brain.getRecommanendationPercentage = function (data) {
   }
 };
 
-
+brain.filterReviews = function (filters, list) {
+  if (!filters.length) {
+    return list;
+  } else {
+    return list.filter((item) => filters.includes(item.rating));
+  }
+};
 
 export default brain;
