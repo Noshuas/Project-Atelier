@@ -13,9 +13,9 @@ const modal_styles = {
 };
 
 const form_style = {
-  'max-height': 'calc(100vh - 300px)',
-  'overflow-y': 'auto',
-  'overflow-x': 'hidden'
+  maxHeight: 'calc(100vh - 300px)',
+  overflowY: 'auto',
+  overflowX: 'hidden'
 };
 
 const overlay_styles = {
