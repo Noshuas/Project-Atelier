@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import { AppContext } from '../../AppComponents/index.js';
 import { OverviewContext, createStars } from '../index.js';
-import RatingStars from '../../ReviewsComponents/RatingStars.jsx';
 
 export function ProductDetails() {
   const {currentProduct, setCurrentProduct} = useContext(OverviewContext);

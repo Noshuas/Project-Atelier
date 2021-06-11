@@ -3,14 +3,14 @@ import React from 'react';
 import API from '../configAPI.js';
 // import ImageKit from 'imagekit-javascript';
 
-
+let serverURL = 'http://localhost:3000';
 
 
 let RandRAPIcalls = {};
 
 
 RandRAPIcalls.getProducts = function () {
-  return axios.get(API.url + '/products', API.auth);
+  return axios.get(serverURL + '/products');
 };
 
 RandRAPIcalls.getReviews = function (productId, sort = 'relevant', count = 2, page = 1) {
