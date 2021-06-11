@@ -1,0 +1,254 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`QuestionList snapshot 1 1`] = `
+<div
+  className="question-list"
+  data-testid="question-list"
+/>
+`;
+
+exports[`QuestionList snapshot 2 1`] = `
+<div
+  className="question-list"
+  data-testid="question-list"
+>
+  <div
+    className="question-section"
+  >
+    <div
+      className="question-main"
+    >
+      <h3>
+        Q: 
+        Test 1?
+         
+      </h3>
+      <div
+        className="question-toolbar"
+      >
+        <span>
+          <span>
+             Helpful? 
+            <a
+              href="#"
+              onClick={[Function]}
+            >
+              Yes
+            </a>
+             (
+            10
+            )
+          </span>
+           | 
+          <a
+            href="#"
+            onClick={[Function]}
+          >
+            Add Answer
+          </a>
+        </span>
+      </div>
+    </div>
+    <h3>
+      A:
+    </h3>
+    <div>
+      <span>
+        This question currently has no answers
+      </span>
+    </div>
+  </div>
+  <div
+    className="question-section"
+  >
+    <div
+      className="question-main"
+    >
+      <h3>
+        Q: 
+        Test 2?
+         
+      </h3>
+      <div
+        className="question-toolbar"
+      >
+        <span>
+          <span>
+             Helpful? 
+            <a
+              href="#"
+              onClick={[Function]}
+            >
+              Yes
+            </a>
+             (
+            10
+            )
+          </span>
+           | 
+          <a
+            href="#"
+            onClick={[Function]}
+          >
+            Add Answer
+          </a>
+        </span>
+      </div>
+    </div>
+    <h3>
+      A:
+    </h3>
+    <div>
+      <span>
+        This question currently has no answers
+      </span>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`QuestionList snapshot 3 1`] = `
+<div
+  className="question-list"
+  data-testid="question-list"
+>
+  <div
+    className="question-section"
+  >
+    <div
+      className="question-main"
+    >
+      <h3>
+        Q: 
+        Test 1?
+         
+      </h3>
+      <div
+        className="question-toolbar"
+      >
+        <span>
+          <span>
+             Helpful? 
+            <a
+              href="#"
+              onClick={[Function]}
+            >
+              Yes
+            </a>
+             (
+            10
+            )
+          </span>
+           | 
+          <a
+            href="#"
+            onClick={[Function]}
+          >
+            Add Answer
+          </a>
+        </span>
+      </div>
+    </div>
+    <h3>
+      A:
+    </h3>
+    <div>
+      <span>
+        This question currently has no answers
+      </span>
+    </div>
+  </div>
+  <div
+    className="question-section"
+  >
+    <div
+      className="question-main"
+    >
+      <h3>
+        Q: 
+        Test 2?
+         
+      </h3>
+      <div
+        className="question-toolbar"
+      >
+        <span>
+          <span>
+             Helpful? 
+            <a
+              href="#"
+              onClick={[Function]}
+            >
+              Yes
+            </a>
+             (
+            10
+            )
+          </span>
+           | 
+          <a
+            href="#"
+            onClick={[Function]}
+          >
+            Add Answer
+          </a>
+        </span>
+      </div>
+    </div>
+    <h3>
+      A:
+    </h3>
+    <div>
+      <span>
+        This question currently has no answers
+      </span>
+    </div>
+  </div>
+  <div
+    className="question-section"
+  >
+    <div
+      className="question-main"
+    >
+      <h3>
+        Q: 
+        Should not display unless expanded
+         
+      </h3>
+      <div
+        className="question-toolbar"
+      >
+        <span>
+          <span>
+             Helpful? 
+            <a
+              href="#"
+              onClick={[Function]}
+            >
+              Yes
+            </a>
+             (
+            10
+            )
+          </span>
+           | 
+          <a
+            href="#"
+            onClick={[Function]}
+          >
+            Add Answer
+          </a>
+        </span>
+      </div>
+    </div>
+    <h3>
+      A:
+    </h3>
+    <div>
+      <span>
+        This question currently has no answers
+      </span>
+    </div>
+  </div>
+</div>
+`;
