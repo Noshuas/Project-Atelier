@@ -1,8 +1,13 @@
 import React, { createContext, useState } from 'react';
+import { clickListener } from './index.js';
+import API from '../configAPI.js';
+import axios from 'axios';
 
 export const AppContext = createContext();
 
 export function useApp() {
+  // These are just example state variables, they are not returned
   const [example, setExample] = useState('');
-  return {example, setExample};
+
+  return {clickListener};
 }

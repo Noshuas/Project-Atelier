@@ -3,13 +3,19 @@ import ReactDOM from 'react-dom';
 // could make more generic
 
 const modal_styles = {
-  position: 'absolute',
-  top: '50%',
+  top: '70%',
+  position: 'fixed',
   left: '50%',
   padding: '50px',
   backgroundColor: 'white',
   zIndex: 1000,
-  transform: 'translate(-50%, -50%)'
+  transform: 'translate(-50%, -50%)',
+};
+
+const form_style = {
+  maxHeight: 'calc(100vh - 300px)',
+  overflowY: 'auto',
+  overflowX: 'hidden'
 };
 
 const overlay_styles = {
@@ -31,7 +37,9 @@ function GenericModal ({open, children, onClose}) {
       <div style={overlay_styles}/>
       <div style={modal_styles}>
         <button className="exit-modal" onClick={onClose}>Exit</button>
-        {children}
+        <div style={form_style}>
+          {children}
+        </div>
       </div>
       {/* <button onClick={onClose}>Submit</button> */}
     </div>,

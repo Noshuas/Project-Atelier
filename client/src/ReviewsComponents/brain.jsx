@@ -68,4 +68,84 @@ brain.formatCharacteristics = function (charValues, charTemplate) {
   return formated;
 };
 
+brain.formatCharsForDisplay = function (data) {
+  if (!data) {
+    return [];
+  } else {
+    let charsTable = {
+      Size: ['A size too small', 'A size too wide'],
+      Width: ['Too narrow', 'Too wide'],
+      Comfort: ['Uncomfortable', 'Perfect'],
+      Quality: ['Poor', 'Perfect'],
+      Length: ['Runs Short', 'Runs long'],
+      Fit: ['Runs tight', 'Runs long']
+    };
+
+    let chars = data.characteristics;
+    let formated = [];
+
+    for (let char in chars) {
+      let single = {};
+      single.char = char;
+      single.percent = Math.round(Number(chars[char].value) / 5 * 100);
+      single.low = charsTable[char][0];
+      single.high = charsTable[char][1];
+      formated.push(single);
+    }
+
+    return formated;
+  }
+};
+
+brain.formatRatings = function (data) {
+  if (!data) {
+    return [];
+  } else {
+    let totalReviews = Number(data.recommended.false) + Number(data.recommended.true);
+    let ratios = [];
+
+    for (let rating in data.ratings) {
+      let ratio = {};
+      ratio.star = rating;
+      ratio.percent = Math.round(Number(data.ratings[rating]) / totalReviews * 100);
+      ratios.push(ratio);
+    }
+
+    return ratios;
+  }
+};
+
+brain.getAverageRating = function (data) {
+  if (!data) {
+    return '0.0';
+  } else {
+    let totalReviews = Number(data.recommended.false) + Number(data.recommended.true);
+    let ratingSum = 0;
+
+    for (let rating in data.ratings) {
+      ratingSum += Number(rating) * Number(data.ratings[rating]);
+    }
+
+    return (Math.round(ratingSum / totalReviews * 10) / 10).toString();
+  }
+};
+
+brain.getRecommanendationPercentage = function (data) {
+  if (!data) {
+    return '0';
+  } else {
+    let totalReviews = Number(data.recommended.false) + Number(data.recommended.true);
+    let percentage = Math.round(Number((data.recommended.true) / totalReviews) * 100);
+    return percentage.toString();
+  }
+};
+
+brain.filterReviews = function (filters, list) {
+  if (!filters.length) {
+    return list;
+  } else {
+    return list.filter((item) => filters.includes(item.rating));
+  }
+};
+
 export default brain;

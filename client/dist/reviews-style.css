@@ -15,8 +15,114 @@ html {
 
 .ratings-and-reviews {
   margin-top: 50px;
+  display: grid;
+  grid-template-rows: 60px auto;
+  grid-template-columns: 27% 6% auto;
 }
 
+.ratings {
+  grid-row: 2 / span 1;
+  grid-column: 1 / span 1;
+}
+
+.reviews {
+  grid-row: 2 / span 1;
+  grid-column: 3 / span 1;
+}
+
+.ratings-and-reviews > h3 {
+  grid-row: 1 / span 1;
+  grid-column: 1 / span 3;
+}
+
+.ratings-and-reviews a {
+  color: rgb(82,82,82)
+}
+
+/********** RATING META ***********/
+.average-rating {
+  font-size: 80px;
+  font-weight: bold;
+  line-height: 60px;
+  margin-right: 20px;
+}
+
+.ratings .main {
+  display: inline-flex;
+  flex-direction: row;
+  margin-bottom: 30px;
+  margin-top: 5px;
+}
+
+.progress-containter {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.progress {
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+}
+
+progress {
+  margin-left: 10px;
+  width: 80%;
+  height: 8px;
+  border-radius: 9px;
+}
+
+progress::-webkit-progress-bar {
+  background-color: rgb(235,235,235);
+  border-radius: 0;
+  height: 8px;
+}
+
+progress::-webkit-progress-value {
+  background-color: rgb(82,82,82);
+  border-radius: 0;
+}
+
+.char-bar {
+  height: 8px;
+  width: 100%;
+  background-color: rgb(235,235,235);
+}
+
+.char-bar-value {
+  height: 8px;
+  background-color: rgb(235,235,235);
+  text-align: end;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.arrow {
+  width: 0;
+  height: 0;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-top: 14px solid rgb(82,82,82);
+}
+
+.char-endpoints {
+  font-size: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.char-containter {
+  margin-top: 45px;
+  margin-bottom: 200px;
+}
+
+.char-containter > div {
+  margin-bottom: 15px;
+}
+
+.char-containter > div > div {
+  margin-bottom: 5px;
+}
 /********** REVIEW ITEMS ***********/
 .review-list {
   max-height: calc(100vh - 200px);
@@ -31,6 +137,7 @@ html {
 
 .review-item > * {
   padding-bottom: 15px;
+  margin-left: 0;
 }
 
 .review-item > .top-row {
@@ -96,8 +203,8 @@ html {
 }
 
 /********** FORM ***********/
+
 .add-review {
-  padding: 70px;
   width: 600px
 }
 

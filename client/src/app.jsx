@@ -25,8 +25,8 @@ function App() {
   useEffect(() => {
     RandRAPIcalls.getProducts()
       .then(response => {
-        setProduct(response.data[3].id);
-        setProductName(response.data[3].name);
+        setProduct(response.data[2].id);
+        setProductName(response.data[2].name);
       });
   }, []);
 
@@ -36,26 +36,14 @@ function App() {
   // Related Hooks
   const relatedState = useRelated();
 
-
-  // Luka's Methods
-  // method1 () {}
-
-  //Derek's Methods
-  // method2 () {}
-
-  //Will's Methods
-  // method3 () {}
-
   return (
     <AppContext.Provider value={appState}>
       <OverviewContext.Provider value={overviewState}>
         <Overview />
-      </OverviewContext.Provider>
-      <RelatedContext.Provider value={relatedState}>
         <Related />
-      </RelatedContext.Provider>
-      <QandA productId={productId} />
-      <RandR productId={productId} productName={productName} />
+      </OverviewContext.Provider>
+      <QandA productId={productId} productName={productName}/>
+      <RandR productId={productId} productName={productName}/>
     </AppContext.Provider>
   );
 }

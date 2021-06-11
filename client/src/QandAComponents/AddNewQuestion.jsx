@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import GenericModal from './GenericModal.jsx';
 import QandAAPIcalls from './QandAAPIcalls.js';
-const AdditionalQuestions = (props) => {
+
+const AddNewQuestion = (props) => {
 
   let [open, setOpen] = useState(false);
   let [values, setValues] = useState({
@@ -29,28 +30,34 @@ const AdditionalQuestions = (props) => {
         console.log('successs', response);
         setOpen(false);
       })
-      .catch(err => {console.log('err', err); });
+      .catch(err => { console.log('err', err); });
   };
   return (
-    <div>
-      <button>More Answered Questions</button>
+    <>
       <button onClick={() => resetForm(true)}>Add A Question</button>
       <GenericModal open={open} onClose={() => resetForm(false)}>
         <form onSubmit={handleFormSubmit} className="QnA-form">
-          <label htmlFor='question'>Your Question</label>
-          <input
-            type='text'
+          <h1>Ask Your Question</h1>
+          <h2>About the {props.productName}</h2>
+          <label htmlFor='question'>Your Question
+            <span className='red-asterisk'>*</span>
+          </label>
+          <textarea
             name='question'
             value={values.question}
             onChange={handleQuestionChange}
             maxLength='1000'
-            size= '60'
+            rows="5"
+            cols="40"
             required
           />
-          <label htmlFor='nickname'>What is your nickname?</label>
+          <label htmlFor='nickname'>What is your nickname?
+            <span className='red-asterisk'>*</span>
+          </label>
           <input
             type='text'
             name='nickname'
+            className='form-input-txt'
             value={values.nickname}
             onChange={handleNicknameChange}
             placeholder="Example: jackson11!"
@@ -58,10 +65,13 @@ const AdditionalQuestions = (props) => {
             required
           />
           <span>For privacy reasons, do not use your full name or email address</span>
-          <label htmlFor='email'>What is your email?</label>
+          <label htmlFor='email'>What is your email?
+            <span className='red-asterisk'>*</span>
+          </label>
           <input
             type='email'
             name='email'
+            className='form-input-txt'
             value={values.email}
             onChange={handleEmailChange}
             placeholder="Example: jack@email.com"
@@ -69,11 +79,11 @@ const AdditionalQuestions = (props) => {
             required
           />
           <span>For authentication reasons, you will not be emailed</span>
-          <input type="submit"/>
+          <input className='form-submit-btn' type="submit"/>
         </form>
       </GenericModal>
-    </div>
+    </>
   );
 };
 
-export default AdditionalQuestions;
+export default AddNewQuestion;
