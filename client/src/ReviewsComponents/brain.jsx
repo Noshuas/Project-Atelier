@@ -126,7 +126,9 @@ brain.getAverageRating = function (data) {
       ratingSum += Number(rating) * Number(data.ratings[rating]);
     }
 
-    return (Math.round(ratingSum / totalReviews * 10) / 10).toString();
+    let average = (Math.round(ratingSum / totalReviews * 10) / 10).toString();
+    average += average.length < 2 ? '.0' : '';
+    return average;
   }
 };
 
