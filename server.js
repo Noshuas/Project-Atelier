@@ -16,6 +16,17 @@ app.get('/products', (req, res) => {
     .then((response) => res.send(response.data));
 });
 
+//Luka's endpoints
+
+
+//Will's endpoints
+
+
+//Derek's endpoints
+
+
+
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });
+
