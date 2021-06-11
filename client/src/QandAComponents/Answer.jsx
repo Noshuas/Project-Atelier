@@ -16,7 +16,7 @@ function Answer(props) {
   };
 
   return (
-    <div>
+    <div className='answer-section'>
       <span>{props.info.body}</span>
       <div className="answersToolbar">
         <span >

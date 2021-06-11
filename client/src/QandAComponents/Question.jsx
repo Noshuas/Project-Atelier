@@ -15,7 +15,8 @@ const Question = (props) => {
     nickname: '',
     email: ''
   });
-  const handleMoreAnswers = () => {
+  const handleMoreAnswers = (event) => {
+    event.preventDefault();
     setMoreAnswers(!moreAnswers);
   };
   const resetForm = (openValue) => {

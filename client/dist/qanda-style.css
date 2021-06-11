@@ -14,6 +14,7 @@ h3 {
 /* Questions */
 .question-section {
   border-bottom: solid black 1px;
+  padding: 10px
 }
 .question-list {
   max-height: calc(100vh - 200px);
@@ -25,6 +26,7 @@ h3 {
   display: flex;
   flex-direction: row;
   font-size: 22px;
+  padding-right: 15px;
 }
 
 .question-main {
@@ -52,6 +54,15 @@ h3 {
   padding: 20px;
 }
 /* Answers */
+.answer-section {
+  border-top: black dashed 1px;
+  padding-bottom: 10px;
+}
+.answer-section > span {
+  padding-top: 5px;
+  padding-bottom: 10px;
+}
+
 .answersToolbar {
   display: flex;
   flex-direction: row;
