@@ -37,13 +37,6 @@ function FactorBreakdown(props) {
     }
   }
 
-  function styling (rating) {
-    console.log(rating);
-    return {
-      fontWeight: props.filters.includes(rating) ? 'bold' : 'normal'
-    };
-  }
-
   return (
     <div className="progress-containter">
       {props.rating.map(rating => {
@@ -65,7 +58,6 @@ function StarAnchor (props) {
     props.handleFilterSetting(e, props.rating);
     setFontWeight(fontWeight === 'bold' ? 'normal' : 'bold');
   }
-
 
   return (
     <a href="#" style={{fontWeight: fontWeight}} onClick={handleClick}>{props.rating} stars</a>
