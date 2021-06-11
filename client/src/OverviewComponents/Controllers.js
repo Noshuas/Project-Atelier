@@ -78,3 +78,42 @@ export function decrementCarouselRange(current, imagesArray) {
     initialIndex: imageIndexs[0]
   };
 }
+
+export function createDefaultStyle(data) {
+  let defaultStyle = {
+    name: '',
+    originalPrice: '',
+    primaryImage: {},
+    photoInfo: []
+  };
+  for (var style of data.results) {
+    if (style['default?']) {
+      defaultStyle.name = style.name;
+      defaultStyle.originalPrice = style.original_price;
+      defaultStyle.primaryImage = {url: style.photos[0].url, index: 0};
+      for (var photo of style.photos) {
+        defaultStyle.photoInfo.push(photo);
+      }
+      break;
+    }
+  }
+  return defaultStyle;
+}
+
+export function getNewProductDetails(index, styles) {
+  let newProductDetails = {
+    name: styles.results[index].name,
+    originalPrice: styles.results[index].original_price,
+    primaryURL: '',
+    largePhotoURLs: [],
+    smallPhotoURLs: []
+  };
+  for (var photo of styles.results[index].photos) {
+    if (!newProductDetails.primaryURL) {
+      newProductDetails.primaryURL = photo.url;
+    }
+    newProductDetails.largePhotoURLs.push(photo);
+    newProductDetails.smallPhotoURLs.push(photo);
+  }
+  return newProductDetails;
+}
