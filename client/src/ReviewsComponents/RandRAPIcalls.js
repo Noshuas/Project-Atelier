@@ -40,5 +40,9 @@ RandRAPIcalls.postReview = function (object) {
   return axios.post(serverURL + '/reviews', object);
 };
 
+RandRAPIcalls.cloudinary = function (formData) {
+  return axios.post(serverURL + '/image-upload', formData);
+};
+
 export default RandRAPIcalls;
 

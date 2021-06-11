@@ -6,6 +6,7 @@ import WasHelpful from './WasHelpful.jsx';
 
 function ReviewItem(props) {
   let review = props.review;
+  console.log(review);
   return (
     <div className="review-item fadeIn">
       <div className="top-row">
@@ -14,6 +15,7 @@ function ReviewItem(props) {
       </div>
       <h3>{review.summary}</h3>
       <p>{review.body}</p>
+      <Images pics={review.photos} />
       <IRecommmendThisProduct recommend={review.recommend} />
       <ReviewResponse response={review.response} />
       <WasHelpful helpfulness={review.helpfulness} reviewId={review.review_id} />
@@ -43,6 +45,19 @@ function IRecommmendThisProduct(props) {
     );
   }
   return null;
+}
+
+function Images (props) {
+  let style = {
+    display: 'inline-block',
+    maxHeight: '100px',
+    maxWidth: '100px',
+    marginRight: '20px'
+  };
+
+  return (
+    <div>{props.pics.map(pic => <img style={style} key={pic.id} src={pic.url}/>)}</div>
+  );
 }
 
 export default ReviewItem;

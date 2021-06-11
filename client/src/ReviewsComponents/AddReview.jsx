@@ -21,13 +21,14 @@ function AddReview(props) {
     setBody(e.target.value);
   }
 
-  function handleSubmit (e) {
+  function handleSubmit(e) {
     e.preventDefault();
     let characteristics = brain.formatCharacteristics(charValues, props.characteristics);
     let product_id = props.productId;
     RandRAPIcalls.postReview({
       product_id, rating, summary, body, recommend,
-      name, email, photos, characteristics})
+      name, email, photos, characteristics
+    })
       .then(setOpen(false))
       .then(() => props.setReviewCount(props.reviewCount + 1));
   }
@@ -47,8 +48,8 @@ function AddReview(props) {
                 value={rating} required onChange={(e) => setRating(e.target.value)}></input>
               <InteractiveStars setRating={setRating} />
             </div>
-            <div>
-              <div>Do you recommend this product?* </div>
+            <div className="form-recommend">
+              <span>Do you recommend this product?* </span>
               <label htmlFor='recommend'>Yes</label>
               <input type='radio' name='recommend' required onClick={() => setRecommend(true)}></input>
               <label htmlFor='recommend' onClick={() => setRecommend(false)}>No</label>
@@ -62,10 +63,12 @@ function AddReview(props) {
             </div>
             <div>
               <label htmlFor='body'>Review body*</label><br></br>
-              <textarea name='body' minLength="50" maxLength="1000" onChange={trackBodyChars} required></textarea>
+              <textarea name='body' minLength="50" maxLength="1000" cols="60" onChange={trackBodyChars} required></textarea>
               <div>{body.length < 50 ? `Minimum required characters left: ${50 - body.length}` : 'Minimum reached'}</div>
             </div>
-            <UploadPhotos />
+            <div>Upload images:
+              <UploadPhotos setPhotos={setPhotos}/>
+            </div>
             <div>
               <label htmlFor='nickname'>What is your nickname?*</label><br></br>
               <input type='text' name='nickname' placeholder="Example: jackson11!" required
@@ -76,7 +79,7 @@ function AddReview(props) {
               <input type='email' name='email' placeholder="Example: jackson11@email.com" required
                 value={email} onChange={(e) => setEmail(e.target.value)}></input>
             </div>
-            <input type='submit' name='submit' value="Submit"></input>
+            <input className="submit" type='submit' name='submit' value="SUBMIT"></input>
           </form>
         </div>
       </GenericModal>

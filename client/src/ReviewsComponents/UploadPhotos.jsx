@@ -5,6 +5,11 @@ import RandRAPIcalls from './RandRAPIcalls';
 function UploadPhotos(props) {
   const [uploading, setUploading] = useState(false);
   const [images, setImages] = useState([]);
+  useEffect(() => {
+    let imageUrls = [];
+    images.forEach(image => imageUrls.push(image.secure_url));
+    props.setPhotos(imageUrls);
+  }, [images]);
 
   function onChange(e) {
     let files = Array.from(e.target.files);
@@ -16,12 +21,11 @@ function UploadPhotos(props) {
       formData.append('file', file);
     });
 
-    RandRAPIcalls.cloudinary(files[0]);
-    //API CALL
-    // .then(res => {
-    //   setUploading(false);
-    //   setImages(res);
-    // })
+    RandRAPIcalls.cloudinary(formData)
+      .then(images => {
+        setUploading(false);
+        setImages(images.data);
+      });
   }
 
   function removeImage(id) {
@@ -58,9 +62,16 @@ function Spinner() {
 }
 
 function Images(props) {
+  let style = {
+    display: 'inline-block',
+    marginRight: '20px',
+    maxWidth: '70px',
+    maxHeight: '70px'
+  };
+
   return (
-    prop.images.map((image, i) =>
-      <div key={i} className="fadeIn">
+    props.images.map((image, i) =>
+      <div key={i} className="fadeIn" style={style}>
         <div
           onClick={() => props.removeImage(image.public_id)}
           className="delete">

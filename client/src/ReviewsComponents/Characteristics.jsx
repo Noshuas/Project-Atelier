@@ -33,7 +33,7 @@ function OneChar(props) {
 
   return (
     <div className="single-char-input">
-      <div className="current-selected">{desc ? charsTable[char][desc - 1] : 'None selected'}</div>
+      {/* <div className="current-selected">{desc ? charsTable[char][desc - 1] : 'None selected'}</div> */}
       <label htmlFor={char}>{char}:* </label>
       <div className="char-select-container">
         {[1, 2, 3, 4, 5].map(num =>

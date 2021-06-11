@@ -2,12 +2,17 @@ const express = require('express');
 const path = require('path');
 const axios = require('axios');
 const config = require('./configAPI.js');
+const formData = require('express-form-data');
+const cloudinary = require('cloudinary');
 
 const app = express();
 const port = 3000;
+cloudinary.config(config.cloudinaryCreds);
 
 app.use(express.static('./client/dist'));
 app.use(express.json());
+app.use(formData.parse());
+
 
 app.get('/products', (req, res) => {
   console.log('Getting list of products...');
@@ -43,6 +48,24 @@ app.post('/reviews', (req, res) => {
   let params = req.body;
   axios.post(config.url + '/reviews', params, config.auth)
     .then(() => res.end());
+});
+
+app.post('/image-upload', (req, res) => {
+  console.log('Uploading images...');
+  let values = Object.values(req.files);
+
+  if (Array.isArray(values[0])) {
+    console.log('-------------TRANSFORMING----------------');
+    values = values[0];
+  }
+
+  console.log(values);
+
+  const promises = values.map(image => cloudinary.uploader.upload(image.path));
+
+  Promise
+    .all(promises)
+    .then(results => res.json(results));
 });
 
 //Will's endpoints
