@@ -1,12 +1,61 @@
 import API from '../configAPI.js';
 import axios from 'axios';
+import React from 'react';
 
-export function getProducts() {
-  return axios.get(API.url + '/products/17067', API.auth);
+
+export function getProducts(productId) {
+  return axios.get(API.url + `/products/${productId}`, API.auth);
 }
 
-export function getProductStyles() {
-  return axios.get(API.url + '/products/17067/styles', API.auth);
+export function getProductStyles(productId) {
+  return axios.get(API.url + `/products/${productId}/styles`, API.auth);
+}
+
+export function getProductReviewsMeta(productId) {
+  return axios.get(API.url + `/reviews/meta?count=1000&product_id=${productId}`, API.auth)
+    .then( resVal => calcStarRating(resVal.data.ratings));
+}
+
+export function getProductReviews(productId) {
+  return axios.get(API.url + `/reviews?product_id=${productId}`, API.auth)
+    .then( resVal => resVal.data.count);
+}
+
+export function calcStarRating(starRatings) {
+  let totalScore = 0;
+  let totalRatings = 0;
+
+  for (var rating in starRatings) {
+    totalScore += rating * Number(starRatings[rating]);
+    totalRatings += Number(starRatings[rating]);
+  }
+
+  if (!totalRatings) {
+    return null;
+  } else {
+    return Math.floor(totalScore / totalRatings);
+  }
+}
+
+export function createStars(productStarRatings) {
+  let starContainer = [];
+
+  for (var i = 1; i <= 5; i++) {
+    if (i <= productStarRatings) {
+      starContainer.push((
+        <div className="star-wrapper" key={i}>
+          <i className="fas fa-star"></i>
+        </div>
+      ));
+    } else {
+      starContainer.push((
+        <div className="star-wrapper" key={i}>
+          <i className="far fa-star"></i>
+        </div>
+      ));
+    }
+  }
+  return starContainer;
 }
 
 export function displayNextImage(current, imagesArray) {
@@ -83,14 +132,18 @@ export function createDefaultStyle(data) {
   let defaultStyle = {
     name: '',
     originalPrice: '',
+    salePrice: '',
     primaryImage: {},
+    skus: {},
     photoInfo: []
   };
   for (var style of data.results) {
     if (style['default?']) {
       defaultStyle.name = style.name;
       defaultStyle.originalPrice = style.original_price;
+      defaultStyle.salePrice = style.sale_price;
       defaultStyle.primaryImage = {url: style.photos[0].url, index: 0};
+      defaultStyle.skus = style.skus;
       for (var photo of style.photos) {
         defaultStyle.photoInfo.push(photo);
       }
@@ -104,7 +157,9 @@ export function getNewProductDetails(index, styles) {
   let newProductDetails = {
     name: styles.results[index].name,
     originalPrice: styles.results[index].original_price,
+    salePrice: styles.results[index].sale_price,
     primaryURL: '',
+    skus: styles.results[index].skus,
     largePhotoURLs: [],
     smallPhotoURLs: []
   };

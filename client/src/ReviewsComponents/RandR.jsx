@@ -14,23 +14,30 @@ function RandR(props) {
   const [reviewsMeta, setReviewsMeta] = useState({});
   const [reviewCount, setReviewCount] = useState(2);
   useEffect(() => {
-    RandRAPIcalls.getReviewsMeta(props.productId)
-      .then(response => {
-        setReviewsMeta(response);
-        setReviewCount(brain.getReviewCount(response.data.ratings) - Number(response.data.recommended.false));
-        setCharacteristics(response.data.characteristics);
-
-      });
+    if (Number(props.productId) > 0) {
+      RandRAPIcalls.getReviewsMeta(props.productId)
+        .then(response => {
+          setReviewsMeta(response);
+          setReviewCount(brain.getReviewCount(response.data.ratings));
+          setCharacteristics(response.data.characteristics);
+        });
+    }
   }, [props.productId]);
 
   //Get reviews every time productId changes
   const [reviews, setReviews] = useState([]);
   const [sortBy, setSortBy] = useState('relevant');
   const [expandedView, setExpandedView] = useState(false);
+  const [filters, setFilters] = useState([]);
   useEffect(() => {
-    RandRAPIcalls.getReviews(props.productId, sortBy, reviewCount)
-      .then(response => setReviews(response.data.results));
+    if (Number(props.productId) > 0) {
+      RandRAPIcalls.getReviews(props.productId, sortBy, reviewCount)
+        .then(response => setReviews(response.data.results));
+    }
   }, [props.productId, sortBy, reviewCount]);
+
+  useEffect(() => setReviewCount(reviews.length), [reviews]);
+
 
   function handleShowMore() {
     if (expandedView) {
@@ -44,14 +51,15 @@ function RandR(props) {
 
   return (
     <div className="ratings-and-reviews">
-      <h3>RATINGS AND REVIEWS</h3>
-      <ReviewMeta />
-      <ReviewSorting reviewCount={reviewCount} setSortBy={setSortBy} />
-      <div className="right-side">
-        <div className="review-list">{brain.renderTwoOrAll(reviews, ReviewItem, expandedView)}</div>
+      <h3>RATINGS {'&'} REVIEWS</h3>
+      <ReviewMeta meta={reviewsMeta} filters={filters} setFilters={setFilters}/>
+      <div className="reviews">
+        <ReviewSorting reviews={reviews} setSortBy={setSortBy} filters={filters}/>
+        <div className="review-list">{brain.renderTwoOrAll(brain.filterReviews(filters, reviews), ReviewItem, expandedView)}</div>
         <div>
           <button onClick={handleShowMore}>{expandedView ? 'LESS REVIEWS' : 'MORE REVIEWS'}</button>
-          <AddReview productName={props.productName} characteristics={characteristics} productId={props.productId}/>
+          <AddReview productName={props.productName} characteristics={characteristics}
+            productId={props.productId} setReviewCount={setReviewCount} reviewCount={reviewCount} />
         </div>
       </div>
     </div>
@@ -59,3 +67,5 @@ function RandR(props) {
 }
 
 export default RandR;
+
+//brain.filterReviews(filters, response.data.results)

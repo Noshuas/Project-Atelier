@@ -40,10 +40,8 @@ function App() {
     <AppContext.Provider value={appState}>
       <OverviewContext.Provider value={overviewState}>
         <Overview />
-      </OverviewContext.Provider>
-      <RelatedContext.Provider value={relatedState}>
         <Related />
-      </RelatedContext.Provider>
+      </OverviewContext.Provider>
       <QandA productId={productId} productName={productName}/>
       <RandR productId={productId} productName={productName}/>
     </AppContext.Provider>

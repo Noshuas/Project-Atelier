@@ -45,15 +45,7 @@ RandRAPIcalls.postHelpfullnessFeedback = function (reviewId, helpful) {
 };
 
 RandRAPIcalls.postReview = function (object) {
-  console.log(object);
-  axios.post(API.url + '/reviews', {}, { params: object, headers: API.auth.headers })
-    .then((res) => console.log('params', res));
-
-  // axios.post(API.url + '/reviews', { body: object }, API.auth)
-  //   .then((res) => console.log('body', res));
-
-  // axios.post(API.url + '/reviews', object, API.auth)
-  //   .then((res) => console.log('plain', res));
+  return axios.post(API.url + '/reviews', object, API.auth);
 };
 
 export default RandRAPIcalls;
