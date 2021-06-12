@@ -1,15 +1,14 @@
 import React, { useContext } from 'react';
-import { AppContext } from '../../AppComponents/index.js';
 import { OverviewContext } from '../index.js';
 
 export function ProductDescription() {
-  const {currentProduct, setCurrentProduct} = useContext(OverviewContext);
+  const { productDetails } = useContext(OverviewContext);
 
   return (
     <>
       <div className="full-description-wrapper">
-        <div className="title">{currentProduct.slogan || 'Loading'}</div>
-        <div className="product-description">{currentProduct.description || 'Loading'}</div>
+        <div className="title">{productDetails.slogan || 'Loading'}</div>
+        <div className="product-description">{productDetails.description || 'Loading'}</div>
       </div>
       <div className="product-extras-wrapper">
         <div className="product-extra">✓ GMO and Pesticide-free</div>

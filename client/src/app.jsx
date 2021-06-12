@@ -23,7 +23,7 @@ function App() {
   const [productId, setProduct] = useState(0);
   const [productName, setProductName] = useState('');
   useEffect(() => {
-    RandRAPIcalls.getProducts()
+    RandRAPIcalls.getProductInfo()
       .then(response => {
         setProduct(response.data[2].id);
         setProductName(response.data[2].name);
