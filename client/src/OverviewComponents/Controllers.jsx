@@ -3,7 +3,7 @@ import axios from 'axios';
 import React from 'react';
 
 
-export function getProducts(productId) {
+export function getProductDetails(productId) {
   return axios.get(API.url + `/products/${productId}`, API.auth);
 }
 
@@ -37,11 +37,11 @@ export function calcStarRating(starRatings) {
   }
 }
 
-export function createStars(productStarRatings) {
+export function createStars(productStarRating) {
   let starContainer = [];
 
   for (var i = 1; i <= 5; i++) {
-    if (i <= productStarRatings) {
+    if (i <= productStarRating) {
       starContainer.push((
         <div className="star-wrapper" key={i}>
           <i className="fas fa-star"></i>
@@ -64,8 +64,8 @@ export function displayNextImage(current, imagesArray) {
     nextIndex = 0;
   }
   return {
-    url: imagesArray[nextIndex].url,
-    index: nextIndex
+    url: imagesArray[nextIndex],
+    initialIndex: nextIndex
   };
 }
 
@@ -75,8 +75,8 @@ export function displayPreviousImage(current, imagesArray) {
     nextIndex = imagesArray.length - 1;
   }
   return {
-    url: imagesArray[nextIndex].url,
-    index: nextIndex
+    url: imagesArray[nextIndex],
+    initialIndex: nextIndex
   };
 }
 
@@ -128,47 +128,46 @@ export function decrementCarouselRange(current, imagesArray) {
   };
 }
 
-export function createDefaultStyle(data) {
-  let defaultStyle = {
+export function getDefaultStyleDetails(data) {
+  let defaultStyleDetails = {
     name: '',
     originalPrice: '',
     salePrice: '',
-    primaryImage: {},
     skus: {},
-    photoInfo: []
+    primaryImageURL: '',
+    largePhotoURLs: [],
+    smallPhotoURLs: []
   };
   for (var style of data.results) {
     if (style['default?']) {
-      defaultStyle.name = style.name;
-      defaultStyle.originalPrice = style.original_price;
-      defaultStyle.salePrice = style.sale_price;
-      defaultStyle.primaryImage = {url: style.photos[0].url, index: 0};
-      defaultStyle.skus = style.skus;
+      defaultStyleDetails.name = style.name;
+      defaultStyleDetails.originalPrice = style.original_price;
+      defaultStyleDetails.salePrice = style.sale_price;
+      defaultStyleDetails.skus = style.skus;
+      defaultStyleDetails.primaryImageURL = style.photos[0].url;
       for (var photo of style.photos) {
-        defaultStyle.photoInfo.push(photo);
+        defaultStyleDetails.largePhotoURLs.push(photo.url);
+        defaultStyleDetails.smallPhotoURLs.push(photo.thumbnail_url);
       }
       break;
     }
   }
-  return defaultStyle;
+  return defaultStyleDetails;
 }
 
-export function getNewProductDetails(index, styles) {
-  let newProductDetails = {
+export function getNewStyleDetails(index, styles) {
+  let newStyleDetails = {
     name: styles.results[index].name,
     originalPrice: styles.results[index].original_price,
     salePrice: styles.results[index].sale_price,
-    primaryURL: '',
+    primaryImageURL: styles.results[index].photos[0].url,
     skus: styles.results[index].skus,
     largePhotoURLs: [],
     smallPhotoURLs: []
   };
   for (var photo of styles.results[index].photos) {
-    if (!newProductDetails.primaryURL) {
-      newProductDetails.primaryURL = photo.url;
-    }
-    newProductDetails.largePhotoURLs.push(photo);
-    newProductDetails.smallPhotoURLs.push(photo);
+    newStyleDetails.largePhotoURLs.push(photo.url);
+    newStyleDetails.smallPhotoURLs.push(photo.thumbnail_url);
   }
-  return newProductDetails;
+  return newStyleDetails;
 }

@@ -9,7 +9,7 @@ import API from '../configAPI.js';
 let RandRAPIcalls = {};
 
 
-RandRAPIcalls.getProducts = function () {
+RandRAPIcalls.getProductInfo = function () {
   return axios.get(API.url + '/products', API.auth);
 };
 
