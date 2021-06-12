@@ -40,7 +40,7 @@ QAapiCalls.postQuestion = (info, productID) => {
 
   return axios.post(serverURL + '/qa/questions', data)
     .then(results => {
-      console.log('Success', results);
+      console.log('Success');
     })
     .catch(err => { return console.log(err); });
 };
