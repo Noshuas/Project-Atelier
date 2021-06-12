@@ -3,7 +3,7 @@ import QuestionList from './QuestionList.jsx';
 import QuestionSearchBar from './QuestionSearchBar.jsx';
 import AddNewQuestion from './AddNewQuestion.jsx';
 import QAapiCalls from './QandAAPIcalls.js';
-import Helpers from './Helpers.js';
+import Helpers from './helpers.js';
 import { AppContext } from '../AppComponents/index.js';
 
 const QandA = (props) => {
