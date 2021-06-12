@@ -2,9 +2,12 @@ import React, { useState, useEffect } from 'react';
 import brain from './brain.jsx';
 import RandRAPIcalls from './RandRAPIcalls';
 
+
+//Expects setPhotos prop which updates array of pic urls in the form
 function UploadPhotos(props) {
   const [uploading, setUploading] = useState(false);
   const [images, setImages] = useState([]);
+
   useEffect(() => {
     let imageUrls = [];
     images.forEach(image => imageUrls.push(image.secure_url));
@@ -13,6 +16,7 @@ function UploadPhotos(props) {
 
   function onChange(e) {
     let files = Array.from(e.target.files);
+    files = files.slice(0, 5);
     setUploading(true);
 
     let formData = new FormData();

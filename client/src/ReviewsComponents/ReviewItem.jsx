@@ -3,14 +3,14 @@ import brain from './brain.jsx';
 import RandRAPIcalls from './RandRAPIcalls';
 import ReadOnlyRatingStars from './ReadOnlyRatingStars.jsx';
 import WasHelpful from './WasHelpful.jsx';
+import GenericModal from '../QandAComponents/GenericModal.jsx';
 
 function ReviewItem(props) {
   let review = props.review;
-  console.log(review);
   return (
     <div className="review-item fadeIn">
       <div className="top-row">
-        <span><ReadOnlyRatingStars rating={review.rating}/></span>
+        <span><ReadOnlyRatingStars rating={review.rating} /></span>
         <span>{review.reviewer_name}, {brain.getFormatedTimestamp(review.date)}</span>
       </div>
       <h3>{review.summary}</h3>
@@ -47,16 +47,26 @@ function IRecommmendThisProduct(props) {
   return null;
 }
 
-function Images (props) {
-  let style = {
-    display: 'inline-block',
-    maxHeight: '100px',
-    maxWidth: '100px',
-    marginRight: '20px'
-  };
+function Images(props) {
+  const [open, setOpen] = useState(false);
+  const [modalImage, setModalImage] = useState('');
+  function handleClick (picUrl) {
+    setModalImage(picUrl);
+    setOpen(true);
+  }
+
 
   return (
-    <div>{props.pics.map(pic => <img style={style} key={pic.id} src={pic.url}/>)}</div>
+    <div>{props.pics.map(pic => {
+      return (
+        <span key={pic.id} >
+          <img src={pic.url} onClick={() => handleClick(pic.url)}/>
+          <GenericModal open={open} onClose={() => setOpen(false)}>
+            <img className="modal-image" src={modalImage} />
+          </GenericModal>
+        </span>
+      );
+    })}</div>
   );
 }
 

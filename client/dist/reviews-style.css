@@ -125,7 +125,7 @@ progress::-webkit-progress-value {
 }
 /********** REVIEW ITEMS ***********/
 .review-list {
-  max-height: calc(100vh - 200px);
+  max-height: calc(100vh - 250px);
   overflow-y: auto;
   overflow-x: hidden;
 }
