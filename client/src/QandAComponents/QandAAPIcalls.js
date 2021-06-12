@@ -3,34 +3,29 @@ import API from '../configAPI.js';
 
 let QAapiCalls = {};
 
-QAapiCalls.getQuestions = (productID) => {
+let serverURL = 'http://localhost:3000';
 
+QAapiCalls.getQuestions = (productID) => {
   let params = {
-    product_id: productID,
-    page: 1,
-    count: 25
+    productId: productID
   };
-  let headers = API.auth.headers;
-  return axios.get(API.url + '/qa/questions', { params, headers})
+  return axios.get(serverURL + '/qa/questions', { params })
     .then(results => {
-      //console.log(results.data.results);
-      return results.data.results;
+      return results.data;
     })
-    .catch(err => { return console.log(err); });
+    .catch(err => { return console.log('test', err); });
 
 };
 
 QAapiCalls.getAnswers = (questionID) => {
   let params = {
     question_id: questionID,
-    page: 1,
-    count: 25
   };
-  let headers = API.auth.headers;
-  return axios.get(API.url + `/qa/questions/${questionID}/answers`, { params, headers})
+  //let headers = API.auth.headers;
+  return axios.get(serverURL + '/qa/answers', { params })
     .then(results => {
       //console.log(results.data.results);
-      return results.data.results;
+      return results.data;
     })
     .catch(err => { return console.log(err); });
 };
@@ -42,9 +37,9 @@ QAapiCalls.postQuestion = (info, productID) => {
     name: info.nickname,
     email: info.email
   };
-  let headers = API.auth.headers;
+  //et headers = API.auth.headers;
 
-  return axios.post(API.url + '/qa/questions', data, { headers })
+  return axios.post(serverURL + '/qa/questions', data)
     .then(results => {
       console.log('Success', results);
     })

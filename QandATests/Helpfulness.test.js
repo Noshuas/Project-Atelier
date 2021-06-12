@@ -4,10 +4,8 @@
 import React, { useState } from 'react';
 import renderer from 'react-test-renderer';
 import Helpfulness from '../client/src/QandAComponents/Helpfulness.jsx';
-import GenericModal from '../client/src/QandAComponents/GenericModal.jsx';
 import ReactDOM from 'react-dom';
 import Helpers from '../client/src/QandAComponents/helpers.js';
-import AnswerList from '../client/src/QandAComponents/AnswerList.jsx';
 import { render, screen } from '@testing-library/react';
 
 it('renders without crashing', () => {
