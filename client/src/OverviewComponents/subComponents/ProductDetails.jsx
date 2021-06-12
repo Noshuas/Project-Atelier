@@ -2,10 +2,10 @@ import React, { useContext } from 'react';
 import { OverviewContext, createStars } from '../index.js';
 
 export function ProductDetails() {
-  const {productDetails, setProductDetails} = useContext(OverviewContext);
-  const {currentStyle, setCurrentStyle} = useContext(OverviewContext);
-  const {productStarRating, setProductStarRating} = useContext(OverviewContext);
-  const {productReviewCount, setProductReviewCount} = useContext(OverviewContext);
+  const { productDetails } = useContext(OverviewContext);
+  const { currentStyle } = useContext(OverviewContext);
+  const { productStarRating } = useContext(OverviewContext);
+  const { productReviewCount } = useContext(OverviewContext);
 
   let starContainer = [];
   let productCategory = '';

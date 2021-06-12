@@ -9,11 +9,11 @@ import { iconURLs } from './iconURLs.js';
 import { HeroImage } from './subComponents/HeroImage.jsx';
 import { ImageControls } from './subComponents/ImageControls.jsx';
 import { SmallCarousel } from './subComponents/SmallCarousel.jsx';
-import { StyleSelector } from './subComponents/styleView.jsx';
-import { AddProduct } from './subComponents/addProductView.jsx';
+import { StyleSelector } from './subComponents/StyleSelector.jsx';
+import { AddProduct } from './subComponents/AddProduct.jsx';
 
 import { ProductDescription } from './subComponents/ProductDescription.jsx';
-import { ProductDetails } from './subComponents/detailsView.jsx';
+import { ProductDetails } from './subComponents/ProductDetails.jsx';
 
 export {
   Overview,

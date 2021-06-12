@@ -59,7 +59,7 @@ export function createStars(productStarRating) {
 }
 
 export function displayNextImage(current, imagesArray) {
-  let nextIndex = current.index + 1;
+  let nextIndex = current.initialIndex + 1;
   if (nextIndex === imagesArray.length) {
     nextIndex = 0;
   }
@@ -70,7 +70,7 @@ export function displayNextImage(current, imagesArray) {
 }
 
 export function displayPreviousImage(current, imagesArray) {
-  let nextIndex = current.index - 1;
+  let nextIndex = current.initialIndex - 1;
   if (nextIndex < 0) {
     nextIndex = imagesArray.length - 1;
   }
@@ -155,13 +155,13 @@ export function getDefaultStyleDetails(data) {
   return defaultStyleDetails;
 }
 
-export function getNewStyleDetails(index, styles) {
+export function getNewStyleDetails(styles, index) {
   let newStyleDetails = {
     name: styles.results[index].name,
     originalPrice: styles.results[index].original_price,
     salePrice: styles.results[index].sale_price,
-    primaryImageURL: styles.results[index].photos[0].url,
     skus: styles.results[index].skus,
+    primaryImageURL: styles.results[index].photos[0].url,
     largePhotoURLs: [],
     smallPhotoURLs: []
   };

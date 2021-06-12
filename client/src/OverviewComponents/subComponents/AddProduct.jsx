@@ -2,8 +2,8 @@ import React, { useContext } from 'react';
 import { OverviewContext } from '../index.js';
 
 export function AddProduct() {
-  const {currentStyle, setCurrentStyle} = useContext(OverviewContext);
-  const {userSizeAndQuantSelect, setUserSizeAndQuantSelect} = useContext(OverviewContext);
+  const { currentStyle } = useContext(OverviewContext);
+  const { userSizeAndQuantSelect, setUserSizeAndQuantSelect } = useContext(OverviewContext);
 
   let allInStockSizes = {};
   let skuQuantity = [];

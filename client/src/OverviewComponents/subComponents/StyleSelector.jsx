@@ -3,12 +3,12 @@ import { OverviewContext } from '../index.js';
 import { getNewStyleDetails } from '../index.js';
 
 export function StyleSelector() {
-  const {carouselLargeImages, setCarouselLargeImages} = useContext(OverviewContext);
-  const {carouselSmallImages, setCarouselSmallImages} = useContext(OverviewContext);
-  const {heroImage, setHeroImage} = useContext(OverviewContext);
-  const {productStyles, setProductStyles} = useContext(OverviewContext);
-  const {currentStyle, setCurrentStyle} = useContext(OverviewContext);
-  const {userSizeAndQuantSelect, setUserSizeAndQuantSelect} = useContext(OverviewContext);
+  const { setCarouselLargeImages } = useContext(OverviewContext);
+  const { setCarouselSmallImages } = useContext(OverviewContext);
+  const { setHeroImage } = useContext(OverviewContext);
+  const { productStyles } = useContext(OverviewContext);
+  const { currentStyle, setCurrentStyle } = useContext(OverviewContext);
+  const { setUserSizeAndQuantSelect } = useContext(OverviewContext);
 
   let styleStorage = [];
 
@@ -16,11 +16,11 @@ export function StyleSelector() {
     styleStorage = productStyles.results.map((style, index) => {
       return (
         <div key={index} className="style-img-wrapper" onClick={() => {
-          let newStyleDetails = getNewStyleDetails(index, productStyles);
+          let newStyleDetails = getNewStyleDetails(productStyles, index);
           setUserSizeAndQuantSelect({});
           setHeroImage({
-            url: newStyleDetails.primaryURL,
-            index: 0
+            url: newStyleDetails.primaryImageURL,
+            initialIndex: 0
           });
           setCarouselLargeImages(newStyleDetails.largePhotoURLs);
           setCarouselSmallImages({
