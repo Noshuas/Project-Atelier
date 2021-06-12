@@ -10,8 +10,6 @@ export function SmallCarousel() {
   const { setHeroImage } = useContext(OverviewContext);
   const { carouselDisplayClass } = useContext(OverviewContext);
 
-  console.log(currentStyle);
-
   return (
     <div className={`carousel-container ${carouselDisplayClass}`}>
       <div className="small-icon-wrapper" onClick={() => {

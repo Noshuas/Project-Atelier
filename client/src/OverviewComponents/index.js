@@ -12,7 +12,7 @@ import { SmallCarousel } from './subComponents/SmallCarousel.jsx';
 import { StyleSelector } from './subComponents/styleView.jsx';
 import { AddProduct } from './subComponents/addProductView.jsx';
 
-import { ProductDescription } from './subComponents/descriptionView.jsx';
+import { ProductDescription } from './subComponents/ProductDescription.jsx';
 import { ProductDetails } from './subComponents/detailsView.jsx';
 
 export {

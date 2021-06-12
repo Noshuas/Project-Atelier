@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { OverviewContext } from '../index.js';
 
 export function ProductDescription() {
-  const {productDetails, setProductDetails} = useContext(OverviewContext);
+  const { productDetails } = useContext(OverviewContext);
 
   return (
     <>
