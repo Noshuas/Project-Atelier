@@ -46,17 +46,20 @@ QAapiCalls.postQuestion = (info, productID) => {
     .catch(err => { return console.log(err); });
 };
 
-QAapiCalls.postAnswer = (info, questionId) => {
-  console.log(info, questionId);
+QAapiCalls.postAnswer = (info, question_id) => {
+  console.log(info, question_id);
   let data = {
     body: info.answer,
     name: info.nickname,
     email: info.email
   };
-  console.log(data);
-  let headers = API.auth.headers;
+  let params = {
+    question_id: question_id
+  };
+  //console.log(data);
+  //let headers = API.auth.headers;
 
-  return axios.post(API.url + `/qa/questions/${questionId}/answers`, data, { headers })
+  return axios.post(serverURL + '/qa/answers', data, { params })
     .then(results => {
       console.log('Success', results);
     })
@@ -65,13 +68,9 @@ QAapiCalls.postAnswer = (info, questionId) => {
 
 QAapiCalls.postHelpfullnessFeedback = function (QorA, ID, feeback) {
 
-  let url = `/qa/${QorA}/${ID}/${feeback}`;
-  let headers = API.auth.headers;
-  if (QorA === 'question') {
-    return axios.put(API.url + url, {question_id: ID}, {headers});
-  } else {
-    return axios.put(API.url + url, {answer_id: ID}, {headers});
-  }
+  //let url = `/qa/${QorA}/${ID}/${feeback}`;
+  //let headers = API.auth.headers;
+  return axios.put(serverURL + '/qa/helpfulness', {QorA, ID, feeback});
 };
 
 

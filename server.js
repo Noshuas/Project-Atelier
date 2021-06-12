@@ -72,6 +72,42 @@ app.get('/qa/answers', (req, res) => {
     .catch(err => { res.send(err); });
 });
 
+app.post('/qa/answers', (req, res) => {
+  console.log(req.query);
+  let params = {
+    question_id: req.query.question_id
+  };
+  let headers = config.auth.headers;
+  return axios.post(config.url + `/qa/questions/${req.query.question_id}/answers`, req.body, { params, headers })
+    .then(results => {
+      //console.log(results.data.results);
+      res.send(results);
+    })
+    .catch(err => { res.send(err); });
+
+});
+
+app.put('/qa/helpfulness', (req, res) => {
+  // all in body
+  console.log(req.body);
+  let headers = config.auth.headers;
+  let url = `/qa/${req.body.QorA}/${req.body.ID}/${req.body.feeback}`;
+  if (req.body.QorA === 'question') {
+    return axios.put(config.url + url, {question_id: req.body.ID}, {headers})
+      .then(results => {
+        //console.log(results.data.results);
+        res.send(results);
+      })
+      .catch(err => { res.send(err); });
+  } else {
+    return axios.put(config.url + url, {answer_id: req.body.ID}, {headers})
+      .then(results => {
+        //console.log(results.data.results);
+        res.send(results);
+      })
+      .catch(err => { res.send(err); });
+  }
+});
 
 
 app.listen(port, () => {
