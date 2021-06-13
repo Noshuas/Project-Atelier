@@ -14,7 +14,7 @@ function InteractiveStars(props) {
 
   let style = {
     // marginBottom: '7px',
-    height: '70px'
+    height: '40px'
   };
 
   return (
