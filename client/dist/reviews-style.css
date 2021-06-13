@@ -125,7 +125,7 @@ progress::-webkit-progress-value {
 }
 /********** REVIEW ITEMS ***********/
 .review-list {
-  max-height: calc(100vh - 200px);
+  max-height: calc(100vh - 250px);
   overflow-y: auto;
   overflow-x: hidden;
 }
@@ -143,6 +143,19 @@ progress::-webkit-progress-value {
 .review-item > .top-row {
   display: flex;
   justify-content: space-between;
+}
+
+.review-item img {
+  display: inline-block;
+  max-height: 100px;
+  max-width: 100px;
+  margin-right: 20px;
+  transition: transform .2s;
+  margin-left: 5px;
+}
+
+.review-item img:hover {
+  transform: scale(1.1);
 }
 
 .recommend-container {
@@ -212,8 +225,12 @@ progress::-webkit-progress-value {
   margin: 20px 0 20px 0;
 }
 
+.form-recommend > span, .form-recommend > input{
+  margin-right: 20px;
+}
+
 .char-select-container {
-  width: 60%;
+  width: 80%;
   display: inline-flex;
   justify-content: space-around;
 }
@@ -226,7 +243,11 @@ progress::-webkit-progress-value {
 
 .single-char-input > label {
   display: inline-block;
-  width: 100px;
+  width: 80px;
+}
+
+.submit {
+  padding: 20px;
 }
 
 /********** ADD PHOTOS ***********/
@@ -234,6 +255,25 @@ progress::-webkit-progress-value {
   font-size: 30px;
   animation: rotation 2s infinite linear;
   display: inline-block;
+}
+
+.fa-image, .fa-images {
+  font-size: 50px;
+  transition: transform .2s;
+  margin-left: 5px;
+}
+
+.fa-image:hover, .fa-images:hover {
+  transform: scale(1.1);
+}
+
+.button {
+  display: inline-block;
+  margin-right: 30px;
+}
+
+.button input {
+  display: none;
 }
 
 /********** FADE IN ***********/
