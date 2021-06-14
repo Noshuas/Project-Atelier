@@ -18,6 +18,12 @@ html {
   display: grid;
   grid-template-rows: 60px auto;
   grid-template-columns: 27% 6% auto;
+  font-family: 'Lato', sans-serif;
+}
+
+.ratings-and-reviews span {
+  font-weight: 350;
+  font-size: 14px;
 }
 
 .ratings {
@@ -37,6 +43,10 @@ html {
 
 .ratings-and-reviews a {
   color: rgb(82,82,82)
+}
+
+.review-list::-webkit-scrollbar {
+  width: 0;
 }
 
 /********** RATING META ***********/
@@ -65,6 +75,10 @@ html {
   align-items: center;
 }
 
+.progress a {
+  width: 50px;
+}
+
 progress {
   margin-left: 10px;
   width: 80%;
@@ -82,6 +96,33 @@ progress::-webkit-progress-value {
   background-color: rgb(82,82,82);
   border-radius: 0;
 }
+
+.filter-display {
+  margin-top: 15px;
+}
+
+.filter-display > * {
+  margin-bottom: 5px;
+}
+
+.filter-display > h4 {
+  font-weight: bold;
+}
+
+.filter-display span {
+  background-color: rgb(235, 235, 235);
+  padding: 2px 7px 2px 7px;
+  margin-right: 10px;
+  margin-bottom: 7px;
+  border: 1px solid black;
+  border-radius: 15000px;
+}
+
+.filter-display > div {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 
 .char-bar {
   height: 8px;
@@ -128,6 +169,21 @@ progress::-webkit-progress-value {
   max-height: calc(100vh - 250px);
   overflow-y: auto;
   overflow-x: hidden;
+  position: relative;
+}
+
+.gradient-true {
+  position: relative;
+}
+
+.gradient-true:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 30px;
+  background: linear-gradient(transparent, white);
+  pointer-events: none;
 }
 
 .review-item {
@@ -156,6 +212,7 @@ progress::-webkit-progress-value {
 
 .review-item img:hover {
   transform: scale(1.1);
+  cursor: pointer;
 }
 
 .recommend-container {
@@ -186,14 +243,23 @@ progress::-webkit-progress-value {
 
 /********** BOTTOM BUTTONS ***********/
 
+.ratings-and-reviews button, .submit {
+  border-radius: 0;
+  border: 1px solid black;
+  background-color: white;
+  font-size: 17px;
+  font-weight: bold;
+  padding: 20px;
+}
+
 .ratings-and-reviews button {
   margin: 35px 35px 50px 0;
-  padding: 20px;
 }
 
 
 
 /********** STARS ***********/
+
 .rating-stars {
   display: flex;
   height: auto;
@@ -221,6 +287,10 @@ progress::-webkit-progress-value {
   width: 600px
 }
 
+.add-review h2, .add-review h4 {
+  text-align: center;
+}
+
 .add-review form > div {
   margin: 20px 0 20px 0;
 }
@@ -246,7 +316,13 @@ progress::-webkit-progress-value {
   width: 80px;
 }
 
+.minimum-chars {
+  font-size: 14px;
+}
+
 .submit {
+  font-size: large;
+  font-weight: bold;
   padding: 20px;
 }
 
@@ -267,6 +343,10 @@ progress::-webkit-progress-value {
   transform: scale(1.1);
 }
 
+.buttons {
+  margin-top: 10px;
+}
+
 .button {
   display: inline-block;
   margin-right: 30px;
@@ -274,6 +354,20 @@ progress::-webkit-progress-value {
 
 .button input {
   display: none;
+}
+
+.delete {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.delete > * {
+  cursor: pointer;
+  margin-bottom: -10px;
+  margin-right: -6px;
+  position: relative;
+  background-color: white;
+  border-radius: 7px;
 }
 
 /********** FADE IN ***********/

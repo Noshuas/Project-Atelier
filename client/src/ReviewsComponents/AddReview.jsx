@@ -64,7 +64,7 @@ function AddReview(props) {
             <div>
               <label htmlFor='body'>Review body*</label><br></br>
               <textarea name='body' minLength="50" maxLength="1000" cols="60" onChange={trackBodyChars} required></textarea>
-              <div>{body.length < 50 ? `Minimum required characters left: ${50 - body.length}` : 'Minimum reached'}</div>
+              <div className="minimum-chars">{body.length < 50 ? `Minimum required characters left: ${50 - body.length}` : 'Minimum reached'}</div>
             </div>
             <div>Upload images:
               <UploadPhotos setPhotos={setPhotos}/>

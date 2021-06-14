@@ -16,7 +16,8 @@ function ReviewMeta(props) {
         <ReadOnlyRatingStars rating={average} />
       </div>
       <div>{recommendationPercentage}% of reviews recommend this product</div>
-      <FactorBreakdown rating={formatedStars} filters={props.filters} setFilters={props.setFilters}/>
+      <FactorBreakdown rating={formatedStars} filters={props.filters} setFilters={props.setFilters} />
+      <FilterDisplay filters={props.filters} setFilters={props.setFilters} />
       <CharBreakdown chars={formatedChars} />
     </div>
   );
@@ -25,7 +26,7 @@ function ReviewMeta(props) {
 export default ReviewMeta;
 
 function FactorBreakdown(props) {
-  function handleFilterSetting (e, rating) {
+  function handleFilterSetting(e, rating) {
     e.preventDefault();
     let clickedStar = Number(rating);
     if (props.filters.includes(clickedStar)) {
@@ -42,7 +43,7 @@ function FactorBreakdown(props) {
       {props.rating.map(rating => {
         return (
           <div className="progress" key={rating.star}>
-            <StarAnchor rating={rating.star} handleFilterSetting={handleFilterSetting} />
+            <StarAnchor rating={rating.star} handleFilterSetting={handleFilterSetting} filters={props.filters} />
             <progress max="100" value={rating.percent}></progress>
           </div>
         );
@@ -51,16 +52,46 @@ function FactorBreakdown(props) {
   );
 }
 
-function StarAnchor (props) {
-  const [fontWeight, setFontWeight] = useState('normal');
+function FilterDisplay(props) {
+  function removeAllFilters(e) {
+    e.preventDefault();
+    props.setFilters([]);
+  }
 
-  function handleClick (e) {
-    props.handleFilterSetting(e, props.rating);
-    setFontWeight(fontWeight === 'bold' ? 'normal' : 'bold');
+  let filters = props.filters;
+  if (!filters.length) {
+    return null;
   }
 
   return (
-    <a href="#" style={{fontWeight: fontWeight}} onClick={handleClick}>{props.rating} stars</a>
+    <div className="filter-display fadeIn">
+      <h4>Filters:</h4>
+      <div>
+        {filters.map(filter => <span>{filter} stars</span>)}
+      </div>
+      <a href="#" onClick={removeAllFilters}>Remove all filters</a>
+    </div>
+  );
+}
+
+function StarAnchor(props) {
+  const [fontWeight, setFontWeight] = useState('normal');
+
+  function handleClick(e) {
+    props.handleFilterSetting(e, props.rating);
+    //setFontWeight(fontWeight === 'bold' ? 'normal' : 'bold');
+  }
+
+  useEffect(() => {
+    if (props.filters.includes(Number(props.rating))) {
+      setFontWeight('bold');
+    } else {
+      setFontWeight('normal');
+    }
+  }, [props.filters]);
+
+  return (
+    <a href="#" style={{ fontWeight: fontWeight }} onClick={handleClick}>{props.rating} stars</a>
   );
 }
 

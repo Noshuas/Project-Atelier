@@ -63,9 +63,11 @@ function RandR(props) {
       <ReviewMeta meta={reviewsMeta} filters={filters} setFilters={setFilters}/>
       <div className="reviews">
         <ReviewSorting reviews={reviews} setSortBy={setSortBy} filters={filters}/>
-        <div className="review-list">{brain.renderTwoOrAll(filtered, ReviewItem, expandedView)}</div>
+        <div className={'gradient-' + expandedView.toString()}>
+          <div className="review-list">{brain.renderTwoOrAll(filtered, ReviewItem, expandedView)}</div>
+        </div>
         <div>
-          <button onClick={handleShowMore}>{expandedView ? 'LESS REVIEWS' : 'MORE REVIEWS'}</button>
+          {filtered.length > 2 && <button onClick={handleShowMore}>{expandedView ? 'LESS REVIEWS' : 'MORE REVIEWS'}</button>}
           <AddReview productName={props.productName} characteristics={characteristics}
             productId={props.productId} setReviewCount={setReviewCount} reviewCount={reviewCount} />
         </div>
