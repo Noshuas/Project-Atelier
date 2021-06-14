@@ -9,6 +9,9 @@ export function clickListener(event, widget) {
     time: event.timeStamp.toString()
   };
 
-  axios.post(API.url + '/interactions', listenerParams, API.auth)
+  // axios.post(API.url + '/interactions', listenerParams, API.auth)
+  //   .catch(rejVal => console.log('Listener POST Error: ', rejVal));
+
+  axios.post('/interactions', listenerParams, API.auth)
     .catch(rejVal => console.log('Listener POST Error: ', rejVal));
 }

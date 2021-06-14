@@ -4,8 +4,15 @@ import RandRAPIcalls from './RandRAPIcalls';
 import ReadOnlyRatingStars from './ReadOnlyRatingStars.jsx';
 import WasHelpful from './WasHelpful.jsx';
 import GenericModal from '../QandAComponents/GenericModal.jsx';
+import Highlighter from 'react-highlight-words';
 
 function ReviewItem(props) {
+  const [showMore, setShowMore] = useState(false);
+  function handleShowMore(e) {
+    e.preventDefault();
+    setShowMore(true);
+  }
+
   let review = props.review;
   return (
     <div className="review-item fadeIn">
@@ -13,8 +20,21 @@ function ReviewItem(props) {
         <span><ReadOnlyRatingStars rating={review.rating} /></span>
         <span>{review.reviewer_name}, {brain.getFormatedTimestamp(review.date)}</span>
       </div>
-      <h3>{review.summary}</h3>
-      <p>{review.body}</p>
+      <Highlighter searchWords={props.searchQuery.split(' ')}
+        autoEscape={true}
+        textToHighlight={review.summary}
+        className={'review-title'}
+        unhighlightClassName={'review-title'}
+      />
+      <p>
+        <Highlighter searchWords={props.searchQuery.split(' ')}
+          autoEscape={true}
+          textToHighlight={showMore ? review.body : review.body.slice(0, 250)}
+          className={'review-body'}
+          unhighlightClassName={'review-body'}
+        />
+        {review.body.length > 250 && !showMore && <><span>... </span><a href="#" onClick={handleShowMore}>show more</a></>}
+      </p>
       <Images pics={review.photos} />
       <IRecommmendThisProduct recommend={review.recommend} />
       <ReviewResponse response={review.response} />
@@ -35,6 +55,17 @@ function ReviewResponse(props) {
   return null;
 }
 
+function HighlightedText(props) {
+  return (
+    <Highlighter
+      searchWords={props.searchQuery.split(' ')}
+      autoEscape={true}
+      textToHighlight={review.summary}
+      className={'review-title'}
+    />
+  );
+}
+
 function IRecommmendThisProduct(props) {
   if (props.recommend) {
     return (
@@ -50,7 +81,7 @@ function IRecommmendThisProduct(props) {
 function Images(props) {
   const [open, setOpen] = useState(false);
   const [modalImage, setModalImage] = useState('');
-  function handleClick (picUrl) {
+  function handleClick(picUrl) {
     setModalImage(picUrl);
     setOpen(true);
   }
@@ -60,7 +91,7 @@ function Images(props) {
     <div>{props.pics.map(pic => {
       return (
         <span key={pic.id} >
-          <img src={pic.url} onClick={() => handleClick(pic.url)}/>
+          <img src={pic.url} onClick={() => handleClick(pic.url)} />
           <GenericModal open={open} onClose={() => setOpen(false)}>
             <img className="modal-image" src={modalImage} />
           </GenericModal>
