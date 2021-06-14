@@ -5,6 +5,7 @@ import ReviewMeta from './ReviewMeta.jsx';
 import ReviewItem from './ReviewItem.jsx';
 import ReviewSorting from './ReviewSorting.jsx';
 import AddReview from './AddReview.jsx';
+import ReviewSearchBar from './ReviewSearchBar.jsx';
 import { AppContext } from '../AppComponents/index.js';
 
 
@@ -31,6 +32,7 @@ function RandR(props) {
   const [expandedView, setExpandedView] = useState(false);
   const [filters, setFilters] = useState([]);
   const [filtered, setFiltered] = useState([]);
+  const [searchQuery, setSearchQuery] = useState('');
   useEffect(() => {
     if (Number(props.productId) > 0) {
       RandRAPIcalls.getReviews(props.productId, sortBy, reviewCount)
@@ -42,11 +44,12 @@ function RandR(props) {
 
   useEffect(() => {
     let newFiltered = brain.filterReviews(filters, reviews);
+    newFiltered = brain.searchByKeywords(searchQuery, newFiltered);
     setFiltered(newFiltered);
     if (newFiltered.length < 3) {
       setExpandedView(false);
     }
-  }, [filters, reviews]);
+  }, [filters, reviews, searchQuery]);
 
   function handleShowMore() {
     if (expandedView) {
@@ -61,9 +64,10 @@ function RandR(props) {
   return (
     <div className="ratings-and-reviews" onClick={e => clickListener(e, 'Ratings and Reviews')}>
       <h3>RATINGS {'&'} REVIEWS</h3>
+      <ReviewSearchBar setSearchQuery={setSearchQuery}/>
       <ReviewMeta meta={reviewsMeta} filters={filters} setFilters={setFilters}/>
       <div className="reviews">
-        <ReviewSorting reviews={reviews} setSortBy={setSortBy} filters={filters}/>
+        <ReviewSorting setSortBy={setSortBy} filtered={filtered}/>
         <div className={'gradient-' + expandedView.toString()}>
           <div className="review-list">{brain.renderTwoOrAll(filtered, ReviewItem, expandedView)}</div>
         </div>

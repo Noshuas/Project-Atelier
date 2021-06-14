@@ -25,7 +25,7 @@ app.post('/interactions', (req, res) => {
   console.log('Posting an interaction');
   let params = req.body;
   axios.post(config.url + '/interactions', params, config.auth)
-    .then((e) => console.log(e));
+    .then(() => res.end());
 });
 
 //Luka's endpoints

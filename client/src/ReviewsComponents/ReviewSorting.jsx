@@ -11,7 +11,7 @@ function ReviewSorting(props) {
 
   return (
     <div className="review-sorting">
-      <h3>{brain.filterReviews(props.filters, props.reviews).length} {'reviews, sorted by '}
+      <h3>{props.filtered.length} {'reviews, sorted by '}
         <select name="sort-selection" value={selected} onChange={handleSelect}>
           <option value="relevance">relevance</option>
           <option value="newest">newest</option>

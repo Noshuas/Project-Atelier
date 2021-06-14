@@ -150,4 +150,18 @@ brain.filterReviews = function (filters, list) {
   }
 };
 
+brain.searchByKeywords = function (query, list) {
+  if (query.length < 3) {
+    return list;
+  } else {
+    console.log(list);
+    return list.filter((item) => {
+      if (item.body.includes(query) || item.summary.includes(query)) {
+        console.log(item);
+        return true;
+      }
+    });
+  }
+};
+
 export default brain;
