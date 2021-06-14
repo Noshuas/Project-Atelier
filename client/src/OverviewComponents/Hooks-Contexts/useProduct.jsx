@@ -1,10 +1,9 @@
 import React, { createContext, useState, useEffect } from 'react';
 import { getProductDetails, getProductReviewsMeta, getProductReviews } from '../index.js';
 
-export const OverviewContext = createContext();
+export const ProductContext = createContext();
 
-export function useOverview() {
-  console.log('model');
+export function useProduct() {
   // set helper/storage variables
   let defaultStyleDetails = [];
   let productId = '17067';

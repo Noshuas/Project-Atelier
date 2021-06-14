@@ -9,7 +9,8 @@ import RandR from './ReviewsComponents/RandR.jsx';
 import RandRAPIcalls from './ReviewsComponents/RandRAPIcalls.js';
 // Context and Custom Hook Imports
 import { AppContext, useApp } from './AppComponents/index.js';
-import { OverviewContext, useOverview } from './OverviewComponents/index.js';
+import { ProductContext, useProduct } from './OverviewComponents/index.js';
+import { StyleContext, useStyle } from './OverviewComponents/index.js';
 import { RelatedContext, useRelated } from './RelatedComponents/index.js';
 
 function App() {
@@ -31,17 +32,20 @@ function App() {
   }, []);
 
   // Wills Hooks
-  const overviewState = useOverview();
+  const productState = useProduct();
+  const styleState = useStyle();
 
   // Related Hooks
   const relatedState = useRelated();
 
   return (
     <AppContext.Provider value={appState}>
-      <OverviewContext.Provider value={overviewState}>
-        <Overview />
-        <Related />
-      </OverviewContext.Provider>
+      <ProductContext.Provider value={productState}>
+        <StyleContext.Provider value={styleState}>
+          <Overview />
+          <Related />
+        </StyleContext.Provider>
+      </ProductContext.Provider>
       <QandA productId={productId} productName={productName}/>
       <RandR productId={productId} productName={productName}/>
     </AppContext.Provider>

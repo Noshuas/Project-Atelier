@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { CurrentStyleContext, SelectionContext } from '../index.js';
+import { StyleContext, SelectionContext } from '../index.js';
 import { getNewStyleDetails, iconURLs } from '../index.js';
 
 export function StyleSelector() {
@@ -10,7 +10,7 @@ export function StyleSelector() {
     productStyles,
     currentStyle,
     setCurrentStyle
-  } = useContext(CurrentStyleContext);
+  } = useContext(StyleContext);
 
   const {
     setUserSizeAndQuantSelect

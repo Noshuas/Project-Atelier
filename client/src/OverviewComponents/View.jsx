@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { AppContext } from '../AppComponents/index.js';
 import { ExpansionContext, useExpansion } from './index.js';
-import { CurrentStyleContext, useCurrentStyle } from './index.js';
+import { StyleContext, useStyle } from './index.js';
 import { SelectionContext, useSelection } from './index.js';
 import { HeroImage, SmallCarousel, ImageControls } from './index.js';
 import { ProductDetails, StyleSelector, AddProduct } from './index.js';
@@ -12,26 +12,29 @@ function ExpansionComponents() {
 
   return (
     <ExpansionContext.Provider value={expansionState}>
-      <CurrentStyleComponents classes={expansionState}/>
+      <CurrentStyleComponents />
     </ExpansionContext.Provider>
   );
 }
 
-function CurrentStyleComponents({ classes }) {
-  const styleState = useCurrentStyle();
+function CurrentStyleComponents() {
+  const {
+    heroPictureContainerClass,
+    detailsDisplayClass
+  } = useContext(ExpansionContext);
 
   return (
-    <CurrentStyleContext.Provider value={styleState}>
-      <div className={`hero-picture ${classes.heroPictureContainerClass}`}>
+    <>
+      <div className={`hero-picture ${heroPictureContainerClass}`}>
         <SmallCarousel />
         <ImageControls />
         <HeroImage />
       </div>
-      <div className={`details ${classes.detailsDisplayClass}`}>
+      <div className={`details ${detailsDisplayClass}`}>
         <ProductDetails />
         <SelectionComponents />
       </div>
-    </CurrentStyleContext.Provider>
+    </>
   );
 }
 

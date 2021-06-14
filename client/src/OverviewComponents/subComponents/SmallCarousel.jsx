@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { ExpansionContext, CurrentStyleContext } from '../index.js';
+import { ExpansionContext, StyleContext, ImageContext } from '../index.js';
 import { iconURLs } from '../index.js';
 import { incrementCarouselRange, decrementCarouselRange } from '../index.js';
 
@@ -10,7 +10,7 @@ export function SmallCarousel() {
     setCarouselSmallImages,
     carouselLargeImages,
     setHeroImage
-  } = useContext(CurrentStyleContext);
+  } = useContext(StyleContext);
 
   const {
     carouselDisplayClass,

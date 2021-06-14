@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { ExpansionContext, CurrentStyleContext } from '../index.js';
+import { ExpansionContext, StyleContext } from '../index.js';
 import { iconURLs } from '../index.js';
 import { displayNextImage, displayPreviousImage } from '../index.js';
 
@@ -8,7 +8,7 @@ export function ImageControls() {
   const {
     carouselLargeImages,
     setHeroImage
-  } = useContext(CurrentStyleContext);
+  } = useContext(StyleContext);
 
   const {
     setHeroPictureContainerClass,

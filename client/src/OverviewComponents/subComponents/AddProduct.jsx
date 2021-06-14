@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { CurrentStyleContext, SelectionContext } from '../index.js';
+import { StyleContext, SelectionContext } from '../index.js';
 
 export function AddProduct() {
   const {
@@ -11,7 +11,7 @@ export function AddProduct() {
 
   const {
     currentStyle
-  } = useContext(CurrentStyleContext);
+  } = useContext(StyleContext);
 
   let allInStockSizes = {};
   let anyInStockItems = false;

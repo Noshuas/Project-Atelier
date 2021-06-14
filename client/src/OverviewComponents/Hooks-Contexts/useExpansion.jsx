@@ -3,7 +3,6 @@ import React, { createContext, useState } from 'react';
 export const ExpansionContext = createContext();
 
 export function useExpansion() {
-  console.log('expansion');
   // below state variables are used to update element className values
   const [heroPictureContainerClass, setHeroPictureContainerClass] = useState('hero-picture-container-default');
   const [carouselDisplayClass, setCarouselDisplayClass] = useState('carousel-container-default');
