@@ -1,26 +1,23 @@
 import React, { useContext } from 'react';
-import { AppContext } from '../../AppComponents/index.js';
 import { OverviewContext } from '../index.js';
 import { iconURLs } from '../index.js';
 import { displayNextImage, displayPreviousImage } from '../index.js';
 
 export function ImageControls() {
-  const {carouselLargeImages, setCarouselLargeImages} = useContext(OverviewContext);
-  const {heroImage, setHeroImage} = useContext(OverviewContext);
-  const {heroPictureContainerClass, setHeroPictureContainerClass} = useContext(OverviewContext);
-  const {primaryImageDisplayClass, setPrimaryImageDisplayClass} = useContext(OverviewContext);
-  const {primaryIconDisplayClass, setPrimaryIconDisplayClass} = useContext(OverviewContext);
-  const {expandIconDisplayClass, setExpandIconDisplayClass} = useContext(OverviewContext);
-  const {primaryImageWidthClass, setPrimaryImageWidthClass} = useContext(OverviewContext);
-  const {detailsDisplayClass, setDetailsDisplayClass} = useContext(OverviewContext);
-  const {carouselDisplayClass, setCarouselDisplayClass} = useContext(OverviewContext);
+  const { carouselLargeImages } = useContext(OverviewContext);
+  const { setHeroImage } = useContext(OverviewContext);
+  const { setHeroPictureContainerClass } = useContext(OverviewContext);
+  const { setPrimaryImageDisplayClass } = useContext(OverviewContext);
+  const { setPrimaryImageWidthClass } = useContext(OverviewContext);
+  const { setDetailsDisplayClass } = useContext(OverviewContext);
+  const { setCarouselDisplayClass } = useContext(OverviewContext);
+  const { primaryIconDisplayClass, setPrimaryIconDisplayClass } = useContext(OverviewContext);
+  const { expandIconDisplayClass, setExpandIconDisplayClass } = useContext(OverviewContext);
 
-  let expandIcon;
+  let expandIcon = '-';
 
   if (expandIconDisplayClass === 'expand-icon-default') {
     expandIcon = '+';
-  } else {
-    expandIcon = '-';
   }
 
   return (

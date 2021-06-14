@@ -2,8 +2,8 @@ import React, { useContext } from 'react';
 import { OverviewContext } from '../index.js';
 
 export function AddProduct() {
-  const {currentStyle, setCurrentStyle} = useContext(OverviewContext);
-  const {userSelections, setUserSelections} = useContext(OverviewContext);
+  const { currentStyle } = useContext(OverviewContext);
+  const { userSizeAndQuantSelect, setUserSizeAndQuantSelect } = useContext(OverviewContext);
 
   let allInStockSizes = {};
   let skuQuantity = [];
@@ -16,8 +16,8 @@ export function AddProduct() {
     }
   }
 
-  if (userSelections.sku) {
-    for (var i = 1; i <= currentStyle.skus[userSelections.sku].quantity; i++) {
+  if (userSizeAndQuantSelect.sku) {
+    for (var i = 1; i <= currentStyle.skus[userSizeAndQuantSelect.sku].quantity; i++) {
       skuQuantity.push(i);
       if (i === 15) {
         break;
@@ -30,9 +30,9 @@ export function AddProduct() {
       <div className="size-quantity-container">
         <select className="size-select" onChange={({ target }) => {
           if (target.value === 'Select Size') {
-            setUserSelections({});
+            setUserSizeAndQuantSelect({});
           } else {
-            setUserSelections({
+            setUserSizeAndQuantSelect({
               sku: allInStockSizes[target.value],
               size: target.value,
               quantity: 0
@@ -48,7 +48,7 @@ export function AddProduct() {
             );
           })}
         </select>
-        <select className="quantity-select" disabled={userSelections.size ? false : true}>
+        <select className="quantity-select" disabled={userSizeAndQuantSelect.size ? false : true}>
           <option>
             {skuQuantity.length > 0 ? 'Quantity' : '-'}
           </option>

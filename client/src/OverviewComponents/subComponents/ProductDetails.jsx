@@ -1,23 +1,22 @@
 import React, { useContext } from 'react';
-import { AppContext } from '../../AppComponents/index.js';
 import { OverviewContext, createStars } from '../index.js';
 
 export function ProductDetails() {
-  const {currentProduct, setCurrentProduct} = useContext(OverviewContext);
-  const {currentStyle, setCurrentStyle} = useContext(OverviewContext);
-  const {productStarRatings, setProductStarRatings} = useContext(OverviewContext);
-  const {reviewCount, setReviewCount} = useContext(OverviewContext);
+  const { productDetails } = useContext(OverviewContext);
+  const { currentStyle } = useContext(OverviewContext);
+  const { productStarRating } = useContext(OverviewContext);
+  const { productReviewCount } = useContext(OverviewContext);
 
   let starContainer = [];
   let productCategory = '';
   let stylePrice = currentStyle.originalPrice;
 
-  if (productStarRatings) {
-    starContainer = createStars(productStarRatings);
+  if (productStarRating) {
+    starContainer = createStars(productStarRating);
   }
 
-  if (currentProduct.category) {
-    productCategory = currentProduct.category.toUpperCase();
+  if (productDetails.category) {
+    productCategory = productDetails.category.toUpperCase();
   }
 
   if (currentStyle.salePrice) {
@@ -34,11 +33,11 @@ export function ProductDetails() {
       <div className="star-container">
         {starContainer}
         <div className="review-count">
-          <a className="review-count-link" href="">Read all {reviewCount} reviews</a>
+          <a className="review-count-link" href="">Read all {productReviewCount} reviews</a>
         </div>
       </div>
       <div className="product-category">CATEGORY: {productCategory || 'Loading'}</div>
-      <div className="product-title">{currentProduct.name || 'Loading'}</div>
+      <div className="product-title">{productDetails.name || 'Loading'}</div>
       <div className="product-price">${stylePrice || 'Loading'}</div>
     </>
   );

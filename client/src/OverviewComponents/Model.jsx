@@ -1,25 +1,31 @@
 import React, { createContext, useState, useEffect } from 'react';
-import { getProducts, getProductStyles } from './index.js';
+import { getProductDetails, getProductStyles } from './index.js';
 import { getProductReviewsMeta, getProductReviews } from './index.js';
-import { createDefaultStyle } from './index.js';
+import { getDefaultStyleDetails } from './index.js';
 
 export const OverviewContext = createContext();
 
 export function useOverview() {
   // set helper/storage variables
-  let defaultStyle = [];
+  let defaultStyleDetails = [];
   let productId = '17067';
 
-  // set initial state values (static)
-  const [currentProduct, setCurrentProduct] = useState({});
-  const [productStarRatings, setProductStarRatings] = useState(null);
-  const [reviewCount, setReviewCount] = useState(null);
+  // below state variables are set with API calls
+  // user interactions do not update these vars (unless new product is selected)
+  const [productDetails, setProductDetails] = useState({});
   const [productStyles, setProductStyles] = useState({});
+  const [productStarRating, setProductStarRating] = useState(null);
+  const [productReviewCount, setProductReviewCount] = useState(null);
+
+  // below state variables contain specific info from above API vars
+  // these vars are more dynamic, user interactions will cause state change
   const [currentStyle, setCurrentStyle] = useState({});
-  const [userSelections, setUserSelections] = useState({});
+  const [heroImage, setHeroImage] = useState({url: '', initialIndex: 0});
   const [carouselLargeImages, setCarouselLargeImages] = useState([]);
   const [carouselSmallImages, setCarouselSmallImages] = useState({images: [], initialIndex: 0});
-  const [heroImage, setHeroImage] = useState({url: '', index: 0});
+  const [userSizeAndQuantSelect, setUserSizeAndQuantSelect] = useState({});
+
+  // below state variables are used to update element className values
   const [heroPictureContainerClass, setHeroPictureContainerClass] = useState('hero-picture-container-default');
   const [carouselDisplayClass, setCarouselDisplayClass] = useState('carousel-container-default');
   const [primaryImageDisplayClass, setPrimaryImageDisplayClass] = useState('primary-img-default');
@@ -30,21 +36,21 @@ export function useOverview() {
 
   useEffect(() => {
     Promise.all([
-      getProducts(productId),
+      getProductDetails(productId),
       getProductStyles(productId),
       getProductReviewsMeta(productId),
       getProductReviews(productId)])
       .then(([product, styles, starRatings, totalReviews]) => {
-        defaultStyle = createDefaultStyle(styles.data);
-        setCurrentProduct(product.data);
-        setProductStarRatings(starRatings);
-        setReviewCount(totalReviews);
+        defaultStyleDetails = getDefaultStyleDetails(styles.data);
+        setProductDetails(product.data);
         setProductStyles(styles.data);
-        setCurrentStyle(defaultStyle);
-        setHeroImage(defaultStyle.primaryImage);
-        setCarouselLargeImages(defaultStyle.photoInfo);
+        setProductStarRating(starRatings);
+        setProductReviewCount(totalReviews);
+        setCurrentStyle(defaultStyleDetails);
+        setHeroImage({url: defaultStyleDetails.primaryImageURL, initialIndex: 0});
+        setCarouselLargeImages(defaultStyleDetails.largePhotoURLs);
         setCarouselSmallImages({
-          images: defaultStyle.photoInfo.slice(0, 4),
+          images: defaultStyleDetails.smallPhotoURLs.slice(0, 4),
           initialIndex: 0
         });
       });
@@ -52,36 +58,36 @@ export function useOverview() {
 
   function getNewProduct(productId) {
     Promise.all([
-      getProducts(productId),
+      getProductDetails(productId),
       getProductStyles(productId),
       getProductReviewsMeta(productId),
       getProductReviews(productId)])
       .then(([product, styles, starRatings, totalReviews]) => {
-        defaultStyle = createDefaultStyle(styles.data);
-        setCurrentProduct(product.data);
-        setProductStarRatings(starRatings);
-        setReviewCount(totalReviews);
+        defaultStyleDetails = getDefaultStyleDetails(styles.data);
+        setProductDetails(product.data);
         setProductStyles(styles.data);
-        setCurrentStyle(defaultStyle);
-        setHeroImage(defaultStyle.primaryImage);
-        setCarouselLargeImages(defaultStyle.photoInfo);
+        setProductStarRating(starRatings);
+        setProductReviewCount(totalReviews);
+        setCurrentStyle(defaultStyleDetails);
+        setHeroImage({url: defaultStyleDetails.primaryImageURL, initialIndex: 0});
+        setCarouselLargeImages(defaultStyleDetails.largePhotoURLs);
         setCarouselSmallImages({
-          images: defaultStyle.photoInfo.slice(0, 4),
+          images: defaultStyleDetails.smallPhotoURLs.slice(0, 4),
           initialIndex: 0
         });
       });
   }
 
   return {
-    currentProduct, setCurrentProduct,
-    productStarRatings, setProductStarRatings,
-    reviewCount, setReviewCount,
+    productDetails, setProductDetails,
     productStyles, setProductStyles,
+    productStarRating, setProductStarRating,
+    productReviewCount, setProductReviewCount,
     currentStyle, setCurrentStyle,
-    userSelections, setUserSelections,
+    heroImage, setHeroImage,
     carouselLargeImages, setCarouselLargeImages,
     carouselSmallImages, setCarouselSmallImages,
-    heroImage, setHeroImage,
+    userSizeAndQuantSelect, setUserSizeAndQuantSelect,
     heroPictureContainerClass, setHeroPictureContainerClass,
     carouselDisplayClass, setCarouselDisplayClass,
     primaryImageDisplayClass, setPrimaryImageDisplayClass,

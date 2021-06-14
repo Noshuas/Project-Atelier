@@ -30,7 +30,7 @@ function AddReview(props) {
       name, email, photos, characteristics
     })
       .then(setOpen(false))
-      .then(() => props.setReviewCount(props.reviewCount + 1));
+      .then(() => props.setProductReviewCount(props.productReviewCount + 1));
   }
 
   return (
