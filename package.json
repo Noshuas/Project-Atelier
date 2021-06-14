@@ -20,9 +20,11 @@
   },
   "homepage": "https://github.com/will-weindel/project-catwalk#readme",
   "devDependencies": {
+    "-": "0.0.1",
     "@babel/core": "^7.14.3",
     "@babel/preset-env": "^7.14.4",
     "@babel/preset-react": "^7.13.13",
+    "@testing-library/react": "^11.2.7",
     "babel-jest": "^27.0.2",
     "babel-loader": "^8.2.2",
     "eslint": "^7.27.0",
