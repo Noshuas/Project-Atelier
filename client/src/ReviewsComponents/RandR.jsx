@@ -12,13 +12,13 @@ function RandR(props) {
   //Get reviews every time productId changes
   const [characteristics, setCharacteristics] = useState({});
   const [reviewsMeta, setReviewsMeta] = useState({});
-  const [reviewCount, setReviewCount] = useState(2);
+  const [productReviewCount, setProductReviewCount] = useState(2);
   useEffect(() => {
     if (Number(props.productId) > 0) {
       RandRAPIcalls.getReviewsMeta(props.productId)
         .then(response => {
           setReviewsMeta(response);
-          setReviewCount(brain.getReviewCount(response.data.ratings));
+          setProductReviewCount(brain.getReviewCount(response.data.ratings));
           setCharacteristics(response.data.characteristics);
         });
     }
@@ -32,12 +32,12 @@ function RandR(props) {
   const [filtered, setFiltered] = useState([]);
   useEffect(() => {
     if (Number(props.productId) > 0) {
-      RandRAPIcalls.getReviews(props.productId, sortBy, reviewCount)
+      RandRAPIcalls.getReviews(props.productId, sortBy, productReviewCount)
         .then(response => setReviews(response.data.results));
     }
-  }, [props.productId, sortBy, reviewCount]);
+  }, [props.productId, sortBy, productReviewCount]);
 
-  useEffect(() => setReviewCount(reviews.length), [reviews]);
+  useEffect(() => setProductReviewCount(reviews.length), [reviews]);
 
   useEffect(() => {
     let newFiltered = brain.filterReviews(filters, reviews);
@@ -69,7 +69,7 @@ function RandR(props) {
         <div>
           {filtered.length > 2 && <button onClick={handleShowMore}>{expandedView ? 'LESS REVIEWS' : 'MORE REVIEWS'}</button>}
           <AddReview productName={props.productName} characteristics={characteristics}
-            productId={props.productId} setReviewCount={setReviewCount} reviewCount={reviewCount} />
+            productId={props.productId} setProductReviewCount={setProductReviewCount} productReviewCount={productReviewCount} />
         </div>
       </div>
     </div>

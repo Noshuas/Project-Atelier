@@ -3,9 +3,7 @@ import React from 'react';
 
 let serverURL = 'http://localhost:3000';
 
-
 let RandRAPIcalls = {};
-
 
 RandRAPIcalls.getProducts = function () {
   return axios.get(serverURL + '/products');
