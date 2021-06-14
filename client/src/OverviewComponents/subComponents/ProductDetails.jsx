@@ -1,12 +1,13 @@
 import React, { useContext } from 'react';
 import { OverviewContext } from '../index.js';
+import { useCurrentStyle } from '../index.js';
 import ReadOnlyRatingStars from '../../ReviewsComponents/ReadOnlyRatingStars.jsx';
 
 export function ProductDetails() {
   const { productDetails } = useContext(OverviewContext);
-  const { currentStyle } = useContext(OverviewContext);
   const { productStarRating } = useContext(OverviewContext);
   const { productReviewCount } = useContext(OverviewContext);
+  const { currentStyle } = useCurrentStyle();
 
   let productCategory = '';
   let stylePrice = currentStyle.originalPrice;

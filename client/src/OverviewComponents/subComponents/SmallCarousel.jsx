@@ -2,12 +2,15 @@ import React, { useContext } from 'react';
 import { OverviewContext, ExpansionContext } from '../index.js';
 import { iconURLs } from '../index.js';
 import { incrementCarouselRange, decrementCarouselRange } from '../index.js';
+import { useCurrentStyle } from '../index.js';
 
 export function SmallCarousel() {
-  const { currentStyle } = useContext(OverviewContext);
-  const { carouselSmallImages, setCarouselSmallImages } = useContext(OverviewContext);
-  const { carouselLargeImages } = useContext(OverviewContext);
-  const { setHeroImage } = useContext(OverviewContext);
+  const {
+    currentStyle,
+    carouselSmallImages,
+    setCarouselSmallImages,
+    carouselLargeImages,
+    setHeroImage } = useCurrentStyle();
   const { carouselDisplayClass } = useContext(ExpansionContext);
   const { smallImgDisplayClass } = useContext(ExpansionContext);
 

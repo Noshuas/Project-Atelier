@@ -2,10 +2,13 @@ import React, { useContext } from 'react';
 import { OverviewContext, ExpansionContext } from '../index.js';
 import { iconURLs } from '../index.js';
 import { displayNextImage, displayPreviousImage } from '../index.js';
+import { useCurrentStyle } from '../index.js';
+
 
 export function ImageControls() {
-  const { carouselLargeImages } = useContext(OverviewContext);
-  const { setHeroImage } = useContext(OverviewContext);
+  const {
+    carouselLargeImages,
+    setHeroImage } = useCurrentStyle();
   const { setHeroPictureContainerClass } = useContext(ExpansionContext);
   const { setPrimaryImageDisplayClass } = useContext(ExpansionContext);
   const { setPrimaryImageWidthClass } = useContext(ExpansionContext);

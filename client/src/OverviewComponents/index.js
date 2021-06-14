@@ -1,6 +1,7 @@
 import { Overview } from './View.jsx';
 import { OverviewContext, useOverview } from './Model.jsx';
-import { ExpansionContext, useExpansion } from './Contexts/ExpansionContext.jsx';
+import { ExpansionContext, useExpansion } from './Hooks-Contexts/useExpansion.jsx';
+import { useCurrentStyle } from './Hooks-Contexts/useCurrentStyle.jsx';
 import { getProductDetails, getProductStyles } from './Controllers.jsx';
 import { getProductReviewsMeta, getProductReviews } from './Controllers.jsx';
 import { displayNextImage, displayPreviousImage } from './Controllers.jsx';
@@ -22,6 +23,7 @@ export {
   useOverview,
   ExpansionContext,
   useExpansion,
+  useCurrentStyle,
   getProductDetails,
   getProductStyles,
   getProductReviewsMeta,

@@ -1,13 +1,16 @@
 import React, { useContext } from 'react';
 import { OverviewContext } from '../index.js';
 import { getNewStyleDetails, iconURLs } from '../index.js';
+import { useCurrentStyle } from '../index.js';
 
 export function StyleSelector() {
-  const { setCarouselLargeImages } = useContext(OverviewContext);
-  const { setCarouselSmallImages } = useContext(OverviewContext);
-  const { setHeroImage } = useContext(OverviewContext);
-  const { productStyles } = useContext(OverviewContext);
-  const { currentStyle, setCurrentStyle } = useContext(OverviewContext);
+  const {
+    setCarouselLargeImages,
+    setCarouselSmallImages,
+    setHeroImage,
+    productStyles,
+    currentStyle,
+    setCurrentStyle } = useCurrentStyle();
   const { setUserSizeAndQuantSelect } = useContext(OverviewContext);
 
   let styleStorage = [];

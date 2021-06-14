@@ -1,8 +1,9 @@
 import React, { useContext } from 'react';
 import { OverviewContext, ExpansionContext } from '../index.js';
+import { useCurrentStyle } from '../index.js';
 
 export function HeroImage() {
-  const { heroImage } = useContext(OverviewContext);
+  const { heroImage } = useCurrentStyle();
   const { primaryImageDisplayClass } = useContext(ExpansionContext);
   const { primaryImageWidthClass } = useContext(ExpansionContext);
 
