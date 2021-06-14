@@ -1,4 +1,4 @@
-import API from '../configAPI.js';
+import API from '../../../configAPI.js';
 import axios from 'axios';
 import React from 'react';
 
@@ -12,13 +12,13 @@ export function getProductStyles(productId) {
 }
 
 export function getProductReviewsMeta(productId) {
-  return axios.get(API.url + `/reviews/meta?count=1000&product_id=${productId}`, API.auth)
+  return axios.get(API.url + `/reviews/meta?product_id=${productId}`, API.auth)
     .then( resVal => calcStarRating(resVal.data.ratings));
 }
 
 export function getProductReviews(productId) {
-  return axios.get(API.url + `/reviews?product_id=${productId}`, API.auth)
-    .then( resVal => resVal.data.count);
+  return axios.get(API.url + `/reviews?count=1000&product_id=${productId}`, API.auth)
+    .then( resVal => resVal.data.results.length );
 }
 
 export function calcStarRating(starRatings) {
@@ -33,29 +33,8 @@ export function calcStarRating(starRatings) {
   if (!totalRatings) {
     return null;
   } else {
-    return Math.floor(totalScore / totalRatings);
+    return Math.round((totalScore / totalRatings) * 10) / 10;
   }
-}
-
-export function createStars(productStarRating) {
-  let starContainer = [];
-
-  for (var i = 1; i <= 5; i++) {
-    if (i <= productStarRating) {
-      starContainer.push((
-        <div className="star-wrapper" key={i}>
-          <i className="fas fa-star"></i>
-        </div>
-      ));
-    } else {
-      starContainer.push((
-        <div className="star-wrapper" key={i}>
-          <i className="far fa-star"></i>
-        </div>
-      ));
-    }
-  }
-  return starContainer;
 }
 
 export function displayNextImage(current, imagesArray) {

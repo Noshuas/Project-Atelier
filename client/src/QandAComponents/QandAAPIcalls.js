@@ -1,5 +1,5 @@
 import axios from 'axios';
-import API from '../configAPI.js';
+import API from '../../../configAPI.js';
 
 let QAapiCalls = {};
 
