@@ -17,8 +17,11 @@ app.use(formData.parse());
 app.get('/products', (req, res) => {
   console.log('Getting list of products...');
   let params = req.query;
-  axios.get(config.url + '/products', { params, ...config.auth })
-    .then(response => res.send(response.data));
+  axios.get(config.url + '/products', config.auth)
+    .then((response) => {
+      res.send(response.data);
+    })
+    .catch(err => res.send(err));
 });
 
 //Luka's endpoints
@@ -135,19 +138,19 @@ app.post('/qa/answers', (req, res) => {
 
 app.put('/qa/helpfulness', (req, res) => {
   // all in body
+  //console.log(req.body);
   let headers = config.auth.headers;
   let url = `/qa/${req.body.QorA}/${req.body.ID}/${req.body.feeback}`;
   if (req.body.QorA === 'question') {
     return axios.put(config.url + url, {question_id: req.body.ID}, {headers})
       .then(results => {
-
+        //console.log(results.data.results);
         res.send(results);
       })
       .catch(err => { res.send(err); });
   } else {
     return axios.put(config.url + url, {answer_id: req.body.ID}, {headers})
       .then(results => {
-
         res.send(results);
       })
       .catch(err => { res.send(err); });

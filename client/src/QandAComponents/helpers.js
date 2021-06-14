@@ -27,4 +27,16 @@ Helpers.testHelp = (arr) => {
   return str;
 };
 
+Helpers.testHelp = (arr) => {
+  var str = '';
+  arr.forEach((val, index) => {
+    if (typeof val === 'object') {
+      str += Helpers.testHelp(val.children);
+    } else {
+      str += val;
+    }
+  });
+  return str;
+};
+
 export default Helpers;
