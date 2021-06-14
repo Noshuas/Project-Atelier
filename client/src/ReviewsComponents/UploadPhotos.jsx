@@ -16,6 +16,7 @@ function UploadPhotos(props) {
 
   function onChange(e) {
     let files = Array.from(e.target.files);
+    //Limits number of images to 5
     files = files.slice(0, 5);
     setUploading(true);
 
