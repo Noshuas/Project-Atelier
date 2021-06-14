@@ -6,6 +6,12 @@ import WasHelpful from './WasHelpful.jsx';
 import GenericModal from '../QandAComponents/GenericModal.jsx';
 
 function ReviewItem(props) {
+  const [showMore, setShowMore] = useState(false);
+  function handleShowMore (e) {
+    e.preventDefault();
+    setShowMore(true);
+  }
+
   let review = props.review;
   return (
     <div className="review-item fadeIn">
@@ -14,7 +20,10 @@ function ReviewItem(props) {
         <span>{review.reviewer_name}, {brain.getFormatedTimestamp(review.date)}</span>
       </div>
       <h3>{review.summary}</h3>
-      <p>{review.body}</p>
+      <p>
+        {showMore ? review.body : review.body.slice(0, 250)}
+        {review.body.length > 250 && !showMore && <><span>... </span><a href="#" onClick={handleShowMore}>show more</a></>}
+      </p>
       <Images pics={review.photos} />
       <IRecommmendThisProduct recommend={review.recommend} />
       <ReviewResponse response={review.response} />
@@ -50,7 +59,7 @@ function IRecommmendThisProduct(props) {
 function Images(props) {
   const [open, setOpen] = useState(false);
   const [modalImage, setModalImage] = useState('');
-  function handleClick (picUrl) {
+  function handleClick(picUrl) {
     setModalImage(picUrl);
     setOpen(true);
   }
@@ -60,7 +69,7 @@ function Images(props) {
     <div>{props.pics.map(pic => {
       return (
         <span key={pic.id} >
-          <img src={pic.url} onClick={() => handleClick(pic.url)}/>
+          <img src={pic.url} onClick={() => handleClick(pic.url)} />
           <GenericModal open={open} onClose={() => setOpen(false)}>
             <img className="modal-image" src={modalImage} />
           </GenericModal>
