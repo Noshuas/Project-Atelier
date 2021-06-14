@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import { OverviewContext } from '../OverviewComponents/Model.jsx';
+import { OverviewContext } from '../OverviewComponents/Hooks-Contexts/useOverview.jsx';
 
 export function Related() {
   const {getNewProduct} = useContext(OverviewContext);

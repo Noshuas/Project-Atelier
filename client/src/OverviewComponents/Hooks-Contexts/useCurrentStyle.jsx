@@ -30,7 +30,7 @@ export function useCurrentStyle() {
       });
   }, []);
 
-  function getNewProduct(productId) {
+  function getNewStyle(productId) {
     getProductStyles(productId)
       .then(resVal => {
         defaultStyleDetails = getDefaultStyleDetails(resVal.data);
@@ -51,6 +51,6 @@ export function useCurrentStyle() {
     heroImage, setHeroImage,
     carouselLargeImages, setCarouselLargeImages,
     carouselSmallImages, setCarouselSmallImages,
-    getNewProduct
+    getNewStyle
   };
 }

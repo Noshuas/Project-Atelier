@@ -1,5 +1,5 @@
 import React, { createContext, useState, useEffect } from 'react';
-import { getProductDetails, getProductReviewsMeta, getProductReviews } from './index.js';
+import { getProductDetails, getProductReviewsMeta, getProductReviews } from '../index.js';
 
 export const OverviewContext = createContext();
 
@@ -27,9 +27,22 @@ export function useOverview() {
       });
   }, []);
 
+  function getNewProduct(productId) {
+    Promise.all([
+      getProductDetails(productId),
+      getProductReviewsMeta(productId),
+      getProductReviews(productId)])
+      .then(([product, starRatings, totalReviews]) => {
+        setProductDetails(product.data);
+        setProductStarRating(starRatings);
+        setProductReviewCount(totalReviews);
+      });
+  }
+
   return {
     productDetails, setProductDetails,
     productStarRating, setProductStarRating,
-    productReviewCount, setProductReviewCount
+    productReviewCount, setProductReviewCount,
+    getNewProduct
   };
 }

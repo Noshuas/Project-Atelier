@@ -1,16 +1,13 @@
 import React, { useContext, useState } from 'react';
-import { ExpansionContext, CurrentStyleContext, SelectionContext } from '../index.js';
+import { CurrentStyleContext, SelectionContext } from '../index.js';
 
 export function AddProduct() {
   const {
     userSizeAndQuantSelect,
-    setUserSizeAndQuantSelect
-  } = useContext(SelectionContext);
-
-  const {
+    setUserSizeAndQuantSelect,
     cartErrorDisplayClass,
     setCartErrorDisplayClass
-  } = useContext(ExpansionContext);
+  } = useContext(SelectionContext);
 
   const {
     currentStyle

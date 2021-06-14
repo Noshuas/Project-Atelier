@@ -1,5 +1,5 @@
 import { Overview } from './View.jsx';
-import { OverviewContext, useOverview } from './Model.jsx';
+import { OverviewContext, useOverview } from './Hooks-Contexts/useOverview.jsx';
 import { ExpansionContext, useExpansion } from './Hooks-Contexts/useExpansion.jsx';
 import { CurrentStyleContext, useCurrentStyle } from './Hooks-Contexts/useCurrentStyle.jsx';
 import { SelectionContext, useSelection } from './Hooks-Contexts/useSelection.jsx';
