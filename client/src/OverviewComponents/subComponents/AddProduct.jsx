@@ -1,17 +1,20 @@
-import React, { useContext } from 'react';
-import { OverviewContext } from '../index.js';
+import React, { useContext, useState } from 'react';
+import { OverviewContext, ExpansionContext } from '../index.js';
 
 export function AddProduct() {
   const { currentStyle } = useContext(OverviewContext);
   const { userSizeAndQuantSelect, setUserSizeAndQuantSelect } = useContext(OverviewContext);
+  const { cartErrorDisplayClass, setCartErrorDisplayClass } = useContext(ExpansionContext);
 
   let allInStockSizes = {};
+  let anyInStockItems = false;
   let skuQuantity = [];
 
   if (currentStyle.skus) {
     for (var sku in currentStyle.skus) {
       if (currentStyle.skus[sku].quantity > 0) {
         allInStockSizes[currentStyle.skus[sku].size] = sku;
+        anyInStockItems = true;
       }
     }
   }
@@ -28,19 +31,24 @@ export function AddProduct() {
   return (
     <>
       <div className="size-quantity-container">
-        <select className="size-select" onChange={({ target }) => {
-          if (target.value === 'Select Size') {
-            setUserSizeAndQuantSelect({});
-          } else {
-            setUserSizeAndQuantSelect({
-              sku: allInStockSizes[target.value],
-              size: target.value,
-              quantity: 0
-            });
-          }
-        }} disabled={Object.keys(allInStockSizes).length > 0 ? false : true}>
+        <select
+          className="size-select"
+          value={userSizeAndQuantSelect.size || ''}
+          onChange={({ target }) => {
+            setCartErrorDisplayClass('hide-atc-err');
+            if (target.value === 'Select Size') {
+              setUserSizeAndQuantSelect({});
+            } else {
+              setUserSizeAndQuantSelect({
+                sku: allInStockSizes[target.value],
+                size: target.value,
+                quantity: 'Quantity'
+              });
+            }
+          }}
+          disabled={!anyInStockItems}>
           <option>
-            {Object.keys(allInStockSizes).length > 0 ? 'Select Size' : 'OUT OF STOCK'}
+            {anyInStockItems ? 'Select Size' : 'OUT OF STOCK'}
           </option>
           {Object.entries(allInStockSizes).map((size, index) => {
             return (
@@ -48,7 +56,14 @@ export function AddProduct() {
             );
           })}
         </select>
-        <select className="quantity-select" disabled={userSizeAndQuantSelect.size ? false : true}>
+        <select className="quantity-select" onChange={({ target }) => {
+          setCartErrorDisplayClass('hide-atc-err');
+          setUserSizeAndQuantSelect(cur => ({
+            ...cur,
+            quantity: target.value
+          }));
+        }}
+        disabled={userSizeAndQuantSelect.size ? false : true}>
           <option>
             {skuQuantity.length > 0 ? 'Quantity' : '-'}
           </option>
@@ -59,8 +74,20 @@ export function AddProduct() {
           })}
         </select>
       </div>
-      <div className="add-to-cart-container">
-        <button>Add To Bag</button>
+      <div className={`add-to-cart-container ${anyInStockItems ? 'show-atc-btn' : 'hide-atc-btn'}`}>
+        <button className="atc-btn" onClick={() => {
+          if (!userSizeAndQuantSelect.sku) {
+            setCartErrorDisplayClass('show-atc-err');
+          } else if (userSizeAndQuantSelect.quantity === 'Quantity') {
+            setCartErrorDisplayClass('show-atc-err');
+          } else {
+            setCartErrorDisplayClass('hide-atc-err');
+            setUserSizeAndQuantSelect({});
+          }
+        }}>Add To Cart</button>
+        <div className={`atc-error ${cartErrorDisplayClass}`}>
+          Please select a Size and Quantity before adding to cart.
+        </div>
       </div>
     </>
   );

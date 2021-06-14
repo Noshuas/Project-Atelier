@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
-import { OverviewContext, createStars } from '../index.js';
+import { OverviewContext } from '../index.js';
+import ReadOnlyRatingStars from '../../ReviewsComponents/ReadOnlyRatingStars.jsx';
 
 export function ProductDetails() {
   const { productDetails } = useContext(OverviewContext);
@@ -7,13 +8,8 @@ export function ProductDetails() {
   const { productStarRating } = useContext(OverviewContext);
   const { productReviewCount } = useContext(OverviewContext);
 
-  let starContainer = [];
   let productCategory = '';
   let stylePrice = currentStyle.originalPrice;
-
-  if (productStarRating) {
-    starContainer = createStars(productStarRating);
-  }
 
   if (productDetails.category) {
     productCategory = productDetails.category.toUpperCase();
@@ -30,10 +26,10 @@ export function ProductDetails() {
 
   return (
     <>
-      <div className="star-container">
-        {starContainer}
+      <div className="ratings-container">
+        <ReadOnlyRatingStars rating={productStarRating}/>
         <div className="review-count">
-          <a className="review-count-link" href="">Read all {productReviewCount} reviews</a>
+          <a className="review-count-link" href="#ratings-and-reviews">Read all {productReviewCount} reviews</a>
         </div>
       </div>
       <div className="product-category">CATEGORY: {productCategory || 'Loading'}</div>

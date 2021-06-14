@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { OverviewContext } from '../index.js';
-import { getNewStyleDetails } from '../index.js';
+import { getNewStyleDetails, iconURLs } from '../index.js';
 
 export function StyleSelector() {
   const { setCarouselLargeImages } = useContext(OverviewContext);
@@ -15,7 +15,7 @@ export function StyleSelector() {
   if (productStyles.results) {
     styleStorage = productStyles.results.map((style, index) => {
       return (
-        <div key={index} className="style-img-wrapper" onClick={() => {
+        <div key={index} className='style-img-wrapper' onClick={() => {
           let newStyleDetails = getNewStyleDetails(productStyles, index);
           setUserSizeAndQuantSelect({});
           setHeroImage({
@@ -29,15 +29,22 @@ export function StyleSelector() {
           });
           setCurrentStyle(newStyleDetails);
         }}>
-          <img className="style-img" src={style.photos[0].thumbnail_url} />
+          <img
+            className={`check-mark-img ${style.name === currentStyle.name ? 'display-check-mark' : 'hide-check-mark'}`}
+            src={iconURLs.blueCheckMark}
+          />
+          <img
+            className='style-img'
+            src={style.photos[0].thumbnail_url}
+          />
         </div>
       );
     });
   }
 
   return (
-    <div className="style-container">
-      <div className="style-selected"><strong>STYLE &gt;</strong> {currentStyle.name}</div>
+    <div className='style-container'>
+      <div className='style-selected'><strong>STYLE &gt;</strong> {currentStyle.name}</div>
       {styleStorage.slice(0, 8)}
     </div>
   );

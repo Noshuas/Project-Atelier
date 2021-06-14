@@ -50,7 +50,7 @@ function RandR(props) {
   }
 
   return (
-    <div className="ratings-and-reviews">
+    <div id="ratings-and-reviews" className="ratings-and-reviews">
       <h3>RATINGS {'&'} REVIEWS</h3>
       <ReviewMeta meta={reviewsMeta} filters={filters} setFilters={setFilters}/>
       <div className="reviews">

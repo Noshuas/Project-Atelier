@@ -1,18 +1,20 @@
 import React, { useContext } from 'react';
-import { OverviewContext } from '../index.js';
+import { OverviewContext, ExpansionContext } from '../index.js';
 import { iconURLs } from '../index.js';
 import { displayNextImage, displayPreviousImage } from '../index.js';
 
 export function ImageControls() {
   const { carouselLargeImages } = useContext(OverviewContext);
   const { setHeroImage } = useContext(OverviewContext);
-  const { setHeroPictureContainerClass } = useContext(OverviewContext);
-  const { setPrimaryImageDisplayClass } = useContext(OverviewContext);
-  const { setPrimaryImageWidthClass } = useContext(OverviewContext);
-  const { setDetailsDisplayClass } = useContext(OverviewContext);
-  const { setCarouselDisplayClass } = useContext(OverviewContext);
-  const { primaryIconDisplayClass, setPrimaryIconDisplayClass } = useContext(OverviewContext);
-  const { expandIconDisplayClass, setExpandIconDisplayClass } = useContext(OverviewContext);
+  const { setHeroPictureContainerClass } = useContext(ExpansionContext);
+  const { setPrimaryImageDisplayClass } = useContext(ExpansionContext);
+  const { setPrimaryImageWidthClass } = useContext(ExpansionContext);
+  const { setDetailsDisplayClass } = useContext(ExpansionContext);
+  const { setCarouselDisplayClass } = useContext(ExpansionContext);
+  const { setSmallImgDisplayClass } = useContext(ExpansionContext);
+  const { primaryIconDisplayClass, setPrimaryIconDisplayClass } = useContext(ExpansionContext);
+  const { primaryIconPositionClass, setPrimaryIconPositionClass } = useContext(ExpansionContext);
+  const { expandIconDisplayClass, setExpandIconDisplayClass } = useContext(ExpansionContext);
 
   let expandIcon = '-';
 
@@ -25,12 +27,12 @@ export function ImageControls() {
       <div className="small-icon-wrapper-left" onClick={() => {
         setHeroImage(cur => displayPreviousImage(cur, carouselLargeImages));
       }}>
-        <img className="small-icon-left" src={iconURLs.arrowLeft}/>
+        <img className={`small-icon-left ${primaryIconPositionClass}`} src={iconURLs.arrowLeft}/>
       </div>
       <div className="small-icon-wrapper-right" onClick={() => {
         setHeroImage(cur => displayNextImage(cur, carouselLargeImages));
       }}>
-        <img className="small-icon-right" src={iconURLs.arrowRight}/>
+        <img className={`small-icon-right ${primaryIconPositionClass}`} src={iconURLs.arrowRight}/>
       </div>
       <div className={`expand-icon ${expandIconDisplayClass}`} onClick={() => {
         setHeroPictureContainerClass(cur => {
@@ -42,17 +44,23 @@ export function ImageControls() {
         setPrimaryIconDisplayClass(cur => {
           return cur === 'primary-icons-default' ? 'primary-icons-expanded' : 'primary-icons-default';
         });
+        setPrimaryIconPositionClass(cur => {
+          return cur === 'primary-icon-default' ? 'primary-icon-expanded' : 'primary-icon-default';
+        });
         setExpandIconDisplayClass(cur => {
           return cur === 'expand-icon-default' ? 'expand-icon-expanded' : 'expand-icon-default';
         });
         setPrimaryImageWidthClass(cur => {
-          return cur === 'primary-img-width-default' ? 'primary-img-width-expanded' : 'primary-img-width-default';
+          return cur === 'primary-img-width-height-default' ? 'primary-img-width-height-expanded' : 'primary-img-width-height-default';
         });
         setDetailsDisplayClass(cur => {
           return cur === 'details-display-default' ? 'details-display-expanded' : 'details-display-default';
         });
         setCarouselDisplayClass(cur => {
           return cur === 'carousel-container-default' ? 'carousel-container-expanded' : 'carousel-container-default';
+        });
+        setSmallImgDisplayClass(cur => {
+          return cur === 'small-img-default' ? 'small-img-expanded' : 'small-img-default';
         });
       }}>{expandIcon}</div>
     </div>

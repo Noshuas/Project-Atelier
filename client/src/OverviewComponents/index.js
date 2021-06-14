@@ -1,8 +1,9 @@
 import { Overview } from './View.jsx';
 import { OverviewContext, useOverview } from './Model.jsx';
+import { ExpansionContext, useExpansion } from './Contexts/ExpansionContext.jsx';
 import { getProductDetails, getProductStyles } from './Controllers.jsx';
 import { getProductReviewsMeta, getProductReviews } from './Controllers.jsx';
-import { displayNextImage, displayPreviousImage, createStars } from './Controllers.jsx';
+import { displayNextImage, displayPreviousImage } from './Controllers.jsx';
 import { incrementCarouselRange, decrementCarouselRange } from './Controllers.jsx';
 import { getDefaultStyleDetails, getNewStyleDetails } from './Controllers.jsx';
 import { iconURLs } from './iconURLs.js';
@@ -19,13 +20,14 @@ export {
   Overview,
   OverviewContext,
   useOverview,
+  ExpansionContext,
+  useExpansion,
   getProductDetails,
   getProductStyles,
   getProductReviewsMeta,
   getProductReviews,
   displayNextImage,
   displayPreviousImage,
-  createStars,
   incrementCarouselRange,
   decrementCarouselRange,
   getDefaultStyleDetails,

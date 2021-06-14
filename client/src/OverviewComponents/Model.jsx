@@ -25,15 +25,6 @@ export function useOverview() {
   const [carouselSmallImages, setCarouselSmallImages] = useState({images: [], initialIndex: 0});
   const [userSizeAndQuantSelect, setUserSizeAndQuantSelect] = useState({});
 
-  // below state variables are used to update element className values
-  const [heroPictureContainerClass, setHeroPictureContainerClass] = useState('hero-picture-container-default');
-  const [carouselDisplayClass, setCarouselDisplayClass] = useState('carousel-container-default');
-  const [primaryImageDisplayClass, setPrimaryImageDisplayClass] = useState('primary-img-default');
-  const [primaryImageWidthClass, setPrimaryImageWidthClass] = useState('primary-img-width-default');
-  const [primaryIconDisplayClass, setPrimaryIconDisplayClass] = useState('primary-icons-default');
-  const [expandIconDisplayClass, setExpandIconDisplayClass] = useState('expand-icon-default');
-  const [detailsDisplayClass, setDetailsDisplayClass] = useState('details-display-default');
-
   useEffect(() => {
     Promise.all([
       getProductDetails(productId),
@@ -88,13 +79,6 @@ export function useOverview() {
     carouselLargeImages, setCarouselLargeImages,
     carouselSmallImages, setCarouselSmallImages,
     userSizeAndQuantSelect, setUserSizeAndQuantSelect,
-    heroPictureContainerClass, setHeroPictureContainerClass,
-    carouselDisplayClass, setCarouselDisplayClass,
-    primaryImageDisplayClass, setPrimaryImageDisplayClass,
-    primaryImageWidthClass, setPrimaryImageWidthClass,
-    primaryIconDisplayClass, setPrimaryIconDisplayClass,
-    expandIconDisplayClass, setExpandIconDisplayClass,
-    detailsDisplayClass, setDetailsDisplayClass,
     getNewProduct
   };
 }

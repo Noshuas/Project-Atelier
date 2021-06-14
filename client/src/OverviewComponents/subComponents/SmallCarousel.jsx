@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { OverviewContext } from '../index.js';
+import { OverviewContext, ExpansionContext } from '../index.js';
 import { iconURLs } from '../index.js';
 import { incrementCarouselRange, decrementCarouselRange } from '../index.js';
 
@@ -8,7 +8,8 @@ export function SmallCarousel() {
   const { carouselSmallImages, setCarouselSmallImages } = useContext(OverviewContext);
   const { carouselLargeImages } = useContext(OverviewContext);
   const { setHeroImage } = useContext(OverviewContext);
-  const { carouselDisplayClass } = useContext(OverviewContext);
+  const { carouselDisplayClass } = useContext(ExpansionContext);
+  const { smallImgDisplayClass } = useContext(ExpansionContext);
 
   return (
     <div className={`carousel-container ${carouselDisplayClass}`}>
@@ -26,7 +27,7 @@ export function SmallCarousel() {
               initialIndex: index
             });
           }}>
-            <img className="small-img" src={photo}/>
+            <img className={`${smallImgDisplayClass}`} src={photo}/>
           </div>);
       })}
 
