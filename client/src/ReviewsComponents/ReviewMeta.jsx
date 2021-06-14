@@ -15,7 +15,7 @@ function ReviewMeta(props) {
         <div className="average-rating">{average}</div>
         <ReadOnlyRatingStars rating={average} />
       </div>
-      <div>{recommendationPercentage}% of reviews recommend this product</div>
+      <div className="recommend-percent">{recommendationPercentage}% of reviews recommend this product</div>
       <FactorBreakdown rating={formatedStars} filters={props.filters} setFilters={props.setFilters} />
       <FilterDisplay filters={props.filters} setFilters={props.setFilters} />
       <CharBreakdown chars={formatedChars} />

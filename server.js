@@ -21,6 +21,13 @@ app.get('/products', (req, res) => {
     .then(response => res.send(response.data));
 });
 
+app.post('/interactions', (req, res) => {
+  console.log('Posting an interaction');
+  let params = req.body;
+  axios.post(config.url + '/interactions', params, config.auth)
+    .then((e) => console.log(e));
+});
+
 //Luka's endpoints
 app.get('/reviews', (req, res) => {
   console.log('Getting reviews...');

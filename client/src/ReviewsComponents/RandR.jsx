@@ -1,15 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import brain from './brain.jsx';
 import RandRAPIcalls from './RandRAPIcalls';
 import ReviewMeta from './ReviewMeta.jsx';
 import ReviewItem from './ReviewItem.jsx';
 import ReviewSorting from './ReviewSorting.jsx';
 import AddReview from './AddReview.jsx';
-
+import { AppContext } from '../AppComponents/index.js';
 
 
 function RandR(props) {
   //Get reviews every time productId changes
+  const { clickListener } = useContext(AppContext);
   const [characteristics, setCharacteristics] = useState({});
   const [reviewsMeta, setReviewsMeta] = useState({});
   const [reviewCount, setReviewCount] = useState(2);
@@ -58,7 +59,7 @@ function RandR(props) {
   }
 
   return (
-    <div className="ratings-and-reviews">
+    <div className="ratings-and-reviews" onClick={e => clickListener(e, 'Ratings and Reviews')}>
       <h3>RATINGS {'&'} REVIEWS</h3>
       <ReviewMeta meta={reviewsMeta} filters={filters} setFilters={setFilters}/>
       <div className="reviews">
