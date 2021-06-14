@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
-import { OverviewContext } from '../index.js';
+import { CurrentStyleContext, SelectionContext } from '../index.js';
 import { getNewStyleDetails, iconURLs } from '../index.js';
-import { useCurrentStyle } from '../index.js';
 
 export function StyleSelector() {
   const {
@@ -10,8 +9,12 @@ export function StyleSelector() {
     setHeroImage,
     productStyles,
     currentStyle,
-    setCurrentStyle } = useCurrentStyle();
-  const { setUserSizeAndQuantSelect } = useContext(OverviewContext);
+    setCurrentStyle
+  } = useContext(CurrentStyleContext);
+
+  const {
+    setUserSizeAndQuantSelect
+  } = useContext(SelectionContext);
 
   let styleStorage = [];
 

@@ -1,11 +1,12 @@
 import React, { useContext } from 'react';
-import { OverviewContext, ExpansionContext } from '../index.js';
-import { useCurrentStyle } from '../index.js';
+import { ExpansionContext, CurrentStyleContext } from '../index.js';
 
 export function HeroImage() {
-  const { heroImage } = useCurrentStyle();
+  const { heroImage } = useContext(CurrentStyleContext);
   const { primaryImageDisplayClass } = useContext(ExpansionContext);
   const { primaryImageWidthClass } = useContext(ExpansionContext);
+
+  console.log('rere');
 
   return (
     <div className={`primary-img-container ${primaryImageDisplayClass}`}>

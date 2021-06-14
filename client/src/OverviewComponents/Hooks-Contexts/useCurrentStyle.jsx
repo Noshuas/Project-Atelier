@@ -1,7 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, createContext } from 'react';
 import { getProductStyles, getDefaultStyleDetails } from '../index.js';
 
+export const CurrentStyleContext = createContext();
+
 export function useCurrentStyle() {
+  console.log('current');
   const [productStyles, setProductStyles] = useState({});
   const [currentStyle, setCurrentStyle] = useState({});
   const [heroImage, setHeroImage] = useState({url: '', initialIndex: 0});
@@ -14,6 +17,7 @@ export function useCurrentStyle() {
   useEffect(() => {
     getProductStyles(productId)
       .then(resVal => {
+        console.log('use');
         defaultStyleDetails = getDefaultStyleDetails(resVal.data);
         setProductStyles(resVal.data);
         setCurrentStyle(defaultStyleDetails);

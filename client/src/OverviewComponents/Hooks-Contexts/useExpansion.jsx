@@ -3,6 +3,7 @@ import React, { createContext, useState } from 'react';
 export const ExpansionContext = createContext();
 
 export function useExpansion() {
+  console.log('expansion');
   // below state variables are used to update element className values
   const [heroPictureContainerClass, setHeroPictureContainerClass] = useState('hero-picture-container-default');
   const [carouselDisplayClass, setCarouselDisplayClass] = useState('carousel-container-default');
@@ -13,7 +14,6 @@ export function useExpansion() {
   const [primaryIconPositionClass, setPrimaryIconPositionClass] = useState('primary-icon-default');
   const [expandIconDisplayClass, setExpandIconDisplayClass] = useState('expand-icon-default');
   const [detailsDisplayClass, setDetailsDisplayClass] = useState('details-display-default');
-  const [cartErrorDisplayClass, setCartErrorDisplayClass] = useState('hide-atc-err');
 
   return {
     heroPictureContainerClass, setHeroPictureContainerClass,
@@ -24,7 +24,6 @@ export function useExpansion() {
     primaryIconDisplayClass, setPrimaryIconDisplayClass,
     primaryIconPositionClass, setPrimaryIconPositionClass,
     expandIconDisplayClass, setExpandIconDisplayClass,
-    detailsDisplayClass, setDetailsDisplayClass,
-    cartErrorDisplayClass, setCartErrorDisplayClass
+    detailsDisplayClass, setDetailsDisplayClass
   };
 }

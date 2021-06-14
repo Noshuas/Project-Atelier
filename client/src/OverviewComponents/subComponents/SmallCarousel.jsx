@@ -1,8 +1,7 @@
 import React, { useContext } from 'react';
-import { OverviewContext, ExpansionContext } from '../index.js';
+import { ExpansionContext, CurrentStyleContext } from '../index.js';
 import { iconURLs } from '../index.js';
 import { incrementCarouselRange, decrementCarouselRange } from '../index.js';
-import { useCurrentStyle } from '../index.js';
 
 export function SmallCarousel() {
   const {
@@ -10,9 +9,13 @@ export function SmallCarousel() {
     carouselSmallImages,
     setCarouselSmallImages,
     carouselLargeImages,
-    setHeroImage } = useCurrentStyle();
-  const { carouselDisplayClass } = useContext(ExpansionContext);
-  const { smallImgDisplayClass } = useContext(ExpansionContext);
+    setHeroImage
+  } = useContext(CurrentStyleContext);
+
+  const {
+    carouselDisplayClass,
+    smallImgDisplayClass
+  } = useContext(ExpansionContext);
 
   return (
     <div className={`carousel-container ${carouselDisplayClass}`}>

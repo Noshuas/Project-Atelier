@@ -1,23 +1,29 @@
 import React, { useContext } from 'react';
-import { OverviewContext, ExpansionContext } from '../index.js';
+import { ExpansionContext, CurrentStyleContext } from '../index.js';
 import { iconURLs } from '../index.js';
 import { displayNextImage, displayPreviousImage } from '../index.js';
-import { useCurrentStyle } from '../index.js';
 
 
 export function ImageControls() {
   const {
     carouselLargeImages,
-    setHeroImage } = useCurrentStyle();
-  const { setHeroPictureContainerClass } = useContext(ExpansionContext);
-  const { setPrimaryImageDisplayClass } = useContext(ExpansionContext);
-  const { setPrimaryImageWidthClass } = useContext(ExpansionContext);
-  const { setDetailsDisplayClass } = useContext(ExpansionContext);
-  const { setCarouselDisplayClass } = useContext(ExpansionContext);
-  const { setSmallImgDisplayClass } = useContext(ExpansionContext);
-  const { primaryIconDisplayClass, setPrimaryIconDisplayClass } = useContext(ExpansionContext);
-  const { primaryIconPositionClass, setPrimaryIconPositionClass } = useContext(ExpansionContext);
-  const { expandIconDisplayClass, setExpandIconDisplayClass } = useContext(ExpansionContext);
+    setHeroImage
+  } = useContext(CurrentStyleContext);
+
+  const {
+    setHeroPictureContainerClass,
+    setPrimaryImageDisplayClass,
+    setPrimaryImageWidthClass,
+    setDetailsDisplayClass,
+    setCarouselDisplayClass,
+    setSmallImgDisplayClass,
+    primaryIconDisplayClass,
+    setPrimaryIconDisplayClass,
+    primaryIconPositionClass,
+    setPrimaryIconPositionClass,
+    expandIconDisplayClass,
+    setExpandIconDisplayClass
+  } = useContext(ExpansionContext);
 
   let expandIcon = '-';
 

@@ -4,6 +4,7 @@ import { getProductDetails, getProductReviewsMeta, getProductReviews } from './i
 export const OverviewContext = createContext();
 
 export function useOverview() {
+  console.log('model');
   // set helper/storage variables
   let defaultStyleDetails = [];
   let productId = '17067';
@@ -13,7 +14,6 @@ export function useOverview() {
   const [productDetails, setProductDetails] = useState({});
   const [productStarRating, setProductStarRating] = useState(null);
   const [productReviewCount, setProductReviewCount] = useState(null);
-  const [userSizeAndQuantSelect, setUserSizeAndQuantSelect] = useState({});
 
   useEffect(() => {
     Promise.all([
@@ -30,7 +30,6 @@ export function useOverview() {
   return {
     productDetails, setProductDetails,
     productStarRating, setProductStarRating,
-    productReviewCount, setProductReviewCount,
-    userSizeAndQuantSelect, setUserSizeAndQuantSelect
+    productReviewCount, setProductReviewCount
   };
 }
