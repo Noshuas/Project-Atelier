@@ -69,7 +69,7 @@ function RandR(props) {
       <div className="reviews">
         <ReviewSorting setSortBy={setSortBy} filtered={filtered}/>
         <div className={'gradient-' + expandedView.toString()}>
-          <div className="review-list">{brain.renderTwoOrAll(filtered, ReviewItem, expandedView)}</div>
+          <div className="review-list">{brain.renderTwoOrAll(filtered, ReviewItem, expandedView, searchQuery)}</div>
         </div>
         <div>
           {filtered.length > 2 && <button onClick={handleShowMore}>{expandedView ? 'LESS REVIEWS' : 'MORE REVIEWS'}</button>}
@@ -82,5 +82,3 @@ function RandR(props) {
 }
 
 export default RandR;
-
-//brain.filterReviews(filters, response.data.results)

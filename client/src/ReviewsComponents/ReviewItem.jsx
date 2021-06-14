@@ -4,10 +4,11 @@ import RandRAPIcalls from './RandRAPIcalls';
 import ReadOnlyRatingStars from './ReadOnlyRatingStars.jsx';
 import WasHelpful from './WasHelpful.jsx';
 import GenericModal from '../QandAComponents/GenericModal.jsx';
+import Highlighter from 'react-highlight-words';
 
 function ReviewItem(props) {
   const [showMore, setShowMore] = useState(false);
-  function handleShowMore (e) {
+  function handleShowMore(e) {
     e.preventDefault();
     setShowMore(true);
   }
@@ -19,9 +20,19 @@ function ReviewItem(props) {
         <span><ReadOnlyRatingStars rating={review.rating} /></span>
         <span>{review.reviewer_name}, {brain.getFormatedTimestamp(review.date)}</span>
       </div>
-      <h3>{review.summary}</h3>
+      <Highlighter searchWords={props.searchQuery.split(' ')}
+        autoEscape={true}
+        textToHighlight={review.summary}
+        className={'review-title'}
+        unhighlightClassName={'review-title'}
+      />
       <p>
-        {showMore ? review.body : review.body.slice(0, 250)}
+        <Highlighter searchWords={props.searchQuery.split(' ')}
+          autoEscape={true}
+          textToHighlight={showMore ? review.body : review.body.slice(0, 250)}
+          className={'review-body'}
+          unhighlightClassName={'review-body'}
+        />
         {review.body.length > 250 && !showMore && <><span>... </span><a href="#" onClick={handleShowMore}>show more</a></>}
       </p>
       <Images pics={review.photos} />
@@ -42,6 +53,17 @@ function ReviewResponse(props) {
     );
   }
   return null;
+}
+
+function HighlightedText(props) {
+  return (
+    <Highlighter
+      searchWords={props.searchQuery.split(' ')}
+      autoEscape={true}
+      textToHighlight={review.summary}
+      className={'review-title'}
+    />
+  );
 }
 
 function IRecommmendThisProduct(props) {

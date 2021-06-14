@@ -3,7 +3,11 @@ import brain from './brain.jsx';
 
 function ReviewSearchBar (props) {
   function handleChange(e) {
-    props.setSearchQuery(e.target.value);
+    if (e.target.value.length > 2) {
+      props.setSearchQuery(e.target.value);
+    } else {
+      props.setSearchQuery('');
+    }
   }
 
   return (
