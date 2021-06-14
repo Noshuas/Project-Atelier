@@ -13,10 +13,10 @@ function WasHelpful(props) {
   if (!feedbackGiven) {
     return (
       <div className="was-helpful">
-        <span>Was this review helpful?</span>
+        <span>Helpful?</span>
         <span><a href="#" onClick={handleFeedback}>Yes</a> ({props.helpfulness})</span>
         <span>|</span>
-        <a href="#" onClick={handleFeedback}>Report</a>
+        <span><a href="#" onClick={handleFeedback}>Report</a></span>
       </div>
     );
   } else {

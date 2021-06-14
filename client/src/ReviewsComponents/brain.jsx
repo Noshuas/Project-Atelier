@@ -46,17 +46,17 @@ brain.formatStarRating = function (rating) {
   return cssReady;
 };
 
-brain.renderTwoOrAll = function (list, Component, expanded) {
+brain.renderTwoOrAll = function (list, Component, expanded, searchQuery) {
   if (!expanded) {
     let result = [];
     for (var i = 0; i < 2 && i < list.length; i++) {
-      result.push(<Component review={list[i]} key={list[i].review_id} />);
+      result.push(<Component review={list[i]} key={list[i].review_id} searchQuery={searchQuery}/>);
     }
     return result;
   }
 
   return (
-    list.map((review, index) => <Component key={review.review_id} review={review} />)
+    list.map((review, index) => <Component key={review.review_id} review={review} searchQuery={searchQuery}/>)
   );
 };
 
@@ -147,6 +147,19 @@ brain.filterReviews = function (filters, list) {
     return list;
   } else {
     return list.filter((item) => filters.includes(item.rating));
+  }
+};
+
+brain.searchByKeywords = function (query, list) {
+  if (query.length < 3) {
+    return list;
+  } else {
+    return list.filter((item) => {
+      if (item.body.toUpperCase().includes(query.toUpperCase()) ||
+          item.summary.toUpperCase().includes(query.toUpperCase())) {
+        return true;
+      }
+    });
   }
 };
 
