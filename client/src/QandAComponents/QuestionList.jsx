@@ -4,7 +4,7 @@ import Question from './Question.jsx';
 const QuestionList = (props) => {
   if (!props.expanded) {
     return (
-      <div>
+      <div data-testid="question-list">
         {props.questions.map((question, index) => {
           if (index < 2) {
             return <Question info={question} key={index} productName={props.productName}/>;
@@ -14,7 +14,7 @@ const QuestionList = (props) => {
     );
   }
   return (
-    <div className='question-list'>
+    <div data-testid="question-list" className='question-list'>
       {props.questions.map((question, index) => {
         if (index < props.questions.length) {
           return <Question info={question} key={index} productName={props.productName}/>;
