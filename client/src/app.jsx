@@ -45,7 +45,7 @@ function App() {
         <Related />
       </OverviewContext.Provider>
       <QandA productId={productId} productName={productName}/>
-      <RandR productId={productId} productName={productName}/>
+      {/* <RandR productId={productId} productName={productName}/> */}
     </AppContext.Provider>
   );
 }

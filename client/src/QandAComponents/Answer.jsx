@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import brain from '../ReviewsComponents/brain.jsx';
 import Helpfulness from './Helpfulness.jsx';
 import QAapiCalls from './QandAAPIcalls.js';
-
+import GenericModal from './GenericModal.jsx';
 function Answer(props) {
   let [reported, setReported] = useState(false);
 
@@ -50,9 +50,13 @@ function Photos(props) {
 }
 
 function Photo(props) {
+  const [open, setOpen] = useState(false);
   return (
     <div>
-      <img className="photo-image" src={props.info.url}/>
+      <img className="photo-image" src={props.info.url} onClick={() => { setOpen(true); }}/>
+      <GenericModal open={open} onClose={() => { setOpen(false); }}>
+        <img src={props.info.url}/>
+      </GenericModal>
     </div>
   );
 }
