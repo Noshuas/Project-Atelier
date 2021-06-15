@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
-import { OverviewContext } from '../index.js';
+import { ProductContext } from '../index.js';
 
 export function ProductDescription() {
-  const { productDetails } = useContext(OverviewContext);
+  const { productDetails } = useContext(ProductContext);
 
   return (
     <>
