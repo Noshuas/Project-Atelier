@@ -19,7 +19,7 @@ export function SmallCarousel() {
 
   return (
     <div className={`carousel-container ${carouselDisplayClass}`}>
-      <div className="small-icon-wrapper" onClick={() => {
+      <div className="small-icon-wrapper-top" onClick={() => {
         setCarouselSmallImages(cur => decrementCarouselRange(cur, currentStyle.smallPhotoURLs));
       }}>
         <img className="small-icon-top" src={iconURLs.arrowUp}/>
@@ -37,7 +37,7 @@ export function SmallCarousel() {
           </div>);
       })}
 
-      <div className="small-icon-wrapper" onClick={() => {
+      <div className="small-icon-wrapper-bottom" onClick={() => {
         setCarouselSmallImages(cur => incrementCarouselRange(cur, currentStyle.smallPhotoURLs));
       }}>
         <img className="small-icon-bottom" src={iconURLs.arrowDown}/>
