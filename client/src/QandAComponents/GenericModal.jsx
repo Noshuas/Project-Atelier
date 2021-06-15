@@ -36,7 +36,8 @@ function GenericModal ({open, children, onClose}) {
     <div>
       <div style={overlay_styles}/>
       <div style={modal_styles}>
-        <button className="exit-modal" onClick={onClose}>Exit</button>
+        <i className="exit-modal fas fa-times-circle" onClick={onClose}></i>
+        {/* <button className="exit-modal" onClick={onClose}>Exit</button> */}
         <div style={form_style}>
           {children}
         </div>
