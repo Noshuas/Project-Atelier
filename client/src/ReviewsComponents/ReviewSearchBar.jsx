@@ -11,7 +11,7 @@ function ReviewSearchBar(props) {
   }
 
   return (
-    <form id="review-search-bar">
+    <form id="review-search-bar" onSubmit={e => e.preventDefault()}>
       <input type="search" onChange={handleChange} placeholder="search reviews"></input>
       <i className="fas fa-search"></i>
     </form>

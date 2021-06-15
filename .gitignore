@@ -1,4 +1,5 @@
 node_modules
+package-lock.json
 /client/src/configAPI.js
 /client/dist/bundle.js
 /testing/

@@ -83,7 +83,7 @@ app.post('/image-upload', (req, res) => {
 
 //Derek's endpoints
 app.get('/qa/questions', (req, res) => {
-  console.log(req.query);
+  console.log('Getting questions');
   let params = {
     product_id: req.query.productId,
     page: 1,
@@ -100,7 +100,7 @@ app.get('/qa/questions', (req, res) => {
 });
 
 app.post('/qa/questions', (req, res) => {
-  console.log(req.body);
+  //console.log(req.body);
 
   let headers = config.auth.headers;
   return axios.post(config.url + '/qa/questions', req.body, { headers })
@@ -113,7 +113,7 @@ app.post('/qa/questions', (req, res) => {
 });
 
 app.get('/qa/answers', (req, res) => {
-  //console.log(req.query.question_id);
+  console.log('Getting answers');
   let params = {
     question_id: req.query.question_id,
     page: 1,

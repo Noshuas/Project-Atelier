@@ -93,7 +93,7 @@ export function AddProduct() {
           }
         }}>Add To Cart</button>
         <div className={`atc-error ${cartErrorDisplayClass}`}>
-          Please select a Size and Quantity before adding to cart.
+          Please select a Size and Quantity - Thank you!
         </div>
       </div>
     </>

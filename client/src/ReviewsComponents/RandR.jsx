@@ -14,7 +14,7 @@ function RandR(props) {
   const { clickListener } = useContext(AppContext);
   const [characteristics, setCharacteristics] = useState({});
   const [reviewsMeta, setReviewsMeta] = useState({});
-  const [productReviewCount, setProductReviewCount] = useState(2);
+  const [productReviewCount, setProductReviewCount] = useState(0);
   useEffect(() => {
     if (Number(props.productId) > 0) {
       RandRAPIcalls.getReviewsMeta(props.productId)
@@ -33,14 +33,6 @@ function RandR(props) {
   const [filters, setFilters] = useState([]);
   const [filtered, setFiltered] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
-  useEffect(() => {
-    if (Number(props.productId) > 0) {
-      RandRAPIcalls.getReviews(props.productId, sortBy, productReviewCount)
-        .then(response => setReviews(response.data.results));
-    }
-  }, [props.productId, sortBy, productReviewCount]);
-
-  useEffect(() => setProductReviewCount(reviews.length), [reviews]);
 
   useEffect(() => {
     let newFiltered = brain.filterReviews(filters, reviews);
@@ -50,6 +42,13 @@ function RandR(props) {
       setExpandedView(false);
     }
   }, [filters, reviews, searchQuery]);
+
+  useEffect(() => {
+    if (Number(props.productId) && productReviewCount) {
+      RandRAPIcalls.getReviews(props.productId, sortBy, productReviewCount)
+        .then(response => setReviews(response.data.results));
+    }
+  }, [props.productId, sortBy, productReviewCount]);
 
   function handleShowMore() {
     if (expandedView) {
