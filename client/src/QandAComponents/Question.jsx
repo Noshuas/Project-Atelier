@@ -55,15 +55,17 @@ const Question = (props) => {
   return (
     <div className='question-section'>
       <div className="question-main">
-        <h3>Q: {props.info.question_body} </h3>
+        <h3 className="question-body">Q: {props.info.question_body} </h3>
         <div className="question-toolbar">
           <span>
             <Helpfulness helpfulness={props.info.question_helpfulness} QorA='questions' id={props.info.question_id}/> | <a href="#" onClick={handleAddAnswer}>Add Answer</a>
           </span>
         </div>
       </div>
-      <h3>A:</h3>
-      <AnswerList answers={answers} moreAnswers={moreAnswers} handleMoreAnswers={handleMoreAnswers}/>
+      <div className="answer-component">
+        <h3>A:</h3>
+        <AnswerList answers={answers} moreAnswers={moreAnswers} handleMoreAnswers={handleMoreAnswers}/>
+      </div>
       <GenericModal open={open} onClose={() => resetForm(false)}>
         <form onSubmit={handleFormSubmit} className="QnA-form">
           <h1>Submit your Answer</h1>

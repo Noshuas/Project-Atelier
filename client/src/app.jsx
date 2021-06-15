@@ -26,9 +26,11 @@ function App() {
   useEffect(() => {
     RandRAPIcalls.getProducts()
       .then(response => {
+        console.log(response);
         setProduct(response.data[2].id);
         setProductName(response.data[2].name);
-      });
+      })
+      .catch(err => console.log('err', err));
   }, []);
 
   // Wills Hooks

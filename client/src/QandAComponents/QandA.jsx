@@ -54,7 +54,7 @@ const QandA = (props) => {
     <div className="QandA" onClick={(event) => {
       clickListener(event, 'Questions and Answers');
     }}>
-      <h2>QUESTIONS &amp; ANSWERS</h2>
+      <h2 className="QnA-title">QUESTIONS &amp; ANSWERS</h2>
       < QuestionSearchBar handleChange={handleChange}/>
       < QuestionList questions={filteredQuestions} expanded={expanded} productName={props.productName}/>
       <div className='question-btns'>

@@ -6,7 +6,6 @@ let QAapiCalls = {};
 let serverURL = 'http://localhost:3000';
 
 QAapiCalls.getQuestions = (productID) => {
-
   let params = {
     productId: productID
   };
@@ -16,7 +15,7 @@ QAapiCalls.getQuestions = (productID) => {
       //console.log(results.data.results);
       return results.data;
     })
-    .catch(err => { return console.log(err); });
+    .catch(err => { return console.log('test', err); });
 
 };
 

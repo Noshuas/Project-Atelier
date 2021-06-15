@@ -17,16 +17,16 @@ exports[`QuestionList snapshot 2 1`] = `
       className="question-main"
     >
       <h3>
-        Q: 
+        Q:
         Test 1?
-         
+
       </h3>
       <div
         className="question-toolbar"
       >
         <span>
           <span>
-             Helpful? 
+             Helpful?
             <a
               href="#"
               onClick={[Function]}
@@ -37,7 +37,7 @@ exports[`QuestionList snapshot 2 1`] = `
             10
             )
           </span>
-           | 
+           |
           <a
             href="#"
             onClick={[Function]}
@@ -63,16 +63,16 @@ exports[`QuestionList snapshot 2 1`] = `
       className="question-main"
     >
       <h3>
-        Q: 
+        Q:
         Test 2?
-         
+
       </h3>
       <div
         className="question-toolbar"
       >
         <span>
           <span>
-             Helpful? 
+             Helpful?
             <a
               href="#"
               onClick={[Function]}
@@ -83,7 +83,7 @@ exports[`QuestionList snapshot 2 1`] = `
             10
             )
           </span>
-           | 
+           |
           <a
             href="#"
             onClick={[Function]}
