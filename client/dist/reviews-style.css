@@ -1,6 +1,6 @@
 @charset "UTF-8";
 :root {
-  --star-color: rgb(82,82,82)
+  --star-color: #DCA45D
 }
 
 :local {
@@ -68,6 +68,14 @@ input, select {
   margin-left: -40px;
 }
 
+.fa-search::before {
+  color: #4D8198;
+}
+
+mark {
+  background-color: #93C2C2
+}
+
 .ratings-and-reviews a {
   color: rgb(82,82,82)
 }
@@ -124,7 +132,7 @@ progress::-webkit-progress-bar {
 }
 
 progress::-webkit-progress-value {
-  background-color: #81a854;
+  background-color: #4F8F68;
   border-radius: 0;
 }
 
@@ -174,7 +182,7 @@ progress::-webkit-progress-value {
   height: 0;
   border-left: 7px solid transparent;
   border-right: 7px solid transparent;
-  border-top: 14px solid rgb(82,82,82);
+  border-top: 14px solid #4F8F68
 }
 
 .char-endpoints {
@@ -223,7 +231,7 @@ progress::-webkit-progress-value {
 }
 
 .review-item > * {
-  padding-bottom: 15px;
+  margin-bottom: 15px;
   margin-left: 0;
 }
 
@@ -248,10 +256,22 @@ progress::-webkit-progress-value {
 
 .recommend-container {
   display: flex;
+  width:fit-content;
+  background-color: #EBEBEB;
+  padding: 5px;
+  border-radius: 100px;
 }
 
 .recommend-container > * {
   margin-right: 8px;
+}
+
+.recommend-container > span {
+  font-weight: 400;
+}
+
+.fa-check:before {
+  color: #4F8F68;
 }
 
 .was-helpful > * {
@@ -358,6 +378,39 @@ span.review-body {
   font-size: 15px;
 }
 
+input[type='radio']:after {
+  width: 18px;
+  height: 18px;
+  border-radius: 15px;
+  top: -2px;
+  left: -1px;
+  position: relative;
+  background-color: #d1d3d1;
+  content: '';
+  display: inline-block;
+  visibility: visible;
+  border: 2px solid white;
+}
+
+input[type='radio']:hover {
+  cursor: pointer;
+}
+
+input[type='radio']:checked:after {
+  width: 18px;
+  height: 18px;
+  border-radius: 18px;
+  top: -2px;
+  left: -1px;
+  position: relative;
+  background: radial-gradient(#5c9b97 50%, #d1d3d1 0 100%);
+  /* background-color: #4D8195; */
+  content: '';
+  display: inline-block;
+  visibility: visible;
+  border: 2px solid white;
+}
+
 .single-char-input > label {
   display: inline-block;
   width: 80px;
@@ -378,12 +431,17 @@ span.review-body {
   font-size: 30px;
   animation: rotation 2s infinite linear;
   display: inline-block;
+  color: #69B0AB
 }
 
 .fa-image, .fa-images {
   font-size: 50px;
   transition: transform .2s;
   margin-left: 5px;
+}
+
+.fa-image::before, .fa-images::before {
+  color: #69B0AB
 }
 
 .fa-image:hover, .fa-images:hover {
@@ -413,7 +471,8 @@ span.review-body {
   margin-bottom: -10px;
   margin-right: -6px;
   position: relative;
-  background-color: white;
+  color: #D65E35;
+  background: radial-gradient(white 50%, #D65E35 0 100%);
   border-radius: 7px;
 }
 
@@ -429,8 +488,8 @@ span.review-body {
 }
 
 i.exit-modal {
-  color: blueviolet;
-  background: radial-gradient(white 50%, blueviolet 0 100%);
+  color: #D65E35;
+  background: radial-gradient(white 50%, #D65E35 0 100%);
 }
 
 .fa-times-circle:hover {
