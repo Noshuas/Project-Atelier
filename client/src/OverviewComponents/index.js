@@ -1,8 +1,12 @@
 import { Overview } from './View.jsx';
-import { OverviewContext, useOverview } from './Model.jsx';
+import { ProductContext, useProduct } from './Hooks-Contexts/useProduct.jsx';
+import { ExpansionContext, useExpansion } from './Hooks-Contexts/useExpansion.jsx';
+import { StyleContext, useStyle } from './Hooks-Contexts/useStyle.jsx';
+import { SelectionContext, useSelection } from './Hooks-Contexts/useSelection.jsx';
+import { ImageContext, useImage } from './Hooks-Contexts/useImage.jsx';
 import { getProductDetails, getProductStyles } from './Controllers.jsx';
 import { getProductReviewsMeta, getProductReviews } from './Controllers.jsx';
-import { displayNextImage, displayPreviousImage, createStars } from './Controllers.jsx';
+import { displayNextImage, displayPreviousImage } from './Controllers.jsx';
 import { incrementCarouselRange, decrementCarouselRange } from './Controllers.jsx';
 import { getDefaultStyleDetails, getNewStyleDetails } from './Controllers.jsx';
 import { iconURLs } from './iconURLs.js';
@@ -17,15 +21,22 @@ import { ProductDetails } from './subComponents/ProductDetails.jsx';
 
 export {
   Overview,
-  OverviewContext,
-  useOverview,
+  ProductContext,
+  useProduct,
+  ExpansionContext,
+  useExpansion,
+  StyleContext,
+  useStyle,
+  SelectionContext,
+  useSelection,
+  ImageContext,
+  useImage,
   getProductDetails,
   getProductStyles,
   getProductReviewsMeta,
   getProductReviews,
   displayNextImage,
   displayPreviousImage,
-  createStars,
   incrementCarouselRange,
   decrementCarouselRange,
   getDefaultStyleDetails,

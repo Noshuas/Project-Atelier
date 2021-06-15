@@ -62,7 +62,7 @@ function RandR(props) {
   }
 
   return (
-    <div className="ratings-and-reviews" onClick={e => clickListener(e, 'Ratings and Reviews')}>
+    <div id="ratings-and-reviews" className="ratings-and-reviews" onClick={e => clickListener(e, 'Ratings and Reviews')}>
       <h3>RATINGS {'&'} REVIEWS</h3>
       <ReviewSearchBar setSearchQuery={setSearchQuery}/>
       <ReviewMeta meta={reviewsMeta} filters={filters} setFilters={setFilters}/>

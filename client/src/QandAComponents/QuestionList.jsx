@@ -4,11 +4,7 @@ import Question from './Question.jsx';
 const QuestionList = (props) => {
   if (!props.expanded) {
     return (
-<<<<<<< HEAD
-      <div data-testid="question-list">
-=======
       <div data-testid='question-list' className='question-list' >
->>>>>>> 8b6dc39e7f4889281799365436dc3946d11d1aa5
         {props.questions.map((question, index) => {
           if (index < 2) {
             return <Question info={question} key={index} productName={props.productName}/>;
@@ -18,11 +14,7 @@ const QuestionList = (props) => {
     );
   }
   return (
-<<<<<<< HEAD
     <div data-testid="question-list" className='question-list'>
-=======
-    <div data-testid='question-list' className='question-list'>
->>>>>>> 8b6dc39e7f4889281799365436dc3946d11d1aa5
       {props.questions.map((question, index) => {
         if (index < props.questions.length) {
           return <Question info={question} key={index} productName={props.productName}/>;
