@@ -3,7 +3,6 @@ import RandRAPIcalls from './RandRAPIcalls';
 import { AppContext } from '../AppComponents/index.js';
 
 function WasHelpful(props) {
-  const {lightTheme, setLightTheme} = useContext(AppContext);
   const [feedbackGiven, setFeedback] = useState(false);
   function handleFeedback(e) {
     e.preventDefault();
