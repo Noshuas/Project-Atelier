@@ -24,7 +24,7 @@ function Answer(props) {
           <Helpfulness helpfulness={props.info.helpfulness} QorA='answers' id={props.info.answer_id}/> | <a href="#" onClick={handleClick}>{reported ? 'Reported' : 'Report'}</a>
         </span>
       </div>
-      <Photos photos={props.info.photos}/>
+      <Photos photos={props.info.photos} answerer={props.info.answerer_name}/>
     </div>
   );
 
@@ -43,7 +43,7 @@ function Photos(props) {
   return (
     <div className="answer-photos">
       {props.photos.map( (photo, index) => {
-        return <Photo info={photo} key={index}/>;
+        return <Photo info={photo} key={index} id={index + 1} answerer={props.answerer}/>;
       })}
     </div>
   );
@@ -53,9 +53,9 @@ function Photo(props) {
   const [open, setOpen] = useState(false);
   return (
     <div>
-      <img className="photo-image" src={props.info.url} onClick={() => { setOpen(true); }}/>
+      <img className="photo-image" src={props.info.url} onClick={() => { setOpen(true); }} alt={`Photo number ${props.id} associated with answer by ${props.answerer} `}/>
       <GenericModal open={open} onClose={() => { setOpen(false); }}>
-        <img src={props.info.url}/>
+        <img src={props.info.url} alt={`Enlarged photo number ${props.id} associated with answer by ${props.answerer} `}/>
       </GenericModal>
     </div>
   );

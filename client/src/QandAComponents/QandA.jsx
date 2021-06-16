@@ -18,12 +18,14 @@ const QandA = (props) => {
   }
 
   useEffect (() => {
-    QAapiCalls.getQuestions(props.productId)
-      .then(results => {
-        setFilteredQuestions(results);
-        return setQuestions(results);
-      }
-      );
+    if (props.productId > 0) {
+
+      QAapiCalls.getQuestions(props.productId)
+        .then(results => {
+          setFilteredQuestions(results);
+          return setQuestions(results);
+        });
+    }
   }, [props.productId]);
 
   useEffect ( () => {
