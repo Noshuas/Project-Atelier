@@ -15,6 +15,8 @@ import { RelatedContext, useRelated } from './RelatedComponents/index.js';
 
 function App() {
 
+  console.log('rerender');
+
   // Parent Hooks
   const appState = useApp();
 

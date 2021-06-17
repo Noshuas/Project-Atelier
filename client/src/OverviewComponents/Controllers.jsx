@@ -2,24 +2,45 @@ import API from '../../../configAPI.js';
 import axios from 'axios';
 import React from 'react';
 
+let serverURL = 'http://localhost:3000';
+
 
 export function getProductDetails(productId) {
-  return axios.get(API.url + `/products/${productId}`, API.auth);
+  let params = { productId: productId };
+  return axios.get(serverURL + '/will-products', { params: params });
 }
 
 export function getProductStyles(productId) {
-  return axios.get(API.url + `/products/${productId}/styles`, API.auth);
-}
-
-export function getProductReviewsMeta(productId) {
-  return axios.get(API.url + `/reviews/meta?product_id=${productId}`, API.auth)
-    .then( resVal => calcStarRating(resVal.data.ratings));
+  let params = { productId: productId };
+  return axios.get(serverURL + '/will-products/styles', { params: params });
 }
 
 export function getProductReviews(productId) {
-  return axios.get(API.url + `/reviews?count=1000&product_id=${productId}`, API.auth)
+  let params = { productId: productId };
+  return axios.get(serverURL + '/will-reviews', { params: params })
     .then( resVal => resVal.data.results.length );
 }
+
+export function getProductReviewsMeta(productId) {
+  let params = { productId: productId };
+  return axios.get(serverURL + '/will-reviews/meta', { params: params })
+    .then( resVal => calcStarRating(resVal.data.ratings));
+}
+
+
+// export function getProductReviewsMeta(productId) {
+//   return axios.get(API.url + `/reviews/meta?product_id=${productId}`, API.auth)
+//     .then( resVal => calcStarRating(resVal.data.ratings));
+// }
+
+// export function getProductReviews(productId) {
+//   return axios.get(API.url + `/reviews?count=1000&product_id=${productId}`, API.auth)
+//     .then( resVal => resVal.data.results.length );
+// }
+
+
+
+
 
 export function calcStarRating(starRatings) {
   let totalScore = 0;

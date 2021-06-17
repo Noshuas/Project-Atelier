@@ -79,6 +79,42 @@ app.post('/image-upload', (req, res) => {
 });
 
 //Will's endpoints
+app.get('/will-products', (req, res) => {
+  console.log('Will - call to products');
+  return axios.get(config.url + `/products/${req.query.productId}`, config.auth)
+    .then((response) => {
+      res.send(response.data);
+    })
+    .catch(err => res.send(err));
+});
+
+app.get('/will-products/styles', (req, res) => {
+  console.log('Will - call to product-styles');
+  return axios.get(config.url + `/products/${req.query.productId}/styles`, config.auth)
+    .then((response) => {
+      res.send(response.data);
+    })
+    .catch(err => res.send(err));
+});
+
+app.get('/will-reviews', (req, res) => {
+  console.log('Will - call to reviews');
+  return axios.get(config.url + `/reviews?count=1000&product_id=${req.query.productId}`, config.auth)
+    .then((response) => {
+      res.send(response.data);
+    })
+    .catch(err => res.send(err));
+});
+
+app.get('/will-reviews/meta', (req, res) => {
+  console.log('Will - call to reviews-meta');
+  return axios.get(config.url + `/reviews/meta?product_id=${req.query.productId}`, config.auth)
+    .then((response) => {
+      res.send(response.data);
+    })
+    .catch(err => res.send(err));
+});
+
 
 
 //Derek's endpoints
