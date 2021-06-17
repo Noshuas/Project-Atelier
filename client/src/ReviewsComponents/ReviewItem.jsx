@@ -102,9 +102,9 @@ function Images(props) {
     <div>{props.pics.map(pic => {
       return (
         <span key={pic.id} >
-          <img src={pic.url} onClick={() => handleClick(pic.url)} />
+          <img src={pic.url} onClick={() => handleClick(pic.url)} alt="reviewer's picture - thumbnail"/>
           <GenericModal open={open} onClose={() => setOpen(false)}>
-            <img className="modal-image" src={modalImage} />
+            <img className="modal-image" src={modalImage} alt="reviewer's picture - large" />
           </GenericModal>
         </span>
       );
