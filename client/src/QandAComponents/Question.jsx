@@ -10,6 +10,7 @@ const Question = (props) => {
   let [answers, setAnswer] = useState([]);
   let [open, setOpen] = useState(false);
   let [moreAnswers, setMoreAnswers] = useState(false);
+  let [answersSubmitted, setAnswersSubmitted] = useState(0);
   let [values, setValues] = useState({
     answer: '',
     nickname: '',
@@ -37,7 +38,8 @@ const Question = (props) => {
     QandAAPIcalls.postAnswer(values, props.info.question_id)
       .then(response => {
         console.log('successs', response);
-        setOpen(false);
+        setAnswersSubmitted(answersSubmitted + 1);
+        resetForm(false);
       })
       .catch(err => { console.log('err', err); });
 
@@ -51,7 +53,7 @@ const Question = (props) => {
       .then(results => {
         setAnswer(results);
       });
-  }, [props.info]);
+  }, [props.info, answersSubmitted]);
   return (
     <div className='question-section'>
       <div className="question-main">
