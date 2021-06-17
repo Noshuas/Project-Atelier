@@ -12,7 +12,7 @@ const QandA = (props) => {
   const [filteredQuestions, setFilteredQuestions] = useState([]);
   const [expanded, setExpanded] = useState(false);
   const [filter, setFilter] = useState('');
-
+  const [addedQuestion, setAddQuestion] = useState(0);
   function handleChange(event) {
     setFilter(event.target.value);
   }
@@ -26,7 +26,7 @@ const QandA = (props) => {
           return setQuestions(results);
         });
     }
-  }, [props.productId]);
+  }, [props.productId, addedQuestion]);
 
   useEffect ( () => {
     let searchTerm = '';
@@ -60,7 +60,7 @@ const QandA = (props) => {
       < QuestionSearchBar handleChange={handleChange}/>
       < QuestionList questions={filteredQuestions} expanded={expanded} productName={props.productName}/>
       <div className='question-btns'>
-        < AddNewQuestion productId={props.productId} productName={props.productName}/>
+        < AddNewQuestion productId={props.productId} productName={props.productName} addedQuestion={setAddQuestion} numberOfQuestions={questions.length}/>
         <button onClick={handleMoreQuestions}>{!expanded ? 'More Answered Questions' : 'Show Less Answered Questions'}</button>
       </div>
     </div>

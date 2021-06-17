@@ -28,6 +28,7 @@ const AddNewQuestion = (props) => {
     QandAAPIcalls.postQuestion(values, props.productId)
       .then(response => {
         console.log('successs', response);
+        props.addedQuestion(props.numberOfQuestions + 1);
         setOpen(false);
       })
       .catch(err => { console.log('err', err); });
