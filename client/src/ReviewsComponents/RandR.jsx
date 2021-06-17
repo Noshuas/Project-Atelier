@@ -11,7 +11,7 @@ import { AppContext } from '../AppComponents/index.js';
 
 function RandR(props) {
   //Get reviews every time productId changes
-  const { clickListener } = useContext(AppContext);
+  const { clickListener, theme } = useContext(AppContext);
   const [characteristics, setCharacteristics] = useState({});
   const [reviewsMeta, setReviewsMeta] = useState({});
   const [productReviewCount, setProductReviewCount] = useState(0);
@@ -60,6 +60,10 @@ function RandR(props) {
     }
   }
 
+  let buttonStyle = {
+    color: theme.body === 'white' ? theme.text : theme.body,
+  };
+
   return (
     <div id="ratings-and-reviews" className="ratings-and-reviews" onClick={e => clickListener(e, 'Ratings and Reviews')}>
       <h3>RATINGS {'&'} REVIEWS</h3>
@@ -67,11 +71,12 @@ function RandR(props) {
       <ReviewMeta meta={reviewsMeta} filters={filters} setFilters={setFilters}/>
       <div className="reviews">
         <ReviewSorting setSortBy={setSortBy} filtered={filtered}/>
-        <div className={'gradient-' + expandedView.toString()}>
+        <div style={{'--gradientColor': theme.body }} className={'gradient-' + expandedView.toString()}>
           <div className="review-list">{brain.renderTwoOrAll(filtered, ReviewItem, expandedView, searchQuery)}</div>
         </div>
         <div>
-          {filtered.length > 2 && <button onClick={handleShowMore}>{expandedView ? 'LESS REVIEWS' : 'MORE REVIEWS'}</button>}
+          {filtered.length > 2 && <button style={buttonStyle} onClick={handleShowMore}>
+            {expandedView ? 'LESS REVIEWS' : 'MORE REVIEWS'}</button>}
           <AddReview productName={props.productName} characteristics={characteristics}
             productId={props.productId} setProductReviewCount={setProductReviewCount} productReviewCount={productReviewCount} />
         </div>

@@ -4,6 +4,12 @@ import { AppContext } from '../AppComponents/index.js';
 
 function WasHelpful(props) {
   const [feedbackGiven, setFeedback] = useState(false);
+  let {theme} = useContext(AppContext);
+
+  let style = {
+    color: theme.text,
+  };
+
   function handleFeedback(e) {
     e.preventDefault();
     let wasHelpful = e.target.text === 'Yes' ? true : false;
@@ -15,9 +21,9 @@ function WasHelpful(props) {
     return (
       <div className="was-helpful">
         <span>Helpful?</span>
-        <span><a href="#" onClick={handleFeedback}>Yes</a> ({props.helpfulness})</span>
+        <span><a href="#" onClick={handleFeedback} style={style}>Yes</a> ({props.helpfulness})</span>
         <span>|</span>
-        <span><a href="#" onClick={handleFeedback}>Report</a></span>
+        <span><a href="#" onClick={handleFeedback} style={style}>Report</a></span>
       </div>
     );
   } else {
