@@ -50,6 +50,7 @@ export function displayNextImage(current, imagesArray) {
   }
   return {
     url: imagesArray[nextIndex],
+    alt: current.alt,
     initialIndex: nextIndex
   };
 }
@@ -61,6 +62,7 @@ export function displayPreviousImage(current, imagesArray) {
   }
   return {
     url: imagesArray[nextIndex],
+    alt: current.alt,
     initialIndex: nextIndex
   };
 }

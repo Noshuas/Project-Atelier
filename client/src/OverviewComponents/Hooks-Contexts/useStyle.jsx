@@ -6,7 +6,7 @@ export const StyleContext = createContext();
 export function useStyle() {
   const [productStyles, setProductStyles] = useState({});
   const [currentStyle, setCurrentStyle] = useState({});
-  const [heroImage, setHeroImage] = useState({url: '', initialIndex: 0});
+  const [heroImage, setHeroImage] = useState({url: '', alt: '', initialIndex: 0});
   const [carouselLargeImages, setCarouselLargeImages] = useState([]);
   const [carouselSmallImages, setCarouselSmallImages] = useState({images: [], initialIndex: 0});
 
@@ -19,7 +19,7 @@ export function useStyle() {
         defaultStyleDetails = getDefaultStyleDetails(resVal.data);
         setProductStyles(resVal.data);
         setCurrentStyle(defaultStyleDetails);
-        setHeroImage({url: defaultStyleDetails.primaryImageURL, initialIndex: 0});
+        setHeroImage({url: defaultStyleDetails.primaryImageURL, alt: defaultStyleDetails.name, initialIndex: 0});
         setCarouselLargeImages(defaultStyleDetails.largePhotoURLs);
         setCarouselSmallImages({
           images: defaultStyleDetails.smallPhotoURLs.slice(0, 4),
@@ -34,7 +34,7 @@ export function useStyle() {
         defaultStyleDetails = getDefaultStyleDetails(resVal.data);
         setProductStyles(resVal.data);
         setCurrentStyle(defaultStyleDetails);
-        setHeroImage({url: defaultStyleDetails.primaryImageURL, initialIndex: 0});
+        setHeroImage({url: defaultStyleDetails.primaryImageURL, alt: defaultStyleDetails.name, initialIndex: 0});
         setCarouselLargeImages(defaultStyleDetails.largePhotoURLs);
         setCarouselSmallImages({
           images: defaultStyleDetails.smallPhotoURLs.slice(0, 4),

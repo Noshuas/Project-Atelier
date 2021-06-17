@@ -26,6 +26,7 @@ export function StyleSelector() {
           setUserSizeAndQuantSelect({});
           setHeroImage({
             url: newStyleDetails.primaryImageURL,
+            alt: `${currentStyle.name} ${index}`,
             initialIndex: 0
           });
           setCarouselLargeImages(newStyleDetails.largePhotoURLs);
@@ -38,10 +39,12 @@ export function StyleSelector() {
           <img
             className={`check-mark-img ${style.name === currentStyle.name ? 'display-check-mark' : 'hide-check-mark'}`}
             src={iconURLs.blueCheckMark}
+            alt="blue check mark for current style"
           />
           <img
             className='style-img'
             src={style.photos[0].thumbnail_url}
+            alt={`${style.name}`}
           />
         </div>
       );
