@@ -22,7 +22,7 @@ export function SmallCarousel() {
       <div className="small-icon-wrapper-top" onClick={() => {
         setCarouselSmallImages(cur => decrementCarouselRange(cur, currentStyle.smallPhotoURLs));
       }}>
-        <img className="small-icon-top" src={iconURLs.arrowUp}/>
+        <img className="small-icon-top" src={iconURLs.arrowUp} alt="carousel up icon"/>
       </div>
 
       {carouselSmallImages.images.map((photo, index) => {
@@ -30,17 +30,18 @@ export function SmallCarousel() {
           <div key={index} className="small-img-wrapper" onClick={() => {
             setHeroImage({
               url: carouselLargeImages[currentStyle.smallPhotoURLs.indexOf(photo)],
+              alt: `${currentStyle.name} ${index}`,
               initialIndex: index
             });
           }}>
-            <img className={`${smallImgDisplayClass}`} src={photo}/>
+            <img className={`${smallImgDisplayClass}`} src={photo} alt={`${currentStyle.name} ${index}`}/>
           </div>);
       })}
 
       <div className="small-icon-wrapper-bottom" onClick={() => {
         setCarouselSmallImages(cur => incrementCarouselRange(cur, currentStyle.smallPhotoURLs));
       }}>
-        <img className="small-icon-bottom" src={iconURLs.arrowDown}/>
+        <img className="small-icon-bottom" src={iconURLs.arrowDown} alt="carousel down icon"/>
       </div>
     </div>
   );

@@ -8,7 +8,7 @@ export function HeroImage() {
 
   return (
     <div className={`primary-img-container ${primaryImageDisplayClass}`}>
-      <img className={`primary-img ${primaryImageWidthClass}`} src={heroImage.url}/>
+      <img className={`primary-img ${primaryImageWidthClass}`} src={heroImage.url} alt={heroImage.alt}/>
     </div>
   );
 }

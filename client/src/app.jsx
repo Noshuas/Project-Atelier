@@ -26,7 +26,6 @@ function App() {
   useEffect(() => {
     RandRAPIcalls.getProducts()
       .then(response => {
-        console.log(response);
         setProduct(response.data[2].id);
         setProductName(response.data[2].name);
       })

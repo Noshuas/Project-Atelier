@@ -36,12 +36,12 @@ export function ImageControls() {
       <div className="small-icon-wrapper-left" onClick={() => {
         setHeroImage(cur => displayPreviousImage(cur, carouselLargeImages));
       }}>
-        <img className={`small-icon-left ${primaryIconPositionClass}`} src={iconURLs.arrowLeft}/>
+        <img className={`small-icon-left ${primaryIconPositionClass}`} src={iconURLs.arrowLeft} alt="carousel icon left"/>
       </div>
       <div className="small-icon-wrapper-right" onClick={() => {
         setHeroImage(cur => displayNextImage(cur, carouselLargeImages));
       }}>
-        <img className={`small-icon-right ${primaryIconPositionClass}`} src={iconURLs.arrowRight}/>
+        <img className={`small-icon-right ${primaryIconPositionClass}`} src={iconURLs.arrowRight} alt="carousel icon right"/>
       </div>
       <div className={`expand-icon ${expandIconDisplayClass}`} onClick={() => {
         setHeroPictureContainerClass(cur => {
