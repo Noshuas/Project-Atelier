@@ -21,7 +21,7 @@ const AnswerList = (props) => {
           return <Answer info={answer} key={index}/>;
         }
       })}
-      <a className='more-answers-lnk' href='#' onClick={props.handleMoreAnswers}>Collapse answers</a>
+      <button className='link-style-btn' onClick={props.handleMoreAnswers}>Collapse answers</button>
     </div>
   );
 };
@@ -31,7 +31,7 @@ function ExandAnswers(props) {
     return <span>This question currently has no answers</span>;
   }
   if (props.numAnswers > 2) {
-    return <a className='more-answers-lnk' href='#' onClick={props.handleMoreAnswers}> See more answers</a>;
+    return <button className='link-style-btn' onClick={props.handleMoreAnswers}> See more answers</button>;
   }
   return null;
 }
