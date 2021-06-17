@@ -4,11 +4,14 @@ const axios = require('axios');
 const config = require('./configAPI.js');
 const formData = require('express-form-data');
 const cloudinary = require('cloudinary');
+const compression = require('compression');
+
 
 const app = express();
 const port = 3000;
 cloudinary.config(config.cloudinaryCreds);
 
+app.use(compression());
 app.use(express.static('./client/dist'));
 app.use(express.json());
 app.use(formData.parse());

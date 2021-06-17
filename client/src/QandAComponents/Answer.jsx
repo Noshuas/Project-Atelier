@@ -21,7 +21,7 @@ function Answer(props) {
       <div className="answersToolbar">
         <span >
           by {props.info.answerer_name} {brain.getFormatedTimestamp(props.info.date)} |
-          <Helpfulness helpfulness={props.info.helpfulness} QorA='answers' id={props.info.answer_id}/> | <a href="#" onClick={handleClick}>{reported ? 'Reported' : 'Report'}</a>
+          <Helpfulness helpfulness={props.info.helpfulness} QorA='answers' id={props.info.answer_id}/> | <button className="link-style-btn" onClick={handleClick}>{reported ? 'Reported' : 'Report'}</button>
         </span>
       </div>
       <Photos photos={props.info.photos} answerer={props.info.answerer_name}/>
