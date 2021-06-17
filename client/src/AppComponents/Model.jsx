@@ -9,5 +9,5 @@ export function useApp() {
   // These are just example state variables, they are not returned
   const [example, setExample] = useState('');
 
-  return {clickListener};
+  return { clickListener };
 }
