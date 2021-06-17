@@ -15,8 +15,6 @@ import { RelatedContext, useRelated } from './RelatedComponents/index.js';
 
 function App() {
 
-  console.log('rerender');
-
   // Parent Hooks
   const appState = useApp();
 
@@ -28,7 +26,6 @@ function App() {
   useEffect(() => {
     RandRAPIcalls.getProducts()
       .then(response => {
-        console.log(response);
         setProduct(response.data[2].id);
         setProductName(response.data[2].name);
       })
