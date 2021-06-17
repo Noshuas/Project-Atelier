@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import brain from './brain.jsx';
 import RandRAPIcalls from './RandRAPIcalls';
 import ReadOnlyRatingStars from './ReadOnlyRatingStars.jsx';
 import WasHelpful from './WasHelpful.jsx';
 import GenericModal from '../QandAComponents/GenericModal.jsx';
 import Highlighter from 'react-highlight-words';
+import { AppContext } from '../AppComponents/index.js';
 
 function ReviewItem(props) {
   const [showMore, setShowMore] = useState(false);
@@ -12,6 +13,11 @@ function ReviewItem(props) {
     e.preventDefault();
     setShowMore(true);
   }
+
+  let { theme } = useContext(AppContext);
+  let style = {
+    color: theme.text,
+  };
 
   let review = props.review;
   return (
@@ -33,7 +39,7 @@ function ReviewItem(props) {
           className={'review-body'}
           unhighlightClassName={'review-body'}
         />
-        {review.body.length > 250 && !showMore && <><span>... </span><a href="#" onClick={handleShowMore}>show more</a></>}
+        {review.body.length > 250 && !showMore && <><span>... </span><a href="#" style={style} onClick={handleShowMore}>show more</a></>}
       </p>
       <Images pics={review.photos} />
       <IRecommmendThisProduct recommend={review.recommend} />
@@ -67,11 +73,16 @@ function HighlightedText(props) {
 }
 
 function IRecommmendThisProduct(props) {
+  let { theme } = useContext(AppContext);
+  let style = {
+    color: theme.body === 'white' ? theme.text : theme.body,
+  };
+
   if (props.recommend) {
     return (
       <div className="recommend-container">
         <i className="fas fa-check"></i>
-        <span> I recommend this product</span>
+        <span style={style}> I recommend this product</span>
       </div>
     );
   }

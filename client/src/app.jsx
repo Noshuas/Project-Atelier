@@ -40,6 +40,12 @@ function App() {
   // Related Hooks
   const relatedState = useRelated();
 
+  useEffect(() => {
+    document.body.style.backgroundColor = appState.theme.body;
+    document.body.style.color = appState.theme.text;
+    console.log(document.a);
+  }, [appState.theme]);
+
   return (
     <AppContext.Provider value={appState}>
       <ProductContext.Provider value={productState}>
@@ -48,8 +54,9 @@ function App() {
           <Related />
         </StyleContext.Provider>
       </ProductContext.Provider>
-      <QandA productId={productId} productName={productName}/>
-      <RandR productId={productId} productName={productName}/>
+      <QandA productId={productId} productName={productName} />
+      <RandR productId={productId} productName={productName} />
+      <button id="switch-theme" onClick={() => appState.toggleTheme()}>TOGGLE THEME</button>
     </AppContext.Provider>
   );
 }

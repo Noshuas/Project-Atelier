@@ -1,9 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import brain from './brain.jsx';
 import RandRAPIcalls from './RandRAPIcalls';
 import ReadOnlyRatingStars from './ReadOnlyRatingStars.jsx';
+import { AppContext } from '../AppComponents/index.js';
+
 
 function ReviewMeta(props) {
+  let {theme} = useContext(AppContext);
+
   let formatedStars = brain.formatRatings(props.meta.data);
   let formatedChars = brain.formatCharsForDisplay(props.meta.data);
   let average = brain.getAverageRating(props.meta.data);
@@ -53,6 +57,8 @@ function FactorBreakdown(props) {
 }
 
 function FilterDisplay(props) {
+  let {theme} = useContext(AppContext);
+
   function removeAllFilters(e) {
     e.preventDefault();
     props.setFilters([]);
@@ -69,29 +75,19 @@ function FilterDisplay(props) {
       <div>
         {filters.map(filter => <span>{filter} stars</span>)}
       </div>
-      <a href="#" onClick={removeAllFilters}>Remove all filters</a>
+      <a href="#" style={{color: theme.text}}onClick={removeAllFilters}>Remove all filters</a>
     </div>
   );
 }
 
 function StarAnchor(props) {
-  const [fontWeight, setFontWeight] = useState('normal');
+  let {theme} = useContext(AppContext);
 
   function handleClick(e) {
     props.handleFilterSetting(e, props.rating);
-    //setFontWeight(fontWeight === 'bold' ? 'normal' : 'bold');
   }
-
-  useEffect(() => {
-    if (props.filters.includes(Number(props.rating))) {
-      setFontWeight('bold');
-    } else {
-      setFontWeight('normal');
-    }
-  }, [props.filters]);
-
   return (
-    <a href="#" style={{ fontWeight: fontWeight }} onClick={handleClick}>{props.rating} stars</a>
+    <a href="#" style={{ color: theme.text }} onClick={handleClick}>{props.rating} stars</a>
   );
 }
 
