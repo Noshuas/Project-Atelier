@@ -50,7 +50,6 @@ function App() {
       <ProductContext.Provider value={productState}>
         <StyleContext.Provider value={styleState}>
           <Overview />
-          <Related />
         </StyleContext.Provider>
       </ProductContext.Provider>
       <QandA productId={productId} productName={productName} />
