@@ -512,6 +512,18 @@ h3 {
   margin-right: 20px;
   margin-left: 5px;
 }
+/*
+  Helpfulnes
+*/
+.link-style-btn {
+  font-size: 100%;
+  font-family: inherit;
+  border: 0;
+  padding: 0;
+  background: none;
+  text-decoration: underline;
+  color: blue;
+}
 
 /*
  Form Styling
