@@ -1,12 +1,11 @@
 import axios from 'axios';
 import React from 'react';
 
-let serverURL = 'http://localhost:3000';
-
 let RandRAPIcalls = {};
 
+
 RandRAPIcalls.getProducts = function () {
-  return axios.get(serverURL + '/products');
+  return axios.get('/products');
 };
 
 RandRAPIcalls.getReviews = function (productId, sort = 'relevant', count = 2, page = 1) {
@@ -17,7 +16,7 @@ RandRAPIcalls.getReviews = function (productId, sort = 'relevant', count = 2, pa
     product_id: productId
   };
 
-  return axios.get(serverURL + '/reviews', { params: newParams });
+  return axios.get('/reviews', { params: newParams });
 };
 
 RandRAPIcalls.getReviewsMeta = function (productId) {
@@ -25,21 +24,21 @@ RandRAPIcalls.getReviewsMeta = function (productId) {
     product_id: productId
   };
 
-  return axios.get(serverURL + '/reviews/meta', { params: newParams});
+  return axios.get('/reviews/meta', { params: newParams});
 };
 
 RandRAPIcalls.postHelpfullnessFeedback = function (reviewId, helpful) {
   let feedback = helpful ? 'helpful' : 'report';
 
-  return axios.put(serverURL + '/reviews/feedback', {reviewId, feedback});
+  return axios.put('/reviews/feedback', {reviewId, feedback});
 };
 
 RandRAPIcalls.postReview = function (object) {
-  return axios.post(serverURL + '/reviews', object);
+  return axios.post('/reviews', object);
 };
 
 RandRAPIcalls.cloudinary = function (formData) {
-  return axios.post(serverURL + '/image-upload', formData);
+  return axios.post('/image-upload', formData);
 };
 
 export default RandRAPIcalls;

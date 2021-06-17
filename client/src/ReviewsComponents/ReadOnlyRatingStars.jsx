@@ -6,7 +6,7 @@ function ReadOnlyRatingStars(props) {
   let formated = brain.formatStarRating(props.rating);
   return (
     <div className="rating-stars">
-      {formated.map((width, index) => <Star key={index} width={width}/>)}
+      {formated.map((width, index) => <Star key={index} width={width} />)}
     </div>
   );
 }

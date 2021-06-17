@@ -3,7 +3,7 @@ import API from '../../../configAPI.js';
 
 let QAapiCalls = {};
 
-let serverURL = 'http://localhost:3000';
+let serverURL = '';
 
 QAapiCalls.getQuestions = (productID) => {
   let params = {
