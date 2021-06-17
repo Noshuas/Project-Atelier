@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import GenericModal from '../QandAComponents/GenericModal.jsx';
 import brain from './brain.jsx';
 import RandRAPIcalls from './RandRAPIcalls';
 import InteractiveStars from './InteractiveStars.jsx';
 import Characteristics from './Characteristics.jsx';
 import UploadPhotos from './UploadPhotos.jsx';
+import { AppContext } from '../AppComponents/index.js';
 
 function AddReview(props) {
   let [open, setOpen] = useState(false);
@@ -33,9 +34,14 @@ function AddReview(props) {
       .then(() => props.setProductReviewCount(props.productReviewCount + 1));
   }
 
+  const { theme } = useContext(AppContext);
+  let buttonStyle = {
+    color: theme.body === 'white' ? theme.text : theme.body,
+  };
+
   return (
     <span>
-      <button onClick={() => setOpen(true)}>ADD A REVIEW</button>
+      <button style={buttonStyle} onClick={() => setOpen(true)}>ADD A REVIEW</button>
       <GenericModal open={open} onClose={() => setOpen(false)}>
         <div className="add-review">
           <h2>Write Your Review</h2>
@@ -67,7 +73,7 @@ function AddReview(props) {
               <div className="minimum-chars">{body.length < 50 ? `Minimum required characters left: ${50 - body.length}` : 'Minimum reached'}</div>
             </div>
             <div>Upload images:
-              <UploadPhotos setPhotos={setPhotos}/>
+              <UploadPhotos setPhotos={setPhotos} />
             </div>
             <div>
               <label htmlFor='nickname'>What is your nickname?*</label><br></br>
