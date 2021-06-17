@@ -69,11 +69,15 @@ function FilterDisplay(props) {
     return null;
   }
 
+  let style = {
+    color: theme.body === 'white' ? theme.text : theme.body,
+  };
+
   return (
     <div className="filter-display fadeIn">
       <h4>Filters:</h4>
       <div>
-        {filters.map(filter => <span>{filter} stars</span>)}
+        {filters.map(filter => <span style={style}>{filter} stars</span>)}
       </div>
       <a href="#" style={{color: theme.text}}onClick={removeAllFilters}>Remove all filters</a>
     </div>

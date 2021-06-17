@@ -21,16 +21,16 @@ function App() {
   // Dereks Hooks
 
   // Lukas Hooks
-  const [productId, setProduct] = useState(0);
+  const [productId, setProduct] = useState('17067');
   const [productName, setProductName] = useState('');
-  useEffect(() => {
-    RandRAPIcalls.getProducts()
-      .then(response => {
-        setProduct(response.data[2].id);
-        setProductName(response.data[2].name);
-      })
-      .catch(err => console.log('err', err));
-  }, []);
+  // useEffect(() => {
+  //   RandRAPIcalls.getProducts()
+  //     .then(response => {
+  //       setProduct(response.data[2].id);
+  //       setProductName(response.data[2].name);
+  //     })
+  //     .catch(err => console.log('err', err));
+  // // });
 
   // Wills Hooks
   const productState = useProduct();
