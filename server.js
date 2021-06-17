@@ -115,8 +115,6 @@ app.get('/will-reviews/meta', (req, res) => {
     .catch(err => res.send(err));
 });
 
-
-
 //Derek's endpoints
 app.get('/qa/questions', (req, res) => {
   console.log('Getting questions');

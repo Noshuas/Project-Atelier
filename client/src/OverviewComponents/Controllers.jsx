@@ -27,21 +27,6 @@ export function getProductReviewsMeta(productId) {
     .then( resVal => calcStarRating(resVal.data.ratings));
 }
 
-
-// export function getProductReviewsMeta(productId) {
-//   return axios.get(API.url + `/reviews/meta?product_id=${productId}`, API.auth)
-//     .then( resVal => calcStarRating(resVal.data.ratings));
-// }
-
-// export function getProductReviews(productId) {
-//   return axios.get(API.url + `/reviews?count=1000&product_id=${productId}`, API.auth)
-//     .then( resVal => resVal.data.results.length );
-// }
-
-
-
-
-
 export function calcStarRating(starRatings) {
   let totalScore = 0;
   let totalRatings = 0;
