@@ -601,12 +601,15 @@ html {
 }
 
 .ratings-and-reviews {
-  color: rgb(82,82,82);
+  /* color: rgb(82,82,82); */
   margin-top: 50px;
   display: grid;
-  grid-template-rows: 60px auto;
-  grid-template-columns: 27% 6% auto;
   font-family: 'Lato', sans-serif;
+  grid-template-columns: 27% 6% auto;
+  grid-template-rows: 60px auto;
+  grid-template-areas:
+    'title space search'
+    'meta space  list';
 }
 
 input, select {
@@ -619,23 +622,19 @@ input, select {
 }
 
 .ratings {
-  grid-row: 2 / span 1;
-  grid-column: 1 / span 1;
+  grid-area: meta;
 }
 
 .reviews {
-  grid-row: 2 / span 1;
-  grid-column: 3 / span 1;
+  grid-area: list;
 }
 
 .ratings-and-reviews > h3 {
-  grid-row: 1 / span 1;
-  grid-column: 1 / span 1;
+  grid-area: title;
 }
 
 #review-search-bar {
-  grid-row: 1 / span 1;
-  grid-column: 3 / span 1;
+  grid-area: search
 }
 
 #review-search-bar input {
@@ -808,12 +807,12 @@ progress::-webkit-progress-value {
   bottom: 0;
   width: 100%;
   height: 30px;
-  background: linear-gradient(transparent, white);
+  background: linear-gradient(transparent, var(--gradientColor));
   pointer-events: none;
 }
 
 .review-item {
-  border-bottom: 1px solid rgb(82,82,82);
+  border-bottom: 1px solid;
   margin-top: 35px;
 }
 
@@ -877,12 +876,12 @@ span.review-body {
 
 .review-sorting select {
   border: none;
-  background-color: var(--main-background-color);
+  /* background-color: var(--main-background-color); */
   outline: none;
   font-family: var(--main-family);
   font-weight: bold;
   font-size: var(--main-h3-font-size);
-  border-bottom: 2px solid rgb(82,82,82);
+  border-bottom: 2px solid;
 }
 
 /********** BOTTOM BUTTONS ***********/
@@ -890,7 +889,7 @@ span.review-body {
 .ratings-and-reviews button, .submit {
   color: rgb(82,82,82);
   border-radius: 0;
-  border: 1px solid rgb(82,82,82);
+  border: 1px solid;
   background-color: white;
   font-size: 17px;
   font-weight: bold;
@@ -1083,6 +1082,15 @@ i.exit-modal {
   cursor: pointer;
 }
 
+#switch-theme {
+  position: fixed;
+  top: 1em;
+  right: 1em;
+  padding: 15px;
+  border-radius: 1000px;
+  font-family: 'Lato';
+  background-color: #69B0AB;
+}
 /********** FADE IN ***********/
 .fadeIn {
   -webkit-animation: fadein 1s; /* Safari, Chrome and Opera > 12.1 */
