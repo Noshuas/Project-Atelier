@@ -36,6 +36,10 @@ function Answer(props) {
   // );
 }
 
+function Report() {
+
+}
+
 function Photos(props) {
   if (props.photos.length === 0) {
     return null;
