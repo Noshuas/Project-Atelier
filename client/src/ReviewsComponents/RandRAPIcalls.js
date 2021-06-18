@@ -9,7 +9,6 @@ RandRAPIcalls.getProducts = function () {
 };
 
 RandRAPIcalls.getReviews = function (productId, sort = 'relevant', count = 2, page = 1) {
-  console.log(count);
   let newParams = {
     page: page,
     count: count,
