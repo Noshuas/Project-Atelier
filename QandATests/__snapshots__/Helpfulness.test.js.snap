@@ -3,12 +3,12 @@
 exports[`Helpfulness snapshot 1`] = `
 <span>
    Helpful? 
-  <a
-    href="#"
+  <button
+    className="link-style-btn"
     onClick={[Function]}
   >
     Yes
-  </a>
+  </button>
    (
   7
   )

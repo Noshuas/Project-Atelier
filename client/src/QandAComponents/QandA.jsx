@@ -40,7 +40,7 @@ const QandA = (props) => {
       //return question.question_body.includes(searchTerm);
       return Helpers.findTermInQuestion(question, searchTerm);
     }));
-  }, [filter]);
+  }, [filter, questions]);
   function handleMoreQuestions (event) {
     setExpanded(!expanded);
   }

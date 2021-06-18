@@ -53,7 +53,7 @@ const Question = (props) => {
       .then(results => {
         setAnswer(results);
       });
-  }, [props.info, answersSubmitted]);
+  }, [props.info, answersSubmitted, moreAnswers]);
   return (
     <div className='question-section'>
       <div className="question-main">
