@@ -2,28 +2,26 @@ import API from '../../../configAPI.js';
 import axios from 'axios';
 import React from 'react';
 
-let serverURL = '';
-
 
 export function getProductDetails(productId) {
   let params = { productId: productId };
-  return axios.get(serverURL + '/will-products', { params: params });
+  return axios.get('/will-products', { params: params });
 }
 
 export function getProductStyles(productId) {
   let params = { productId: productId };
-  return axios.get(serverURL + '/will-products/styles', { params: params });
+  return axios.get('/will-products/styles', { params: params });
 }
 
 export function getProductReviews(productId) {
   let params = { productId: productId };
-  return axios.get(serverURL + '/will-reviews', { params: params })
+  return axios.get('/will-reviews', { params: params })
     .then( resVal => resVal.data.results.length );
 }
 
 export function getProductReviewsMeta(productId) {
   let params = { productId: productId };
-  return axios.get(serverURL + '/will-reviews/meta', { params: params })
+  return axios.get('/will-reviews/meta', { params: params })
     .then( resVal => calcStarRating(resVal.data.ratings));
 }
 
