@@ -2,7 +2,7 @@ import API from '../../../configAPI.js';
 import axios from 'axios';
 import React from 'react';
 
-let serverURL = 'http://localhost:3000';
+let serverURL = '';
 
 
 export function getProductDetails(productId) {

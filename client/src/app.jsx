@@ -21,16 +21,16 @@ function App() {
   // Dereks Hooks
 
   // Lukas Hooks
-  const [productId, setProduct] = useState('17067');
+  const [productId, setProduct] = useState('0');
   const [productName, setProductName] = useState('');
-  // useEffect(() => {
-  //   RandRAPIcalls.getProducts()
-  //     .then(response => {
-  //       setProduct(response.data[2].id);
-  //       setProductName(response.data[2].name);
-  //     })
-  //     .catch(err => console.log('err', err));
-  // // });
+  useEffect(() => {
+    RandRAPIcalls.getProducts()
+      .then(response => {
+        setProduct(response.data[2].id);
+        setProductName(response.data[2].name);
+      })
+      .catch(err => console.log('err', err));
+  }, []);
 
   // Wills Hooks
   const productState = useProduct();
@@ -42,7 +42,6 @@ function App() {
   useEffect(() => {
     document.body.style.backgroundColor = appState.theme.body;
     document.body.style.color = appState.theme.text;
-    console.log(document.a);
   }, [appState.theme]);
 
   return (
