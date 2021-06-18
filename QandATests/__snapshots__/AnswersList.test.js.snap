@@ -19,23 +19,23 @@ exports[`Answer list loads two answers at the start 1`] = `
          |
         <span>
            Helpful? 
-          <a
-            href="#"
+          <button
+            className="link-style-btn"
             onClick={[Function]}
           >
             Yes
-          </a>
+          </button>
            (
           8
           )
         </span>
          | 
-        <a
-          href="#"
+        <button
+          className="link-style-btn"
           onClick={[Function]}
         >
           Report
-        </a>
+        </button>
       </span>
     </div>
   </div>
@@ -56,32 +56,31 @@ exports[`Answer list loads two answers at the start 1`] = `
          |
         <span>
            Helpful? 
-          <a
-            href="#"
+          <button
+            className="link-style-btn"
             onClick={[Function]}
           >
             Yes
-          </a>
+          </button>
            (
           8
           )
         </span>
          | 
-        <a
-          href="#"
+        <button
+          className="link-style-btn"
           onClick={[Function]}
         >
           Report
-        </a>
+        </button>
       </span>
     </div>
   </div>
-  <a
-    className="more-answers-lnk"
-    href="#"
+  <button
+    className="link-style-btn"
     onClick={[Function]}
   >
      See more answers
-  </a>
+  </button>
 </div>
 `;

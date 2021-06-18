@@ -2,12 +2,14 @@
 
 exports[`QuestionList snapshot 1 1`] = `
 <div
+  className="question-list"
   data-testid="question-list"
 />
 `;
 
 exports[`QuestionList snapshot 2 1`] = `
 <div
+  className="question-list"
   data-testid="question-list"
 >
   <div
@@ -16,44 +18,50 @@ exports[`QuestionList snapshot 2 1`] = `
     <div
       className="question-main"
     >
-      <h3>
-        Q:
+      <h3
+        className="question-body"
+      >
+        Q: 
         Test 1?
-
+         
       </h3>
       <div
         className="question-toolbar"
       >
         <span>
           <span>
-             Helpful?
-            <a
-              href="#"
+             Helpful? 
+            <button
+              className="link-style-btn"
               onClick={[Function]}
             >
               Yes
-            </a>
+            </button>
              (
             10
             )
           </span>
-           |
-          <a
-            href="#"
+           | 
+          <button
+            className="link-style-btn"
             onClick={[Function]}
           >
             Add Answer
-          </a>
+          </button>
         </span>
       </div>
     </div>
-    <h3>
-      A:
-    </h3>
-    <div>
-      <span>
-        This question currently has no answers
-      </span>
+    <div
+      className="answer-component"
+    >
+      <h3>
+        A:
+      </h3>
+      <div>
+        <span>
+          This question currently has no answers
+        </span>
+      </div>
     </div>
   </div>
   <div
@@ -62,44 +70,50 @@ exports[`QuestionList snapshot 2 1`] = `
     <div
       className="question-main"
     >
-      <h3>
-        Q:
+      <h3
+        className="question-body"
+      >
+        Q: 
         Test 2?
-
+         
       </h3>
       <div
         className="question-toolbar"
       >
         <span>
           <span>
-             Helpful?
-            <a
-              href="#"
+             Helpful? 
+            <button
+              className="link-style-btn"
               onClick={[Function]}
             >
               Yes
-            </a>
+            </button>
              (
             10
             )
           </span>
-           |
-          <a
-            href="#"
+           | 
+          <button
+            className="link-style-btn"
             onClick={[Function]}
           >
             Add Answer
-          </a>
+          </button>
         </span>
       </div>
     </div>
-    <h3>
-      A:
-    </h3>
-    <div>
-      <span>
-        This question currently has no answers
-      </span>
+    <div
+      className="answer-component"
+    >
+      <h3>
+        A:
+      </h3>
+      <div>
+        <span>
+          This question currently has no answers
+        </span>
+      </div>
     </div>
   </div>
 </div>

@@ -4,7 +4,7 @@
   "description": "# Some Dependencies # Webpack # Webpack CLI # @Bable/core",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest --coverage",
     "start-dev": "webpack -w",
     "start": "nodemon server.js"
   },
