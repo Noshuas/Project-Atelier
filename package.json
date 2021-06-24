@@ -6,7 +6,9 @@
   "scripts": {
     "test": "jest --coverage",
     "start-dev": "webpack -w",
-    "start": "nodemon server.js"
+    "build": "webpack",
+    "start": "nodemon server.js",
+    "start:prod": "node server.js & node services/reviews/reviewsService.js"
   },
   "repository": {
     "type": "git",
@@ -41,6 +43,7 @@
     "compression": "^1.7.4",
     "express": "^4.17.1",
     "express-form-data": "^2.0.17",
+    "pg": "^8.6.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-highlight-words": "^0.17.0"

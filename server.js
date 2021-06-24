@@ -16,6 +16,17 @@ app.use(express.static('./client/dist'));
 app.use(express.json());
 app.use(formData.parse());
 
+app.get('/reviewsTest', (req, res) => {
+  axios.get('http://localhost:1234/')
+    .then((response) => {
+      res.send(response.data);
+    })
+    .catch((err) => {
+      res.status(500);
+      console.error(err);
+      res.send(err);
+    });
+});
 
 app.get('/products', (req, res) => {
   console.log('Getting list of products...');
