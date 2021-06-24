@@ -6,6 +6,7 @@
   "scripts": {
     "test": "jest --coverage",
     "start-dev": "webpack -w",
+    "build": "webpack",
     "start": "nodemon server.js"
   },
   "repository": {

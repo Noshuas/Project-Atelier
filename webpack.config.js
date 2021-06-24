@@ -1,7 +1,11 @@
 const path = require('path');
 
 module.exports = {
-  mode: 'production',
+  mode: 'development',
+  devServer: {
+    host: '0.0.0.0',
+    port: 3000
+  },
   entry: './client/src/app.jsx',
   output: {
     filename: 'bundle.js',
