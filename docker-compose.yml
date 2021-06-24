@@ -13,6 +13,7 @@ services:
     image: postgres
     restart: always
     environment:
+      POSTGRES_USER: postgres
       POSTGRES_DB: reviewsDB
       POSTGRES_PASSWORD: password
     ports:
