@@ -1,29 +1,3 @@
-<<<<<<< HEAD
-const express = require('express')
-const { Pool } = require('pg');
-const app = express()
-const port = 5000
-
-const pool = new Pool({
-  host: 'localhost',
-  database: 'products',
-  user: 'yurgandurgan',
-  password: 'ay78Dnn2lg0sj9nk3l]3',
-  port: 1000,
-  idleTimeoutMillis: 10000,
-});
-
-app.get('/products', (req, res) => {
-
-  pool.query('select * from products where id < 5', (err, res)=>{
-    console.log(err, res);
-  })
-})
-
-app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
-})
-=======
 const express = require('express');
 const path = require('path');
 const axios = require('axios');
@@ -243,4 +217,3 @@ app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });
 
->>>>>>> 2ae42522a55b1e59e7ea900dd10f6c09eec5a089

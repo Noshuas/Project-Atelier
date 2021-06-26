@@ -1,17 +1,4 @@
 {
-<<<<<<< HEAD
-  "name": "sdc",
-  "version": "1.0.0",
-  "description": "A repository for the system design capstone project where I will be responsible for requests to the Products API",
-  "main": "index.js",
-  "scripts": {
-    "start": "nodemon server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Noshuas/sdc.git"
-=======
   "name": "project-catwalk",
   "version": "1.0.0",
   "description": "# Some Dependencies # Webpack # Webpack CLI # @Bable/core",
@@ -26,23 +13,11 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/will-weindel/project-catwalk.git"
->>>>>>> 2ae42522a55b1e59e7ea900dd10f6c09eec5a089
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-<<<<<<< HEAD
-    "url": "https://github.com/Noshuas/sdc/issues"
-  },
-  "homepage": "https://github.com/Noshuas/sdc#readme",
-  "dependencies": {
-    "etl": "^0.6.12",
-    "pg": "^8.6.0"
-  },
-  "devDependencies": {
-    "express": "^4.17.1"
-=======
     "url": "https://github.com/will-weindel/project-catwalk/issues"
   },
   "homepage": "https://github.com/will-weindel/project-catwalk#readme",
@@ -72,6 +47,5 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-highlight-words": "^0.17.0"
->>>>>>> 2ae42522a55b1e59e7ea900dd10f6c09eec5a089
   }
 }

@@ -9,6 +9,9 @@ const pool = new Pool({
 });
 
 module.exports = {
-
+  products: pool.query('select * from products where id < 5', (err, result)=>{
+    if (err) throw err;
+    res.send(res.rows);
+  })
 
 }
