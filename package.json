@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "name": "sdc",
   "version": "1.0.0",
   "description": "A repository for the system design capstone project where I will be responsible for requests to the Products API",
@@ -10,11 +11,28 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Noshuas/sdc.git"
+=======
+  "name": "project-catwalk",
+  "version": "1.0.0",
+  "description": "# Some Dependencies # Webpack # Webpack CLI # @Bable/core",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --coverage",
+    "start-dev": "webpack -w",
+    "build": "webpack",
+    "start": "nodemon server.js",
+    "start:prod": "node server.js & node services/reviews/reviewsService.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/will-weindel/project-catwalk.git"
+>>>>>>> 2ae42522a55b1e59e7ea900dd10f6c09eec5a089
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
+<<<<<<< HEAD
     "url": "https://github.com/Noshuas/sdc/issues"
   },
   "homepage": "https://github.com/Noshuas/sdc#readme",
@@ -24,5 +42,36 @@
   },
   "devDependencies": {
     "express": "^4.17.1"
+=======
+    "url": "https://github.com/will-weindel/project-catwalk/issues"
+  },
+  "homepage": "https://github.com/will-weindel/project-catwalk#readme",
+  "devDependencies": {
+    "-": "0.0.1",
+    "@babel/core": "^7.14.3",
+    "@babel/preset-env": "^7.14.4",
+    "@babel/preset-react": "^7.13.13",
+    "@testing-library/react": "^11.2.7",
+    "babel-jest": "^27.0.2",
+    "babel-loader": "^8.2.2",
+    "eslint": "^7.27.0",
+    "eslint-config-hackreactor": "github:hackreactor-labs/eslint-config-hackreactor",
+    "jest": "^27.0.4",
+    "nodemon": "^2.0.7",
+    "react-test-renderer": "^17.0.2",
+    "webpack": "^5.38.1",
+    "webpack-cli": "^4.7.0"
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "cloudinary": "^1.26.0",
+    "compression": "^1.7.4",
+    "express": "^4.17.1",
+    "express-form-data": "^2.0.17",
+    "pg": "^8.6.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-highlight-words": "^0.17.0"
+>>>>>>> 2ae42522a55b1e59e7ea900dd10f6c09eec5a089
   }
 }

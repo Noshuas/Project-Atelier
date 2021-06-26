@@ -1,0 +1,16 @@
+# Use postgres/example user/password credentials
+version: "3"
+services:
+  # web:
+  #   build: .
+  #   ports:
+  #     - 5000:5000
+  products:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: yurgandurgan
+      POSTGRES_PASSWORD: ay78Dnn2lg0sj9nk3l]3
+      POSTGRES_DB: products
+    ports:
+      - "8001:5432"

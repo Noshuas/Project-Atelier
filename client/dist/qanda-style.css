@@ -1,0 +1,158 @@
+p {
+  margin: 5px;
+}
+h3 {
+  font-weight: bold;
+}
+/* Overall Q and A */
+
+.QandA {
+  font-family: 'Lato', sans-serif;
+}
+.exit-modal {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  width: 75px;
+  height: 30px;
+}
+/* Questions */
+.QnA-title {
+  font-weight: bold;
+  padding: 30px 0px 20px 10px;
+}
+.question-section {
+  border-bottom: solid black 1px;
+  padding: 10px
+}
+.question-list {
+  max-height: calc(100vh - 200px);
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.question-toolbar {
+  display: flex;
+  flex-direction: row;
+  font-size: 22px;
+  padding-right: 15px;
+}
+
+.question-main {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-bottom: 3px;
+}
+
+.question-toolbar > span {
+  font-size: 14px;
+  font-weight: 350;
+}
+
+#questionSearch {
+  width: calc(75vh - 100px);
+  height: 45px;
+  font-size: 18px;
+}
+.question-btns {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+.question-btns > button {
+  border-radius: 0;
+  border: 1px solid black;
+  background-color: white;
+  font-size: 17px;
+  font-weight: bold;
+  padding: 20px;
+  margin: 35px 35px 50px 0;
+}
+/* Answers */
+.answer-component {
+  display: grid;
+  grid-template-columns: 25px auto;
+}
+.answer-section {
+  border-top: black dashed 1px;
+  padding-bottom: 10px;
+}
+.answer-section > span {
+  padding-top: 5px;
+  padding-bottom: 10px;
+}
+
+.answersToolbar {
+  display: flex;
+  flex-direction: row;
+  font-size: 12px;
+  padding: 5px;
+}
+
+.answer-list {
+  max-height: calc(50vh);
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.photo-image {
+  display: inline-block;
+  max-height: 100px;
+  max-width: 100px;
+  margin-right: 20px;
+  margin-left: 5px;
+}
+/*
+  Helpfulnes
+*/
+.link-style-btn {
+  font-size: 100%;
+  font-family: inherit;
+  border: 0;
+  padding: 0;
+  background: none;
+  text-decoration: underline;
+  color: blue;
+}
+
+/*
+ Form Styling
+*/
+.QnA-form {
+  margin: 5px;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+}
+.QnA-form > input {
+  margin: 3px;
+  border-width: 1px;
+  max-width: 300px;
+}
+.QnA-form > textarea {
+  margin: 10px;
+  border-width: 1px;
+}
+.QnA-form > span {
+  margin-bottom: 10px;
+  font-size: 12px;
+}
+.QnA-form > label {
+  margin: 3px
+}
+
+.form-submit-btn {
+  width: 100px;
+  height: 35px;
+  font-size: 15px;
+}
+.form-input-txt {
+  width: 200px;
+}
+.red-asterisk {
+  color: red
+}

@@ -1,0 +1,86 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Answer list loads two answers at the start 1`] = `
+<div>
+  <div
+    className="answer-section"
+  >
+    <span>
+      What a great question!
+    </span>
+    <div
+      className="answersToolbar"
+    >
+      <span>
+        by 
+        metslover
+         
+        January 4, 2018
+         |
+        <span>
+           Helpful? 
+          <button
+            className="link-style-btn"
+            onClick={[Function]}
+          >
+            Yes
+          </button>
+           (
+          8
+          )
+        </span>
+         | 
+        <button
+          className="link-style-btn"
+          onClick={[Function]}
+        >
+          Report
+        </button>
+      </span>
+    </div>
+  </div>
+  <div
+    className="answer-section"
+  >
+    <span>
+      What a great question!
+    </span>
+    <div
+      className="answersToolbar"
+    >
+      <span>
+        by 
+        metslover
+         
+        January 4, 2018
+         |
+        <span>
+           Helpful? 
+          <button
+            className="link-style-btn"
+            onClick={[Function]}
+          >
+            Yes
+          </button>
+           (
+          8
+          )
+        </span>
+         | 
+        <button
+          className="link-style-btn"
+          onClick={[Function]}
+        >
+          Report
+        </button>
+      </span>
+    </div>
+  </div>
+  <button
+    className="link-style-btn"
+    onClick={[Function]}
+  >
+     See more answers
+  </button>
+</div>
+`;

@@ -1,0 +1,28 @@
+{
+  "name": "sdc",
+  "version": "1.0.0",
+  "description": "A repository for the system design capstone project where I will be responsible for requests to the Products API",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Noshuas/sdc.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Noshuas/sdc/issues"
+  },
+  "homepage": "https://github.com/Noshuas/sdc#readme",
+  "dependencies": {
+    "etl": "^0.6.12",
+    "pg": "^8.6.0"
+  },
+  "devDependencies": {
+    "express": "^4.17.1"
+  }
+}

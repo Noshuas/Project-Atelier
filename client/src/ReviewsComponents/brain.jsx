@@ -1,0 +1,166 @@
+import React, { useState, useEffect } from 'react';
+
+let brain = {};
+
+brain.getFormatedTimestamp = function (string) {
+  let date = new Date(string);
+  let result = '';
+  var month = ['January', 'February', 'March', 'April', 'May', 'June', 'July',
+    'August', 'September', 'October', 'November', 'December'];
+  result += month[date.getMonth()] + ' ';
+  result += (date.getDate() + 1) + ', ';
+  result += date.getFullYear();
+  return result;
+};
+
+brain.getReviewCount = function (ratings) {
+  let total = 0;
+  for (let rating in ratings) {
+    total += Number(ratings[rating]);
+  }
+  return total;
+};
+
+brain.getFormatedSortBy = function (string) {
+  if (string === 'relevance') {
+    return 'relevant';
+  } else if (string === 'helpfulness') {
+    return 'helpful';
+  } else {
+    return 'newest';
+  }
+};
+
+//outputs Array of corresponding star filling lengths in pixels
+brain.formatStarRating = function (rating) {
+  let wholes = Math.floor(rating);
+  let partial = rating - wholes;
+  partial = (Math.round(partial * 4) / 4).toFixed(2);
+  let cssReady = Array(wholes).fill(15);
+  if (cssReady.length < 5) {
+    cssReady.push([0, 6, 8, 10, 15][partial * 4]);
+  }
+  while (cssReady.length < 5) {
+    cssReady.push(0);
+  }
+  return cssReady;
+};
+
+brain.renderTwoOrAll = function (list, Component, expanded, searchQuery) {
+  if (!expanded) {
+    let result = [];
+    for (var i = 0; i < 2 && i < list.length; i++) {
+      result.push(<Component review={list[i]} key={list[i].review_id} searchQuery={searchQuery}/>);
+    }
+    return result;
+  }
+
+  return (
+    list.map((review, index) => <Component key={review.review_id} review={review} searchQuery={searchQuery}/>)
+  );
+};
+
+brain.formatCharacteristics = function (charValues, charTemplate) {
+  let formated = {};
+  for (let char in charTemplate) {
+    formated[charTemplate[char].id] = Number(charValues[char]);
+  }
+  return formated;
+};
+
+brain.formatCharsForDisplay = function (data) {
+  if (!data) {
+    return [];
+  } else {
+    let charsTable = {
+      Size: ['A size too small', 'A size too wide'],
+      Width: ['Too narrow', 'Too wide'],
+      Comfort: ['Uncomfortable', 'Perfect'],
+      Quality: ['Poor', 'Perfect'],
+      Length: ['Runs Short', 'Runs long'],
+      Fit: ['Runs tight', 'Runs long']
+    };
+
+    let chars = data.characteristics;
+    let formated = [];
+
+    for (let char in chars) {
+      let single = {};
+      single.char = char;
+      single.percent = Math.round(Number(chars[char].value) / 5 * 100);
+      single.low = charsTable[char][0];
+      single.high = charsTable[char][1];
+      formated.push(single);
+    }
+
+    return formated;
+  }
+};
+
+brain.formatRatings = function (data) {
+  if (!data) {
+    return [];
+  } else {
+    let totalReviews = Number(data.recommended.false) + Number(data.recommended.true);
+    let ratios = [];
+
+    for (let rating in data.ratings) {
+      let ratio = {};
+      ratio.star = rating;
+      ratio.percent = Math.round(Number(data.ratings[rating]) / totalReviews * 100);
+      ratios.push(ratio);
+    }
+
+    return ratios;
+  }
+};
+
+brain.getAverageRating = function (data) {
+  if (!data) {
+    return '0.0';
+  } else {
+    let totalReviews = Number(data.recommended.false) + Number(data.recommended.true);
+    let ratingSum = 0;
+
+    for (let rating in data.ratings) {
+      ratingSum += Number(rating) * Number(data.ratings[rating]);
+    }
+
+    let average = (Math.round(ratingSum / totalReviews * 10) / 10).toString();
+    average += average.length < 2 ? '.0' : '';
+    return average;
+  }
+};
+
+brain.getRecommanendationPercentage = function (data) {
+  if (!data) {
+    return '0';
+  } else {
+    let totalReviews = Number(data.recommended.false) + Number(data.recommended.true);
+    let percentage = Math.round(Number((data.recommended.true) / totalReviews) * 100);
+    return percentage.toString();
+  }
+};
+
+brain.filterReviews = function (filters, list) {
+  if (!filters.length) {
+    return list;
+  } else {
+    return list.filter((item) => filters.includes(item.rating));
+  }
+};
+
+brain.searchByKeywords = function (query, list) {
+  if (query.length < 3) {
+    return list;
+  } else {
+    return list.filter((item) => {
+      if (item.body.toUpperCase().includes(query.toUpperCase()) ||
+          item.summary.toUpperCase().includes(query.toUpperCase())) {
+        return true;
+      }
+    });
+  }
+};
+
+export default brain;
