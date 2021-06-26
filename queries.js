@@ -19,10 +19,10 @@ exports.Q = {
   );`,
   createFeatures: `create table features (
     id int primary key,
-    "productId" int not null,
+    "product_id" int not null,
     feature varchar not null,
     value varchar,
-    foreign key ("productId")
+    foreign key ("product_id")
       references products (id)
   );`,
   createReleated: `create table related (
@@ -53,6 +53,8 @@ exports.Q = {
   products: `products(id, name, slogan, description, category, default_price)`,
   styles: `styles(id, "productId", name, original_price, sale_price, default_style)`,
   features: `features(id, "productId", feature, value)`,
-  related: 'related(id, '
+  related: 'related(id,current_product_id,related_product_id)',
+  photos: 'photos(id,styleId,url,thumbnail_url)',
+  skus: 'skus(id,styleId,size,quantity)',
 
 }

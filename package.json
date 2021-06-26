@@ -4,7 +4,7 @@
   "description": "A repository for the system design capstone project where I will be responsible for requests to the Products API",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon",
+    "start": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
