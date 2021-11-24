@@ -5,3 +5,5 @@ package-lock.json
 /testing/
 configAPI.js
 /productsAPI/data/
+/productsAPI/database/init.dump
+

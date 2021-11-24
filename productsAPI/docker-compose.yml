@@ -1,16 +1,21 @@
 # Use postgres/example user/password credentials
 version: "3"
 services:
-  # web:
-  #   build: .
-  #   ports:
-  #     - 5000:5000
-  products:
-    image: postgres
-    restart: always
-    environment:
-      POSTGRES_USER: yurgandurgan
-      POSTGRES_PASSWORD: ay78Dnn2lg0sj9nk3l]3
-      POSTGRES_DB: products
+  server:
+    build: ./server
+    image: noshuas/hackreactor:server
     ports:
-      - "8001:5432"
+      - 5000:5000
+  database:
+    build: ./database
+    image: noshuas/hackreactor:database
+  loadBalancer:
+    build: ./loadBalancer
+    ulimits:
+      nofile:
+        soft: 1048576
+        hard: 1048576
+
+    sysctls:
+      net.ipv4.ip_local_port_range: 12000 65535
+    image: noshuas/hackreactor:loadBalancer

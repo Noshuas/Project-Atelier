@@ -1,0 +1,19 @@
+version: "3"
+services:
+  server:
+    image: noshuas/hackreactor:server
+    ports:
+      - 80:5000
+    ulimits:
+      nofile:
+        soft: 1048576
+        hard: 1048576
+  cache:
+    image: redis:6.2.4-alpine
+    container_name: cache
+    expose:
+      - 6379
+    ulimits:
+      nofile:
+        soft: 1048576
+        hard: 1048576
